@@ -1362,6 +1362,8 @@ if [[ $TERM == 'xterm' ]]; then
   export TERM='xterm-color'
 fi
 
+eval $(dircolors ~/.dir_colors)
+
 . ~/conjectures/bash-prompt/prompt
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
@@ -2324,6 +2326,7 @@ CPU2[${freq cpu2}MHz]: ${cpu cpu2}% ${alignr}${cpubar cpu2 9,100}
 RAM: $mem ${alignr}${membar 9,100}
 Swap: $swap ${alignr}${swapbar 9,100}
 Uptime: ${alignr}${uptime}
+Threads: ${alignr}${running_threads}/${threads}
 Load average: ${alignr}${loadavg 1} ${loadavg 2} ${loadavg 3}
 
 DISK ${stippled_hr 1}
@@ -2336,14 +2339,25 @@ NETWORK ${stippled_hr 1}
 
 IP: ${alignr}${addr wlan0}
 Nameserver: ${alignr}${nameserver 0}
+WAN IP: ${alignr}${execi 300 curl spencertipping.com/ip.php}
 Wireless MAC: ${alignr}${wireless_ap wlan0}
 Up: ${upspeed wlan0} ${alignr}${upspeedgraph wlan0 9,100}
 Down: ${downspeed wlan0} ${alignr}${downspeedgraph wlan0 9,100}
 Signal: ${wireless_link_qual wlan0}% ${alignr}${wireless_link_bar 9,100 wlan0}
 
+CLIENTS ${stippled_hr 1}
+
+SSH: ${alignr}${tcp_portmon 22 22 count}
+HTTP: ${alignr}${tcp_portmon 80 80 count}
+Users: ${alignr}${user_number}
+
 BATTERY ${stippled_hr 1}
 
-${execi 5 acpi}
+${execi 30 acpi}
+__
+meta::setting('.dir_colors', <<'__');
+# Extra dircolors entries (mainly to restore broken symlink colors)
+ORPHAN 40;1;31
 __
 meta::setting('.fonts.conf', <<'__');
 <?xml version="1.0"?>
