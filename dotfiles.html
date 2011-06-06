@@ -1304,6 +1304,7 @@ alias uc='uml_mconsole'
 
 alias fs='lock fs finds'
 alias mplayer='mplayer -af equalizer=-3:-1:-1:0:-3:-4:-5:-3:-2:-5'
+alias mplayerb='mplayer -af equalizer=-5:-2:-1:0:-3:-8:-8:-9:-10:-12'
 
 alias gc='git commit -am'
 alias gU='git push'
@@ -1312,8 +1313,6 @@ alias gs='git status'
 alias gd='git diff'
 
 alias xl='startx & logout'
-
-alias sus='sudo pm-suspend'
 
 alias www='ssh spences7@spencertipping.com'
 
@@ -1489,12 +1488,11 @@ meta::setting('.config/openbox/autostart.sh', <<'__');
 # Based heavily on the one that ships with CrunchBang linux
 
 ~/bin/setup-background                  # A wrapper for nitrogen
-~/bin/setlayout 0 6 6 0                 # Set up virtual desktops
+obsetlayout 0 6 6 0                     # Set up virtual desktops
 
 synergys -c ~/.synergy.conf
 
 lxsession &
-xfce4-power-manager &
 cairo-compmgr &
 
 (sleep 2s && tint2) &
@@ -1796,7 +1794,7 @@ meta::setting('.config/openbox/rc.xml', <<'__');
 
     <keybind key="W-l">
       <action name="Execute">
-        <command>xlock</command>
+        <command>xlock -mode blank</command>
       </action>
     </keybind>
 
@@ -2160,44 +2158,34 @@ __
 meta::setting('.config/tint2/tint2rc', <<'__');
 # ID 1
 rounded = 0
-border_width = 0
-background_color = #0A0A0A 90
-
-# ID 2
-rounded = 0
-border_width = 0
-background_color = #000000 0
-
-# ID 3
-rounded = 1
-border_width = 0
-background_color = #404040 90
+border_width = 1
+border_color = #000000 40
+background_color = #000000 30
 
 # Panel
 panel_monitor = all
-panel_position = bottom right vertical
+panel_position = center left vertical
 panel_items = S
-panel_size = 240 108
-panel_margin = 0 0
+panel_size = 602 28
+panel_margin = -1 0
 panel_padding = 0 0
 panel_dock = 0
 wm_menu = 1
-panel_layer = above
+panel_layer = bottom
 panel_background_id = 1
 
+strut_policy = none
+
 # Panel Autohide
-autohide = 1
-autohide_show_timeout = 0
-autohide_hide_timeout = 0.5
-autohide_height = 1
-strut_policy = follow_size
+autohide = 0
+autohide_height = 2
 
 # Tasks
 urgent_nb_of_blink = 20
 task_icon = 1
-task_text = 1
+task_text = 0
 task_centered = 1
-task_maximum_size = 40 40
+task_maximum_size = 24 24
 task_padding = 2 2
 task_background_id = 2
 task_active_background_id = 3
@@ -2205,10 +2193,10 @@ task_urgent_background_id = 3
 task_iconified_background_id = 3
 
 # Task Icons
-task_icon_asb = 80 0 0
+task_icon_asb = 50 0 0
 task_active_icon_asb = 100 0 0
 task_urgent_icon_asb = 100 0 0
-task_iconified_icon_asb = 80 0 0
+task_iconified_icon_asb = 80 -20 -20
 
 # Fonts
 task_font = Ubuntu 7
@@ -2220,20 +2208,14 @@ font_shadow = 0
 
 # System Tray
 systray = 1
-systray_padding = 4 2 3
+systray_padding = 2 2 2
 systray_sort = ascending
 systray_background_id = 0
 systray_icon_size = 24
 systray_icon_asb = 100 0 0
 
 # Tooltips
-tooltip = 1
-tooltip_padding = 2 2
-tooltip_show_timeout = 0.0
-tooltip_hide_timeout = 0.0
-tooltip_background_id = 1
-tooltip_font_color = #ffffff 100
-tooltip_font = Ubuntu 8
+tooltip = 0
 
 battery = 0
 __
@@ -2339,6 +2321,7 @@ NETWORK ${stippled_hr 1}
 
 IP: ${alignr}${addr wlan0}
 Nameserver: ${alignr}${nameserver 0}
+Gateway: ${alignr}${gw_ip wlan0}
 WAN IP: ${alignr}${execi 300 curl spencertipping.com/ip.php}
 Wireless MAC: ${alignr}${wireless_ap wlan0}
 Up: ${upspeed wlan0} ${alignr}${upspeedgraph wlan0 9,100}
@@ -2349,11 +2332,11 @@ CLIENTS ${stippled_hr 1}
 
 SSH: ${alignr}${tcp_portmon 22 22 count}
 HTTP: ${alignr}${tcp_portmon 80 80 count}
-Users: ${alignr}${user_number}
+HTTP alt: ${alignr}${tcp_portmon 8000 9000 count}
 
 BATTERY ${stippled_hr 1}
 
-${execi 30 acpi}
+${exec grep 'remaining' /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
 __
 meta::setting('.dir_colors', <<'__');
 # Extra dircolors entries (mainly to restore broken symlink colors)
@@ -2364,6 +2347,7 @@ meta::setting('.fonts.conf', <<'__');
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
   <match target='font'>
+    <edit name='dpi'       mode='assign'><double>96</double></edit>
     <edit name='antialias' mode='assign'><bool>true</bool></edit>
     <edit name='hinting'   mode='assign'><bool>true</bool></edit>
     <edit name='hintstyle' mode='assign'><const>hintnone</const></edit>
@@ -2430,7 +2414,7 @@ __
 meta::setting('.xinitrc', <<'__');
 #!/bin/bash
 xrdb ~/.Xresources &
-openbox-session
+exec openbox-session
 __
 meta::template('comment', '\'\';     # A mechanism for line or block comments.');
 meta::template('eval', <<'__');
