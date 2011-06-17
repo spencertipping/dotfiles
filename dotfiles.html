@@ -2189,9 +2189,9 @@ background_color = #000000 30
 
 # Panel
 panel_monitor = all
-panel_position = center left vertical
+panel_position = top left vertical
 panel_items = S
-panel_size = 602 28
+panel_size = 200 28
 panel_margin = -1 0
 panel_padding = 0 0
 panel_dock = 0
@@ -2243,6 +2243,7 @@ systray_icon_asb = 100 0 0
 tooltip = 0
 
 battery = 0
+
 __
 meta::setting('.conkyrc', <<'__');
 # Use Xft?
@@ -2364,7 +2365,7 @@ ${exec netstat -tln | grep 0.0.0 | awk '{print $4}'}
 
 BATTERY ${stippled_hr 1}
 
-${exec grep 'remaining' /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
+${exec grep voltage /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} @ ${exec grep remaining /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
 
 __
 meta::setting('.dir_colors', <<'__');
