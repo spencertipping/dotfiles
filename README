@@ -1,1 +1,14 @@
 Some configuration files (see the setting:: section of dotfiles.html)
+
+Warning! Do not do this:
+
+$ ./dotfiles.html run
+
+unless you want your dotfiles replaced! If you want to grab individual settings,
+you can say things like this:
+
+$ ./dotfiles.html cat setting::.bashrc > temporary-bashrc
+
+Also potentially of use is 'ls':
+
+$ ./dotfiles.html ls setting::
