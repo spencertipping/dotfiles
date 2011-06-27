@@ -11,4 +11,4 @@ $ ./dotfiles.html cat setting::.bashrc > temporary-bashrc
 
 Also potentially of use is 'ls':
 
-$ ./dotfiles.html ls setting::
+$ ./dotfiles.html ls ^setting::

@@ -432,7 +432,8 @@ meta::function('initial-state', '$transient{initial};');
 meta::function('is', <<'__');
 my ($attribute, @criteria) = @_;
 my ($options, @stuff) = separate_options(@criteria);
-attribute_is($attribute, %$options);
+exists $data{$attribute} and attribute_is($attribute, %$options);
+
 __
 meta::function('load-state', <<'__');
 around_hook('load-state', @_, sub {
@@ -592,7 +593,8 @@ __
 meta::function('sh', 'system(@_);');
 meta::function('shell', <<'__');
 terminal::cc(retrieve('data::current-continuation')) if length $data{'data::current-continuation'};
-shell::repl();
+around_hook('shell', sub {shell::repl()});
+
 __
 meta::function('size', <<'__');
 my $size = 0;
@@ -1084,7 +1086,7 @@ function::hooks                         3d989899c616f7440429a2d9bf1cc44b
 function::identity                      6523885762fcc2f354fc25cf6ed126ce
 function::import                        5d0f0634cbd01274f2237717507198a2
 function::initial-state                 03d8ed608855a723124e79ca184d8e73
-function::is                            ee26a8494ff12dc6df26e61ecd926302
+function::is                            41564c8f21b12ab80824ac825266d805
 function::load-state                    2123ad2d7bfaf83c8959fa003d8c4ad4
 function::lock                          5d8db258704e6a8623fac796f62fac02
 function::ls                            0b310755e747c65bca09508fd9d841f0
@@ -1099,7 +1101,7 @@ function::save-state                    a7d349c67a4be8fa9e81fe34b7a94cfd
 function::serialize                     a19ada2d2558ea9da3a7942fb913e15f
 function::serialize_single              aa77af032272f5a2664e21713739a223
 function::sh                            1b2f542ca9dd63ad437058b7f6f61aac
-function::shell                         c07f3725aa8e31ac5b55ffcf0f39bba1
+function::shell                         22d25a32ffc3f2855fb7e2aec77c72fb
 function::size                          6cd9a4dd17be87ea2962f8f566a97d11
 function::snapshot                      56939a47f2758421669641e15ebd66eb
 function::state                         8c68044dccae28f33244d0c7e9e9acfb
@@ -1168,6 +1170,8 @@ meta::type::retriever                   71a29050bf9f20f6c71afddff83addc9
 meta::type::state                       84da7d5220471307f1f990c5057d3319
 retriever::file                         3bbc9d8a887a536044bafff1d54def7e
 retriever::id                           4da6080168d32445150cc4200af7af6e
+retriever::object                       c7633990b4e01bdc783da7e545799f4f
+retriever::perl                         f41938e6dbad317f62abffc1e4d28cca
 
 __
 meta::parent('/home/spencertipping/bin/settings-bundle', <<'__');
@@ -1175,8 +1179,8 @@ function::import-setting                 227a499e043a6b990cf846ef15d84f69
 function::run                            8597a7e51d2bd9299decb1a88d3e3b17
 internal_function::create_setting        29d251ed254bf26029926a9deecdda30
 meta::type::setting                      2e1204243bea6e2f7a898f8328df4506
-parent::/home/spencertipping/bin/object  d8afbb7286800b32bf2a9f20fb275d8e
-parent::preprocessor                     11bde64f4f401e987cf77d1359b39fc0
+parent::/home/spencertipping/bin/object  dcebc8c5c3ed92cd48b2e950129ab969
+parent::preprocessor                     47927de34eb81538f3a6190e71885779
 
 __
 meta::parent('object', <<'__');
@@ -1204,7 +1208,7 @@ function::hooks                         3d989899c616f7440429a2d9bf1cc44b
 function::identity                      6523885762fcc2f354fc25cf6ed126ce
 function::import                        5d0f0634cbd01274f2237717507198a2
 function::initial-state                 03d8ed608855a723124e79ca184d8e73
-function::is                            ee26a8494ff12dc6df26e61ecd926302
+function::is                            41564c8f21b12ab80824ac825266d805
 function::load-state                    2123ad2d7bfaf83c8959fa003d8c4ad4
 function::lock                          5d8db258704e6a8623fac796f62fac02
 function::ls                            0b310755e747c65bca09508fd9d841f0
@@ -1219,7 +1223,7 @@ function::save-state                    a7d349c67a4be8fa9e81fe34b7a94cfd
 function::serialize                     a19ada2d2558ea9da3a7942fb913e15f
 function::serialize_single              aa77af032272f5a2664e21713739a223
 function::sh                            1b2f542ca9dd63ad437058b7f6f61aac
-function::shell                         c07f3725aa8e31ac5b55ffcf0f39bba1
+function::shell                         22d25a32ffc3f2855fb7e2aec77c72fb
 function::size                          6cd9a4dd17be87ea2962f8f566a97d11
 function::snapshot                      56939a47f2758421669641e15ebd66eb
 function::state                         8c68044dccae28f33244d0c7e9e9acfb
@@ -1288,12 +1292,14 @@ meta::type::retriever                   71a29050bf9f20f6c71afddff83addc9
 meta::type::state                       84da7d5220471307f1f990c5057d3319
 retriever::file                         3bbc9d8a887a536044bafff1d54def7e
 retriever::id                           4da6080168d32445150cc4200af7af6e
+retriever::object                       c7633990b4e01bdc783da7e545799f4f
+retriever::perl                         f41938e6dbad317f62abffc1e4d28cca
 
 __
 meta::parent('preprocessor', <<'__');
 function::preprocess           ab5526a02ff417d4c162357dc327e7c4
 meta::type::template           bc4b0c80b5efc716b19e99b832c22bf3
-parent::object                 d8afbb7286800b32bf2a9f20fb275d8e
+parent::object                 dcebc8c5c3ed92cd48b2e950129ab969
 retriever::pp                  3b5f5c5d30c5a04f72056dedaacfe7b7
 template::comment              dfe273d2dad3d8159b847545e4e5c309
 template::eval                 1a0e2124a05056be4abc11803883c294
@@ -1304,6 +1310,18 @@ template::pinclude             c07ff79bf8d642cceaa9ef844bfcb189
 __
 meta::retriever('file', '-f $_[0] ? file::read($_[0]) : undef;');
 meta::retriever('id', '$_[0] =~ /^id::/ ? substr($_[0], 4) : undef;');
+meta::retriever('object', <<'__');
+# Fetch a property from another Perl object. This uses the 'cat' function.
+return undef unless $_[0] =~ /^object::(.*?)::(.*)$/ && -x $1 && qx|$1 is '$2'|;
+join '', qx|$1 cat '$2'|;
+
+__
+meta::retriever('perl', <<'__');
+# Lets you use the result of evaluating some Perl expression
+return undef unless $_[0] =~ /^perl::(.*)$/;
+eval $1;
+
+__
 meta::retriever('pp', <<'__');
 return undef unless namespace($_[0]) eq 'pp';
 my $attr = retrieve(attribute($_[0]));
