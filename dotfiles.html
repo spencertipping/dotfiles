@@ -2315,7 +2315,7 @@ border_margin 5
 border_width 1
 
 # Default colors and also border colors
-default_color 5060c0
+default_color black
 own_window_colour white
 
 # Text alignment, other possible values are commented
@@ -2348,8 +2348,8 @@ use_spacer none
 
 TEXT
 ${time %Y} ${time %m%d} ${time %H%M} ${freq cpu1}MHz [${addr wlan0} :: ${nameserver 0} :: ${gw_ip wlan0} :: ${execi 300 curl spencertipping.com/ip.php}] ${exec grep voltage /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} @ ${exec grep remaining /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
-${cpubar cpu1 7,100}   ${cpubar cpu2 7,100}   ${membar 7,100}   ${swapbar 7,100}
-${diskiograph_read sda 7,100}   ${diskiograph_write sda 7,100}   ${upspeedgraph wlan0 7,100}   ${downspeedgraph wlan0 7,100}
+${cpubar cpu1 4,100}   ${cpubar cpu2 4,100}   ${membar 4,100}   ${swapbar 4,100}
+${diskiograph_read sda 10,100}   ${diskiograph_write sda 10,100}   ${upspeedgraph wlan0 10,100}   ${downspeedgraph wlan0 10,100}
 
 __
 meta::setting('.dir_colors', <<'__');
