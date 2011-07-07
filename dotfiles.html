@@ -1392,6 +1392,10 @@ ev() {
   pal -r 7
 }
 
+c() {
+  cd ~/conjectures/$1*
+}
+
 # Environment variables
 export VISUAL="/usr/bin/vim"
 export EDITOR=$VISUAL
@@ -1411,6 +1415,7 @@ eval $(dircolors ~/.dir_colors)
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 true
+
 __
 meta::setting('.config/Terminal/terminalrc', <<'__');
 [Configuration]
@@ -2289,7 +2294,7 @@ total_run_times 0
 double_buffer yes
 
 # Minimum size of text area
-minimum_size 200 0
+minimum_size 600 20
 
 # Draw shades?
 draw_shades no
@@ -2310,16 +2315,16 @@ border_margin 5
 border_width 1
 
 # Default colors and also border colors
-default_color black
+default_color 5060c0
 own_window_colour white
 
 # Text alignment, other possible values are commented
-alignment top_right
+alignment bottom_left
 
 # Gap between borders of screen and text
 # same thing as passing -x at command line
-gap_x 70
-gap_y 50
+gap_x 10
+gap_y 10
 
 # Subtract file system buffers from used memory?
 no_buffers yes
@@ -2342,48 +2347,9 @@ override_utf8_locale yes
 use_spacer none
 
 TEXT
-${font Ubuntu:size=14}${alignc}${time %Y} ${time %m%d} ${time %H%M}${font}
-${alignc}${time %a} ${execi 300 /home/spencertipping/bin/conky-weather 80304}
-
-SYSTEM ${stippled_hr 1}
-
-CPU1[${freq cpu1}MHz]: ${cpu cpu1}% ${alignr}${cpubar cpu1 9,100}
-CPU2[${freq cpu2}MHz]: ${cpu cpu2}% ${alignr}${cpubar cpu2 9,100}
-RAM: $mem ${alignr}${membar 9,100}
-Swap: $swap ${alignr}${swapbar 9,100}
-Uptime: ${alignr}${uptime}
-Threads: ${alignr}${running_threads}/${threads}
-Load average: ${alignr}${loadavg 1} ${loadavg 2} ${loadavg 3}
-
-DISK ${stippled_hr 1}
-
-/: ${alignr}${fs_used /}/${fs_size /} ${alignr}${fs_bar 9,100 /home}
-Read: ${diskio_read} ${alignr}${diskiograph_read sda 9,100}
-Write: ${diskio_write} ${alignr}${diskiograph_write sda 9,100}
-
-NETWORK ${stippled_hr 1}
-
-IP: ${alignr}${addr wlan0}
-Nameserver: ${alignr}${nameserver 0}
-Gateway: ${alignr}${gw_ip wlan0}
-WAN IP: ${alignr}${execi 300 curl spencertipping.com/ip.php}
-Wireless MAC: ${alignr}${wireless_ap wlan0}
-Up: ${upspeed wlan0} ${alignr}${upspeedgraph wlan0 9,100}
-Down: ${downspeed wlan0} ${alignr}${downspeedgraph wlan0 9,100}
-Signal: ${wireless_link_qual wlan0}% ${alignr}${wireless_link_bar 9,100 wlan0}
-
-CLIENTS ${stippled_hr 1}
-
-SSH: ${alignr}${tcp_portmon 22 22 count}
-HTTP: ${alignr}${tcp_portmon 80 80 count}
-HTTP alt: ${alignr}${tcp_portmon 8000 9000 count}
-
-Open ports:
-${exec netstat -tln | grep 0.0.0 | awk '{print $4}'}
-
-BATTERY ${stippled_hr 1}
-
-${exec grep voltage /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} @ ${exec grep remaining /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
+${time %Y} ${time %m%d} ${time %H%M} ${freq cpu1}MHz [${addr wlan0} :: ${nameserver 0} :: ${gw_ip wlan0} :: ${execi 300 curl spencertipping.com/ip.php}] ${exec grep voltage /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} @ ${exec grep remaining /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
+${cpubar cpu1 7,100}   ${cpubar cpu2 7,100}   ${membar 7,100}   ${swapbar 7,100}
+${diskiograph_read sda 7,100}   ${diskiograph_write sda 7,100}   ${upspeedgraph wlan0 7,100}   ${downspeedgraph wlan0 7,100}
 
 __
 meta::setting('.dir_colors', <<'__');
