@@ -1398,7 +1398,11 @@ md() {
 }
 
 vf() {
-  vim $(find -name *${*}*)
+  vim $(find -wholename *${*}* | head -n1)
+}
+
+cf() {
+  cd $(find -wholename *${*}* -type d | head -n1)
 }
 
 ev() {
@@ -1417,6 +1421,9 @@ export VISUAL="/usr/bin/vim"
 export EDITOR=$VISUAL
 export PS1='\[\033[1;32m\]\h\[\033[1;30m\]\W\[\033[0;0m\] '
 export JAVA_HOME="/usr/lib/jvm/java-6-openjdk"
+
+export HAXE_LIBRARY_PATH=/opt/haxe/std:.
+export HAXE_HOME=/opt/haxe
 
 export LC_ALL=POSIX
 
@@ -2294,7 +2301,7 @@ text_buffer_size 2048
 temperature_unit fahrenheit
 
 # Update interval in seconds
-update_interval 1
+update_interval 2
 
 # This is the number of times Conky will update before quitting.
 # Set to zero to run forever.
@@ -2310,7 +2317,7 @@ total_run_times 0
 double_buffer yes
 
 # Minimum size of text area
-minimum_size 600 20
+minimum_size 100 200
 
 # Draw shades?
 draw_shades no
@@ -2331,15 +2338,14 @@ border_margin 5
 border_width 1
 
 # Default colors and also border colors
-default_color black
 own_window_colour white
 
 # Text alignment, other possible values are commented
-alignment bottom_left
+alignment top_middle
 
 # Gap between borders of screen and text
 # same thing as passing -x at command line
-gap_x 10
+gap_x 0
 gap_y 10
 
 # Subtract file system buffers from used memory?
@@ -2363,8 +2369,9 @@ override_utf8_locale yes
 use_spacer none
 
 TEXT
-${time %Y} ${time %m%d} ${time %H%M} ${freq cpu1}MHz [${addr wlan0} :: ${nameserver 0} :: ${gw_ip wlan0} :: ${execi 300 curl spencertipping.com/ip.php}] ${exec grep voltage /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} @ ${exec grep remaining /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
-${cpubar cpu1 4,100}   ${cpubar cpu2 4,100}   ${membar 4,100}   ${swapbar 4,100}
+${voffset 10}${color black}${font Ubuntu:size=14}${time %Y %m%d %H%M}${font Ubuntu:size=7}${alignr}${voffset -10}${time %a} ${freq cpu1}MHz ${exec grep voltage /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} @ ${exec grep remaining /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
+${alignr}${addr wlan0} :: ${nameserver 0} :: ${gw_ip wlan0} :: ${execi 300 curl spencertipping.com/ip.php}${font Ubuntu:size=7}
+${color 304060}${cpubar cpu1 4,100}   ${cpubar cpu2 4,100}   ${membar 4,100}   ${swapbar 4,100}
 ${diskiograph_read sda 10,100}   ${diskiograph_write sda 10,100}   ${upspeedgraph wlan0 10,100}   ${downspeedgraph wlan0 10,100}
 
 __
@@ -2432,13 +2439,15 @@ if $TERM == 'screen'
 endif
 
 " Custom syntax stuff
-au BufRead,BufNewFile *.js     setf javascript
-au BufRead,BufNewFile *.cltex  setf cltex
-au BufRead,BufNewFile *.gnarly setf gnarly
-au BufRead,BufNewFile *.scala  setf scala
-au BufRead,BufNewFile *.hx     setf haxe
-au BufRead,BufNewFile *.fig    setf figment
-au BufRead,BufNewFile *.pickle setf pickle
+au BufRead,BufNewFile *.js        setf javascript
+au BufRead,BufNewFile *.caterwaul setf javascript
+au BufRead,BufNewFile *.cltex     setf cltex
+au BufRead,BufNewFile *.gnarly    setf gnarly
+au BufRead,BufNewFile *.scala     setf scala
+au BufRead,BufNewFile *.hx        setf haxe
+au BufRead,BufNewFile *.fig       setf figment
+au BufRead,BufNewFile *.pickle    setf pickle
+
 __
 meta::setting('.xinitrc', <<'__');
 #!/bin/bash
