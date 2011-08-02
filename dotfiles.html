@@ -1398,11 +1398,11 @@ md() {
 }
 
 vf() {
-  vim $(find -wholename *${*}* | head -n1)
+  vim $(find . -wholename *${*}* | head -n1)
 }
 
 cf() {
-  cd $(find -wholename *${*}* -type d | head -n1)
+  cd $(find . -wholename *${*}* -type d | head -n1)
 }
 
 ev() {
