@@ -1584,7 +1584,7 @@ cairo-compmgr &
 
 (sleep 2s && tint2) &
 (sleep 3s && conky -q) &
-(sleep 3s && checkgmail) &
+
 __
 meta::setting('.config/openbox/rc.xml', <<'__');
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1882,6 +1882,12 @@ meta::setting('.config/openbox/rc.xml', <<'__');
     <keybind key="W-l">
       <action name="Execute">
         <command>xlock -mode blank</command>
+      </action>
+    </keybind>
+
+    <keybind key='W-S-l'>
+      <action name='Execute'>
+        <command>/home/spencertipping/bin/locksleep</command>
       </action>
     </keybind>
 
@@ -2241,6 +2247,7 @@ meta::setting('.config/openbox/rc.xml', <<'__');
     </application>
   </applications>
 </openbox_config>
+
 __
 meta::setting('.config/tint2/tint2rc', <<'__');
 # ID 1
