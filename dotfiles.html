@@ -2462,14 +2462,14 @@ if $TERM == 'screen'
 endif
 
 " Custom syntax stuff
-au BufRead,BufNewFile *.js        setf javascript
-au BufRead,BufNewFile *.caterwaul setf javascript
-au BufRead,BufNewFile *.cltex     setf cltex
-au BufRead,BufNewFile *.gnarly    setf gnarly
-au BufRead,BufNewFile *.scala     setf scala
-au BufRead,BufNewFile *.hx        setf haxe
-au BufRead,BufNewFile *.fig       setf figment
-au BufRead,BufNewFile *.pickle    setf pickle
+au BufRead,BufReadPost,BufNewFile *.js        set syntax=caterwaul
+au BufRead,BufReadPost,BufNewFile *.caterwaul set syntax=caterwaul
+au BufRead,BufReadPost,BufNewFile *.cltex     set syntax=cltex
+au BufRead,BufReadPost,BufNewFile *.gnarly    set syntax=gnarly
+au BufRead,BufReadPost,BufNewFile *.scala     set syntax=scala
+au BufRead,BufReadPost,BufNewFile *.hx        set syntax=haxe
+au BufRead,BufReadPost,BufNewFile *.fig       set syntax=figment
+au BufRead,BufReadPost,BufNewFile *.pickle    set syntax=pickle
 
 __
 meta::setting('.xinitrc', <<'__');
