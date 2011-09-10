@@ -1359,6 +1359,59 @@ return undef unless namespace($_[0]) eq 'pp';
 my $attr = retrieve(attribute($_[0]));
 defined $attr ? preprocess($attr) : undef;
 __
+meta::setting('.Xresources', <<'__');
+Xft.hinting: None
+Xft.rgba: 0
+
+URxvt.depth: 32
+URxvt.background: rgba:0000/0000/0000/e800
+URxvt.borderLess: true
+URxvt.internalBorder: 1
+URxvt.externalBorder: 0
+URxvt*fading: 40
+URxvt*visualBell: false
+
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Left: \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
+
+URxvt.geometry: 80x20
+
+URxvt.scrollBar: false
+URxvt.thickness: 2
+URxvt.font: xft:Monospace:bold:size=7:hinting=none
+
+URxvt*saveLines: 65536
+URxvt*borderless: true
+
+URxvt.foreground: rgba:ffff/ffff/ffff/ffff
+
+URxvt*lineSpace: -1
+URxvt*letterSpace: -1
+
+URxvt*color0: #ffffff
+URxvt*color1: #ffa0a0
+URxvt*color2: #bdb76b
+URxvt*color3: #f0e68c
+URxvt*color4: #87ceeb
+URxvt*color5: #cd5c5c
+URxvt*color6: #98fb98
+URxvt*color7: #969696
+
+URxvt*color8: #969696
+URxvt*color9: #ffa0a0
+URxvt*color10: #bdb76b
+URxvt*color11: #f0e68c
+URxvt*color12: #87ceeb
+URxvt*color13: #cd5c5c
+URxvt*color14: #98fb98
+URxvt*color15: #969696
+
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: true
+
+__
 meta::setting('.bashrc', <<'__');
 # This file contains extra lines for .bashrc.
 
@@ -1582,6 +1635,8 @@ synergys -c ~/.synergy.conf
 lxsession &
 cairo-compmgr &
 
+xrdb ~/.Xresources
+
 (sleep 2s && tint2) &
 (sleep 3s && conky -q) &
 
@@ -1727,11 +1782,7 @@ meta::setting('.config/openbox/rc.xml', <<'__');
 
     <keybind key="W-t">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Terminal</name>
-        </startupnotify>
-        <command>terminal --geometry=80x20</command>
+        <command>urxvt</command>
       </action>
     </keybind>
 
@@ -2241,6 +2292,11 @@ meta::setting('.config/openbox/rc.xml', <<'__');
       <shade>no</shade>
     </application>
 
+    <application name='urxvt'>
+      <decor>no</decor>
+      <shade>no</shade>
+    </application>
+
     <application name='gnome-terminal'>
       <decor>no</decor>
       <shade>no</shade>
@@ -2451,15 +2507,28 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 syntax on
 let perl_extended_vars=1
 
-hi Folded     ctermbg=15
-hi FoldColumn ctermbg=15
-
-hi NonText    ctermfg=0 cterm=bold
-hi SpecialKey ctermfg=0 cterm=bold
-
-if $TERM == 'screen'
-  set term=xterm
+if $TERM == 'screen' || $TERM == 'rxvt-unicode-256color'
+  set term=rxvt-unicode
 endif
+
+set tenc=utf8
+
+hi Folded     ctermbg=none
+hi FoldColumn ctermbg=none
+
+hi Todo        ctermfg=5 ctermbg=3
+
+hi LineNr      ctermfg=3
+hi Keyword     ctermfg=3 cterm=bold
+hi Operator    ctermfg=3 cterm=bold
+hi Conditional ctermfg=3 cterm=bold
+hi Label       ctermfg=3 cterm=bold
+hi Exception   ctermfg=3 cterm=bold
+hi Repeat      ctermfg=3 cterm=bold
+hi Statement   ctermfg=3 cterm=bold
+
+hi NonText     ctermfg=0 cterm=bold
+hi SpecialKey  ctermfg=0 cterm=bold
 
 " Custom syntax stuff
 au BufRead,BufReadPost,BufNewFile *.js        set syntax=caterwaul
