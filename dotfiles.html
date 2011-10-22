@@ -1363,6 +1363,8 @@ meta::setting('.Xresources', <<'__');
 Xft.hinting: None
 Xft.rgba: 0
 
+URxvt.inputMethod: SCIM
+
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0000/e800
 URxvt.borderLess: true
@@ -1379,7 +1381,7 @@ URxvt.geometry: 80x20
 
 URxvt.scrollBar: false
 URxvt.thickness: 2
-URxvt.font: xft:Monospace:bold:size=7:hinting=none
+URxvt.font: xft:Monospace:bold:size=7:hinting=none,xft:FreeMono:bold:size=7:hinting=none
 
 URxvt*saveLines: 65536
 URxvt*borderless: true
@@ -1492,8 +1494,6 @@ export JAVA_HOME="/usr/lib/jvm/java-6-openjdk"
 
 export HAXE_LIBRARY_PATH=/opt/haxe/std:.
 export HAXE_HOME=/opt/haxe
-
-export LC_ALL=POSIX
 
 if [[ $TERM == 'xterm' ]]; then
   export TERM='xterm-color'
@@ -1631,6 +1631,12 @@ obsetlayout 0 6 6 0                     # Set up virtual desktops
 
 synergys -c ~/.synergy.conf
 
+urxvtd -q -o -f
+
+scim -d &
+
+xmodmap -e 'keycode 87 = Multi_key'
+
 lxsession &
 cairo-compmgr &
 
@@ -1638,6 +1644,14 @@ xrdb ~/.Xresources
 
 (sleep 2s && tint2) &
 (sleep 3s && conky -q) &
+
+__
+meta::setting('.config/openbox/environment', <<'__');
+# Use SCIM for all text input
+export LC_CTYPE=en_US.utf8
+export XMODIFIERS=@im=SCIM
+export GTK_IM_MODULE=scim
+export QT_IM_MODULE=scim
 
 __
 meta::setting('.config/openbox/rc.xml', <<'__');
@@ -1781,9 +1795,36 @@ meta::setting('.config/openbox/rc.xml', <<'__');
 
     <keybind key="W-t">
       <action name="Execute">
-        <command>urxvt</command>
+        <command>urxvtc</command>
       </action>
     </keybind>
+
+    <keybind key='W-i'>
+      <action name='Execute'>
+        <command>/home/spencertipping/bin/rmip</command>
+      </action>
+    </keybind>
+
+    <keybind key='W-r'>
+      <action name='Execute'>
+        <command>/home/spencertipping/bin/rb</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-S-t">
+      <action name="Execute">
+        <command>/home/spencertipping/bin/rxvt-large</command>
+      </action>
+    </keybind>
+
+
+    <!--
+    <keybind key="W-c">
+      <action name="Execute">
+        <command>/home/spencertipping/bin/rxvt-chinese</command>
+      </action>
+    </keybind>
+    -->
 
     <keybind key="W-m">
       <action name="Execute">
@@ -2538,12 +2579,17 @@ au BufRead,BufReadPost,BufNewFile *.scala     set syntax=scala
 au BufRead,BufReadPost,BufNewFile *.hx        set syntax=haxe
 au BufRead,BufReadPost,BufNewFile *.fig       set syntax=figment
 au BufRead,BufReadPost,BufNewFile *.pickle    set syntax=pickle
+au BufRead,BufReadPost,BufNewFile *.havoc     set syntax=havoc
 
 __
 meta::setting('.xinitrc', <<'__');
 #!/bin/bash
 xrdb ~/.Xresources &
 exec openbox-session
+__
+meta::setting('.xresources/rxvt-large', <<'__');
+URxvt.font: xft:Monospace:bold:size=10:hinting=none,xft:FreeMono:bold:size=10:hinting=none
+
 __
 meta::template('comment', '\'\';     # A mechanism for line or block comments.');
 meta::template('eval', <<'__');
