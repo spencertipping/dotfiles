@@ -1420,6 +1420,7 @@ export HISTCONTROL=ignoredups
 
 # Path extensions
 export PATH="$PATH:$HOME/bin:/var/lib/gems/bin:/var/lib/gems/1.8/bin:/usr/lib/uml:."
+export NODE_PATH="$HOME/.node:$NODE_PATH"
 
 # Command aliases
 alias ls='ls --color=auto'
@@ -1430,16 +1431,21 @@ alias vt='vim -t'
 alias s='ls'
 alias ct='ctags -R'
 alias uc='uml_mconsole'
+alias t='urxvtc &'
 
 alias fs='lock fs finds'
-alias mplayer='mplayer -af equalizer=-5:-1:-1:0:0:0:-1:-1:-2:-2'
-alias mplayerb='mplayer -af equalizer=-5:-2:-1:0:-3:-8:-8:-9:-10:-12'
+alias mplayerb='mplayer -af scaletempo,equalizer=-5:-2:-1:0:-3:-8:-8:-9:-10:-12'
+alias mplayerp='mplayer -af scaletempo,equalizer=-5:-1:-1:0:0:0:-1:-1:-2:-2'
+alias mplayer='mplayer -af scaletempo'
 
 alias gc='git commit -am'
 alias gU='git push'
 alias gu='git pull'
 alias gs='git status'
 alias gd='git diff'
+alias ga='git add'
+alias gL='git log'
+alias glf='git-forest | less -R'
 
 alias xl='startx & logout'
 
@@ -1777,25 +1783,19 @@ meta::setting('.config/openbox/rc.xml', <<'__');
     <!-- Volume control -->
     <keybind key='W-Up'>
       <action name='Execute'>
-        <command>amixer set Master 3%+</command>
-      </action>
-      <action name='Execute'>
-        <command>notify-volume</command>
+        <command>ossmix vmix0-outvol +1</command>
       </action>
     </keybind>
 
     <keybind key='W-Down'>
       <action name='Execute'>
-        <command>amixer set Master 3%-</command>
-      </action>
-      <action name='Execute'>
-        <command>notify-volume</command>
+        <command>ossmix vmix0-outvol -- -1</command>
       </action>
     </keybind>
 
     <keybind key="W-t">
       <action name="Execute">
-        <command>urxvtc</command>
+        <command>urxvt</command>
       </action>
     </keybind>
 
@@ -1966,7 +1966,7 @@ meta::setting('.config/openbox/rc.xml', <<'__');
           <enabled>true</enabled>
           <name>Web Browser</name>
         </startupnotify>
-        <command>chromium</command>
+        <command>google-chrome</command>
       </action>
     </keybind>
 
@@ -2487,8 +2487,11 @@ override_utf8_locale yes
 # Add spaces to keep things from moving about?  This only affects certain objects.
 use_spacer none
 
+# Indicators that don't work anymore:
+# ${exec grep voltage /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} @ ${exec grep remaining /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
+
 TEXT
-${voffset 10}${color black}${font Ubuntu:size=14}${time %Y %m%d %H%M}${font Ubuntu:size=7}${alignr}${voffset -10}${time %a} ${freq cpu1}MHz ${exec grep voltage /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} @ ${exec grep remaining /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
+${voffset 10}${color black}${font Ubuntu:size=14}${time %Y %m%d %H%M}${font Ubuntu:size=7}${alignr}${voffset -10}${time %a} ${freq cpu1}MHz ${exec ossmix | grep vmix0-outvol | awk '{print $4, "dB"}'}
 ${alignr}${addr wlan0} :: ${nameserver 0} :: ${gw_ip wlan0}${font Ubuntu:size=7}
 ${color 304060}${cpubar cpu1 4,100}   ${cpubar cpu2 4,100}   ${membar 4,100}   ${swapbar 4,100}
 ${diskiograph_read sda 10,100}   ${diskiograph_write sda 10,100}   ${upspeedgraph wlan0 10,100}   ${downspeedgraph wlan0 10,100}
@@ -2514,13 +2517,14 @@ meta::setting('.fonts.conf', <<'__');
 __
 meta::setting('.notify-osd', <<'__');
 slot-allocation = fixed
-bubble-width = 240px
+bubble-width = 160px
 bubble-background-color = 000000
 bubble-background-opacity = 80%
-text-title-size = 70%
+text-title-size = 60%
 text-title-weight = bold
-text-body-size = 60%
+text-body-size = 55%
 text-body-weight = normal
+
 __
 meta::setting('.tmux.conf', <<'__');
 set-option -g prefix C-a
@@ -2533,25 +2537,23 @@ bind-key C-c new-window
 __
 meta::setting('.vimrc', <<'__');
 " Custom VIMRC file by Spencer Tipping
+" Do whatever the heck you want to with it
 
 set nu sta et sc fdc=2 sw=2 tw=192 ai mouse=a nowrap nojs hls is foldlevel=10 enc=utf8 tenc=utf8 title visualbell noerrorbells hidden pastetoggle=<F2> foldenable tags=tags;/
-set wildmenu wildmode=list:longest scrolloff=3 shortmess=atI incsearch hlsearch hidden history=1000 ignorecase smartcase
+set wildmenu wildmode=list:longest scrolloff=3 shortmess=atI incsearch hlsearch hidden history=1000 ignorecase smartcase list listchars=tab:>-,trail:. wm=1
 
-set list
-set listchars=tab:>-,trail:.
 nnoremap ' `
 nnoremap ` '
 
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
+filetype plugin on
 syntax on
 let perl_extended_vars=1
 
 if $TERM == 'screen' || $TERM == 'rxvt-unicode-256color'
   set term=rxvt-unicode
 endif
-
-set tenc=utf8
 
 hi Folded     ctermbg=none
 hi FoldColumn ctermbg=none
@@ -2572,6 +2574,7 @@ hi SpecialKey  ctermfg=0 cterm=bold
 
 " Custom syntax stuff
 au BufRead,BufReadPost,BufNewFile *.js        set syntax=caterwaul
+au BufRead,BufReadPost,BufNewFile *.waul      set syntax=caterwaul
 au BufRead,BufReadPost,BufNewFile *.caterwaul set syntax=caterwaul
 au BufRead,BufReadPost,BufNewFile *.cltex     set syntax=cltex
 au BufRead,BufReadPost,BufNewFile *.gnarly    set syntax=gnarly
