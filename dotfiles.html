@@ -716,6 +716,10 @@ terminal::error("Verification failed; expected $state but got $observed from $ot
 hook('after-verify', $result, observed => $observed, expected => $state);
 $result;
 __
+meta::hook('before-shell::ad', <<'__');
+ad('setting::');
+
+__
 meta::indicator('cc', 'length ::retrieve(\'data::current-continuation\') ? "\\033[1;36mcc\\033[0;0m" : \'\';');
 meta::indicator('locked', 'is_locked() ? "\\033[1;31mlocked\\033[0;0m" : \'\';');
 meta::indicator('path', <<'__');
@@ -1371,6 +1375,8 @@ URxvt.borderLess: true
 URxvt.internalBorder: 1
 URxvt.externalBorder: 0
 URxvt*visualBell: false
+URxvt*scrollTtyOutput: false
+URxvt*scrollTtyKeypress: true
 
 URxvt.keysym.Control-Up: \033[1;5A
 URxvt.keysym.Control-Down: \033[1;5B
@@ -1419,7 +1425,7 @@ meta::setting('.bashrc', <<'__');
 export HISTCONTROL=ignoredups
 
 # Path extensions
-export PATH="$PATH:$HOME/bin:/var/lib/gems/bin:/var/lib/gems/1.8/bin:/usr/lib/uml:."
+export PATH="$PATH:$HOME/bin:$HOME/conjectures/caterwaul/bin:/var/lib/gems/bin:/var/lib/gems/1.8/bin:/usr/lib/uml:."
 export NODE_PATH="$HOME/.node:$NODE_PATH"
 
 # Command aliases
@@ -1438,6 +1444,8 @@ alias mplayerb='mplayer -af scaletempo,equalizer=-5:-2:-1:0:-3:-8:-8:-9:-10:-12'
 alias mplayerp='mplayer -af scaletempo,equalizer=-5:-1:-1:0:0:0:-1:-1:-2:-2'
 alias mplayer='mplayer -af scaletempo'
 
+alias ossp='ossplay -c2 -fS16_LE -s44100 -W'
+
 alias gc='git commit -am'
 alias gU='git push'
 alias gu='git pull'
@@ -1446,6 +1454,8 @@ alias gd='git diff'
 alias ga='git add'
 alias gL='git log'
 alias glf='git-forest | less -R'
+
+alias em='emacs -nw --no-site-file --no-splash'
 
 alias xl='startx & logout'
 
@@ -1462,11 +1472,11 @@ alias u5='cd ../../../../..'
 alias u6='cd ../../../../../..'
 
 wk() {
-  w3m http://en.wikipedia.org/wiki/$(echo $* | tr ' ' '_')
+  elinks http://en.wikipedia.org/wiki/$(echo $* | tr ' ' '_')
 }
 
 goog() {
-  w3m "http://google.com/search?q=$(echo $* | tr ' ' '+')"
+  elinks "http://google.com/search?q=$(echo $* | tr ' ' '+')"
 }
 
 md() {
@@ -1486,10 +1496,6 @@ ev() {
     echo "$(date +%Y)$@" >> ~/.pal/events.pal
   fi
   pal -r 7
-}
-
-c() {
-  cd ~/conjectures/$1*
 }
 
 # Environment variables
@@ -1641,14 +1647,13 @@ urxvtd -q -o -f
 
 scim -d &
 
+ossmix jack.int-speaker.mute on
 xmodmap -e 'keycode 87 = Multi_key'
 
 lxsession &
 cairo-compmgr &
 
 xrdb ~/.Xresources
-
-(sleep 2s && tint2) &
 (sleep 3s && conky -q) &
 
 __
@@ -1783,13 +1788,17 @@ meta::setting('.config/openbox/rc.xml', <<'__');
     <!-- Volume control -->
     <keybind key='W-Up'>
       <action name='Execute'>
-        <command>ossmix vmix0-outvol +1</command>
+        <!-- <command>ossmix vmix0-outvol +1</command> -->
+        <!-- <command>amixer set PCM +3db</command> -->
+        <command>vol_up</command>
       </action>
     </keybind>
 
     <keybind key='W-Down'>
       <action name='Execute'>
-        <command>ossmix vmix0-outvol -- -1</command>
+        <!-- <command>ossmix vmix0-outvol - - -1</command> -->
+        <!-- <command>amixer set PCM -3db</command> -->
+        <command>vol_down</command>
       </action>
     </keybind>
 
@@ -2327,17 +2336,7 @@ meta::setting('.config/openbox/rc.xml', <<'__');
   </menu>
 
   <applications>
-    <application name='terminal'>
-      <decor>no</decor>
-      <shade>no</shade>
-    </application>
-
-    <application name='urxvt'>
-      <decor>no</decor>
-      <shade>no</shade>
-    </application>
-
-    <application name='gnome-terminal'>
+    <application name='*'>
       <decor>no</decor>
       <shade>no</shade>
     </application>
@@ -2413,7 +2412,6 @@ __
 meta::setting('.conkyrc', <<'__');
 # Use Xft?
 use_xft yes
-xftfont Ubuntu:size=7
 xftalpha 0.8
 text_buffer_size 2048
 
@@ -2460,11 +2458,11 @@ border_width 1
 own_window_colour white
 
 # Text alignment, other possible values are commented
-alignment top_middle
+alignment top_left
 
 # Gap between borders of screen and text
 # same thing as passing -x at command line
-gap_x 0
+gap_x 100
 gap_y 10
 
 # Subtract file system buffers from used memory?
@@ -2491,10 +2489,10 @@ use_spacer none
 # ${exec grep voltage /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} @ ${exec grep remaining /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
 
 TEXT
-${voffset 10}${color black}${font Ubuntu:size=14}${time %Y %m%d %H%M}${font Ubuntu:size=7}${alignr}${voffset -10}${time %a} ${freq cpu1}MHz ${exec ossmix | grep vmix0-outvol | awk '{print $4, "dB"}'}
-${alignr}${addr wlan0} :: ${nameserver 0} :: ${gw_ip wlan0}${font Ubuntu:size=7}
-${color 304060}${cpubar cpu1 4,100}   ${cpubar cpu2 4,100}   ${membar 4,100}   ${swapbar 4,100}
+${font Candara:size=7}${color 403020}${cpubar cpu1 4,100}   ${cpubar cpu2 4,100}   ${membar 4,100}   ${swapbar 4,100}
 ${diskiograph_read sda 10,100}   ${diskiograph_write sda 10,100}   ${upspeedgraph wlan0 10,100}   ${downspeedgraph wlan0 10,100}
+${color 806050}${voffset 10}${font Candara:size=14}${time %Y %m%d %H%M}${font Candara:size=8}${alignr}${voffset -10}${time %a} ${freq cpu1}MHz ${exec pamixer --get-volume} :: ${exec sed 's/000$//' /sys/class/power_supply/BAT1/charge_now}+${exec sed 's/000$//' /sys/class/power_supply/BAT1/current_now}
+${alignr}${wireless_link_qual wlan0} :: ${upspeed wlan0}/${downspeed wlan0} :: ${addr wlan0} :: ${nameserver 0} :: ${gw_ip wlan0}
 
 __
 meta::setting('.dir_colors', <<'__');
@@ -2514,6 +2512,25 @@ meta::setting('.fonts.conf', <<'__');
     <edit name='lcdfilter' mode='assign'><const>lcddefault</const></edit>
   </match>
 </fontconfig>
+__
+meta::setting('.gitconfig', <<'__');
+[user]
+        name = Spencer Tipping
+        email = spencer@spencertipping.com
+[core]
+        excludesfile = ~/.gitignore
+[color]
+        ui = true
+
+__
+meta::setting('.gitignore', <<'__');
+.*.swp
+
+__
+meta::setting('.mplayer/config', <<'__');
+cache = 262144
+cache-min = 0.01
+
 __
 meta::setting('.notify-osd', <<'__');
 slot-allocation = fixed
@@ -2583,6 +2600,7 @@ au BufRead,BufReadPost,BufNewFile *.hx        set syntax=haxe
 au BufRead,BufReadPost,BufNewFile *.fig       set syntax=figment
 au BufRead,BufReadPost,BufNewFile *.pickle    set syntax=pickle
 au BufRead,BufReadPost,BufNewFile *.havoc     set syntax=havoc
+au BufRead,BufReadPost,BufNewFile *.mh        set syntax=mh
 
 __
 meta::setting('.xinitrc', <<'__');
