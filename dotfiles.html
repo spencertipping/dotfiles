@@ -1395,7 +1395,7 @@ URxvt*borderless: true
 URxvt.foreground: rgba:ffff/ffff/ffff/ffff
 
 URxvt*lineSpace: -1
-URxvt*letterSpace: -1
+URxvt*letterSpace: -2
 
 URxvt*color0: #ffffff
 URxvt*color1: #ffa0a0
@@ -1470,6 +1470,10 @@ alias u3='cd ../../..'
 alias u4='cd ../../../..'
 alias u5='cd ../../../../..'
 alias u6='cd ../../../../../..'
+
+ddg() {
+  google-chrome "http://duckduckgo.com?q=${*/ /+}"
+}
 
 wk() {
   elinks http://en.wikipedia.org/wiki/$(echo $* | tr ' ' '_')
@@ -1639,15 +1643,10 @@ meta::setting('.config/openbox/autostart.sh', <<'__');
 # Based heavily on the one that ships with CrunchBang linux
 
 ~/bin/setup-background                  # A wrapper for nitrogen
-obsetlayout 0 6 6 0                     # Set up virtual desktops
+obsetlayout 0 8 8 0                     # Set up virtual desktops
 
 synergys -c ~/.synergy.conf
-
-urxvtd -q -o -f
-
 scim -d &
-
-ossmix jack.int-speaker.mute on
 xmodmap -e 'keycode 87 = Multi_key'
 
 lxsession &
@@ -1730,7 +1729,7 @@ meta::setting('.config/openbox/rc.xml', <<'__');
   </theme>
 
   <desktops>
-    <number>36</number>
+    <number>64</number>
     <firstdesk>1</firstdesk>
     <names>
     </names>
@@ -1790,7 +1789,7 @@ meta::setting('.config/openbox/rc.xml', <<'__');
       <action name='Execute'>
         <!-- <command>ossmix vmix0-outvol +1</command> -->
         <!-- <command>amixer set PCM +3db</command> -->
-        <command>vol_up</command>
+        <command>vol-delta 1</command>
       </action>
     </keybind>
 
@@ -1798,7 +1797,23 @@ meta::setting('.config/openbox/rc.xml', <<'__');
       <action name='Execute'>
         <!-- <command>ossmix vmix0-outvol - - -1</command> -->
         <!-- <command>amixer set PCM -3db</command> -->
-        <command>vol_down</command>
+        <command>vol-delta -1</command>
+      </action>
+    </keybind>
+
+    <keybind key='W-S-Down'>
+      <action name='Execute'>
+        <!-- <command>ossmix vmix0-outvol +1</command> -->
+        <!-- <command>amixer set PCM +3db</command> -->
+        <command>vol-delta -5</command>
+      </action>
+    </keybind>
+
+    <keybind key='W-S-Up'>
+      <action name='Execute'>
+        <!-- <command>ossmix vmix0-outvol - - -1</command> -->
+        <!-- <command>amixer set PCM -3db</command> -->
+        <command>vol-delta 5</command>
       </action>
     </keybind>
 
@@ -2485,14 +2500,27 @@ override_utf8_locale yes
 # Add spaces to keep things from moving about?  This only affects certain objects.
 use_spacer none
 
-# Indicators that don't work anymore:
-# ${exec grep voltage /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} @ ${exec grep remaining /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'} :: ${exec grep rate /proc/acpi/battery/BAT1/state | sed 's/^.*:\s*//'}
-
 TEXT
-${font Candara:size=7}${color 403020}${cpubar cpu1 4,100}   ${cpubar cpu2 4,100}   ${membar 4,100}   ${swapbar 4,100}
-${diskiograph_read sda 10,100}   ${diskiograph_write sda 10,100}   ${upspeedgraph wlan0 10,100}   ${downspeedgraph wlan0 10,100}
-${color 806050}${voffset 10}${font Candara:size=14}${time %Y %m%d %H%M}${font Candara:size=8}${alignr}${voffset -10}${time %a} ${freq cpu1}MHz ${exec pamixer --get-volume} :: ${exec sed 's/000$//' /sys/class/power_supply/BAT1/charge_now}+${exec sed 's/000$//' /sys/class/power_supply/BAT1/current_now}
-${alignr}${wireless_link_qual wlan0} :: ${upspeed wlan0}/${downspeed wlan0} :: ${addr wlan0} :: ${nameserver 0} :: ${gw_ip wlan0}
+${font Candara:size=5}${color 403020}${cpubar cpu1 4,100}   ${cpubar cpu2 4,100}   ${alignr}${membar 4,100}   ${swapbar 4,100}
+${diskiograph_read sda 10,100}   ${diskiograph_write sda 10,100}   ${if_up wlan0}${alignr}${upspeedgraph wlan0 10,100}   ${downspeedgraph wlan0 10,100}
+                                                                          ${else}${alignr}${upspeedgraph eth0  10,100}   ${downspeedgraph eth0  10,100}${endif}
+${color ffffff}${voffset 10}${font Candara:size=14}${time %Y %m%d %H%M}${font Candara:size=8}${alignr}${voffset -10}${time %a} ${freq cpu1}MHz ${exec amixer get Master | grep 'Left.*on\W' | cut -d ' ' -f 6} :: ${exec sed 's/000$//' /sys/class/power_supply/BAT1/charge_now}+${exec sed 's/000$//' /sys/class/power_supply/BAT1/current_now}mA
+${if_up wlan0}${alignr}${wireless_link_qual wlan0} :: ${upspeed wlan0}/${downspeed wlan0} :: ${addr wlan0} :: ${nameserver 0} :: ${gw_ip wlan0}
+       ${else}${alignr}                               ${upspeed  eth0}/${downspeed  eth0} :: ${addr  eth0} :: ${nameserver 0} :: ${gw_ip  eth0}${endif}
+
+${alignr}${tcp_portmon 22 22 count} :: ${tcp_portmon 22 22 rip 0}
+${alignr}                           :: ${tcp_portmon 22 22 rip 1}
+${alignr}                           :: ${tcp_portmon 22 22 rip 2}
+${alignr}                           :: ${tcp_portmon 22 22 rip 3}
+
+${alignr}${tcp_portmon 1 65535 count} :: ${tcp_portmon 1 65535 rip 0}:${tcp_portmon 1 65535 lport 0}:${tcp_portmon 1 65535 rport 0}
+${alignr}                             :: ${tcp_portmon 1 65535 rip 1}:${tcp_portmon 1 65535 lport 1}:${tcp_portmon 1 65535 rport 1}
+${alignr}                             :: ${tcp_portmon 1 65535 rip 2}:${tcp_portmon 1 65535 lport 2}:${tcp_portmon 1 65535 rport 2}
+${alignr}                             :: ${tcp_portmon 1 65535 rip 3}:${tcp_portmon 1 65535 lport 3}:${tcp_portmon 1 65535 rport 3}
+${alignr}                             :: ${tcp_portmon 1 65535 rip 4}:${tcp_portmon 1 65535 lport 4}:${tcp_portmon 1 65535 rport 4}
+${alignr}                             :: ${tcp_portmon 1 65535 rip 5}:${tcp_portmon 1 65535 lport 5}:${tcp_portmon 1 65535 rport 5}
+${alignr}                             :: ${tcp_portmon 1 65535 rip 6}:${tcp_portmon 1 65535 lport 6}:${tcp_portmon 1 65535 rport 6}
+${alignr}                             :: ${tcp_portmon 1 65535 rip 7}:${tcp_portmon 1 65535 lport 7}:${tcp_portmon 1 65535 rport 7}
 
 __
 meta::setting('.dir_colors', <<'__');
@@ -2528,8 +2556,9 @@ meta::setting('.gitignore', <<'__');
 
 __
 meta::setting('.mplayer/config', <<'__');
-cache = 262144
-cache-min = 0.01
+# Large cache sizes seem to cause problems...
+#cache = 262144
+#cache-min = 0.01
 
 __
 meta::setting('.notify-osd', <<'__');
@@ -2601,6 +2630,7 @@ au BufRead,BufReadPost,BufNewFile *.fig       set syntax=figment
 au BufRead,BufReadPost,BufNewFile *.pickle    set syntax=pickle
 au BufRead,BufReadPost,BufNewFile *.havoc     set syntax=havoc
 au BufRead,BufReadPost,BufNewFile *.mh        set syntax=mh
+au BufRead,BufReadPost,BufNewFile *.binary    set syntax=binary
 
 __
 meta::setting('.xinitrc', <<'__');
