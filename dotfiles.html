@@ -1364,6 +1364,8 @@ my $attr = retrieve(attribute($_[0]));
 defined $attr ? preprocess($attr) : undef;
 __
 meta::setting('.Xresources', <<'__');
+! vim: set syntax=xdefaults :
+
 Xft.hinting: None
 Xft.rgba: 0
 
@@ -1397,6 +1399,8 @@ URxvt.foreground: rgba:ffff/ffff/ffff/ffff
 URxvt*lineSpace: -1
 URxvt*letterSpace: -2
 
+! Desert color scheme
+#if 1
 URxvt*color0: #ffffff
 URxvt*color1: #ffa0a0
 URxvt*color2: #bdb76b
@@ -1414,6 +1418,28 @@ URxvt*color12: #87ceeb
 URxvt*color13: #cd5c5c
 URxvt*color14: #98fb98
 URxvt*color15: #969696
+#endif
+
+! Curved Sublime color scheme
+#if 0
+URxvt*color0: #ffffff
+URxvt*color1: #e2a53e
+URxvt*color2: #dcb539
+URxvt*color3: #d5dda1
+URxvt*color4: #bdcce3
+URxvt*color5: #dfc9de
+URxvt*color6: #f4e6ab
+URxvt*color7: #caccc9
+
+URxvt*color8: #caccc9
+URxvt*color9: #e2a53e
+URxvt*color10: #dcb539
+URxvt*color11: #d5dda1
+URxvt*color12: #bdcce3
+URxvt*color13: #dfc9de
+URxvt*color14: #f4e6ab
+URxvt*color15: #caccc9
+#endif
 
 URxvt*cursorBlink: true
 URxvt*cursorUnderline: true
@@ -1421,11 +1447,12 @@ URxvt*cursorUnderline: true
 __
 meta::setting('.bashrc', <<'__');
 # This file contains extra lines for .bashrc.
+# vim: set syntax=sh :
 
 export HISTCONTROL=ignoredups
 
 # Path extensions
-export PATH="$PATH:$HOME/bin:$HOME/conjectures/caterwaul/bin:/var/lib/gems/bin:/var/lib/gems/1.8/bin:/usr/lib/uml:."
+export PATH="$PATH:$HOME/bin:$HOME/conjectures/perl-objects:$HOME/conjectures/caterwaul/bin:/opt/android-sdk/tools:/opt/android-sdk/platform-tools:."
 export NODE_PATH="$HOME/.node:$NODE_PATH"
 
 # Command aliases
@@ -1435,16 +1462,11 @@ alias la='ls -a'
 alias lst='ls -tr'
 alias vt='vim -t'
 alias s='ls'
-alias ct='ctags -R'
-alias uc='uml_mconsole'
-alias t='urxvtc &'
 
-alias fs='lock fs finds'
+alias fs='lock -o fs finds'
 alias mplayerb='mplayer -af scaletempo,equalizer=-5:-2:-1:0:-3:-8:-8:-9:-10:-12'
 alias mplayerp='mplayer -af scaletempo,equalizer=-5:-1:-1:0:0:0:-1:-1:-2:-2'
 alias mplayer='mplayer -af scaletempo'
-
-alias ossp='ossplay -c2 -fS16_LE -s44100 -W'
 
 alias gc='git commit -am'
 alias gU='git push'
@@ -1453,15 +1475,14 @@ alias gs='git status'
 alias gd='git diff'
 alias ga='git add'
 alias gL='git log'
-alias glf='git-forest | less -R'
 
 alias em='emacs -nw --no-site-file --no-splash'
 
 alias xl='startx & logout'
 
 alias www='ssh spences7@spencertipping.com'
+alias ast='ssh -p 54106 -L127.0.0.1:3000:127.0.0.1:3000 -L127.0.0.1:4000:127.0.0.1:4000 spencer@remote.exploringamerica.com'
 
-# Useful definitions
 alias b='cd "$OLDPWD"'
 alias u='cd ..'
 alias uu='cd ../..'
@@ -1471,45 +1492,27 @@ alias u4='cd ../../../..'
 alias u5='cd ../../../../..'
 alias u6='cd ../../../../../..'
 
-ddg() {
-  google-chrome "http://duckduckgo.com?q=${*/ /+}"
-}
-
 wk() {
-  elinks http://en.wikipedia.org/wiki/$(echo $* | tr ' ' '_')
+  elinks "http://en.wikipedia.org/wiki/$(echo $* | tr ' ' '_')"
 }
 
-goog() {
-  elinks "http://google.com/search?q=$(echo $* | tr ' ' '+')"
+ddg() {
+  elinks "http://duckduckgo.com/?q=$(echo $* | tr ' ' '+')"
 }
 
 md() {
   mkdir -p "$1" && cd "$1"
 }
 
-vf() {
-  vim $(find . -wholename *${*}* | head -n1)
-}
-
-cf() {
-  cd $(find . -wholename *${*}* -type d | head -n1)
-}
-
-ev() {
-  if [[ $# -gt 0 ]]; then
-    echo "$(date +%Y)$@" >> ~/.pal/events.pal
-  fi
-  pal -r 7
+ii() {
+  less -r -p^$(echo $1 | tr '[a-z]' '[A-Z]') ~/library/programming/intel-instructions.txt
 }
 
 # Environment variables
 export VISUAL="/usr/bin/vim"
 export EDITOR=$VISUAL
 export PS1='\[\033[1;32m\]\h\[\033[1;30m\]\W\[\033[0;0m\] '
-export JAVA_HOME="/usr/lib/jvm/java-6-openjdk"
-
-export HAXE_LIBRARY_PATH=/opt/haxe/std:.
-export HAXE_HOME=/opt/haxe
+export JAVA_HOME="/usr/lib/jvm/java-7-openjdk"
 
 if [[ $TERM == 'xterm' ]]; then
   export TERM='xterm-color'
@@ -1583,7 +1586,7 @@ meta::setting('.config/cairo-compmgr/ccm-screen-0.conf', <<'__');
 backend=xrender
 native_pixmap_bind=true
 use_buffered_pixmap=true
-plugins=
+plugins=mosaic
 refresh_rate=60
 indirect=true
 use_root_background=true
@@ -1594,7 +1597,7 @@ background_y=0
 
 [mosaic]
 spacing=20
-shortcut=<Super>Tab
+shortcut=<Super>A
 duration=0.10000000149011612
 left=Left
 right=Right
@@ -1637,16 +1640,18 @@ sigma=7.5
 color=#303030
 alpha=0.47058823704719543
 border=8
+
 __
 meta::setting('.config/openbox/autostart.sh', <<'__');
 # Openbox autostart
 # Based heavily on the one that ships with CrunchBang linux
 
-~/bin/setup-background                  # A wrapper for nitrogen
-obsetlayout 0 8 8 0                     # Set up virtual desktops
+~/bin/mdb                               # A wrapper for nitrogen
+obsetlayout 0 10 10 0                   # Set up virtual desktops
 
+udev-notify &
 synergys -c ~/.synergy.conf
-scim -d &
+# scim -d &
 xmodmap -e 'keycode 87 = Multi_key'
 
 lxsession &
@@ -1729,7 +1734,7 @@ meta::setting('.config/openbox/rc.xml', <<'__');
   </theme>
 
   <desktops>
-    <number>64</number>
+    <number>100</number>
     <firstdesk>1</firstdesk>
     <names>
     </names>
@@ -1801,6 +1806,18 @@ meta::setting('.config/openbox/rc.xml', <<'__');
       </action>
     </keybind>
 
+    <keybind key='W-Left'>
+      <action name='Execute'>
+        <command>vol-absolute 0</command>
+      </action>
+    </keybind>
+
+    <keybind key='W-Right'>
+      <action name='Execute'>
+        <command>vol-absolute 8000</command>
+      </action>
+    </keybind>
+
     <keybind key='W-S-Down'>
       <action name='Execute'>
         <!-- <command>ossmix vmix0-outvol +1</command> -->
@@ -1823,6 +1840,30 @@ meta::setting('.config/openbox/rc.xml', <<'__');
       </action>
     </keybind>
 
+    <keybind key="W-A-t">
+      <action name="Execute">
+        <command>rxvt-custom translucent</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-C-t">
+      <action name="Execute">
+        <command>rxvt-custom dark-translucent</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-A-C-t">
+      <action name="Execute">
+        <command>rxvt-custom clear</command>
+      </action>
+    </keybind>
+
+    <keybind key='W-S-t'>
+      <action name='Execute'>
+        <command>urxvt -geometry 108x24</command>
+      </action>
+    </keybind>
+
     <keybind key='W-i'>
       <action name='Execute'>
         <command>/home/spencertipping/bin/rmip</command>
@@ -1834,21 +1875,6 @@ meta::setting('.config/openbox/rc.xml', <<'__');
         <command>/home/spencertipping/bin/rb</command>
       </action>
     </keybind>
-
-    <keybind key="W-S-t">
-      <action name="Execute">
-        <command>/home/spencertipping/bin/rxvt-large</command>
-      </action>
-    </keybind>
-
-
-    <!--
-    <keybind key="W-c">
-      <action name="Execute">
-        <command>/home/spencertipping/bin/rxvt-chinese</command>
-      </action>
-    </keybind>
-    -->
 
     <keybind key="W-m">
       <action name="Execute">
@@ -1986,11 +2012,7 @@ meta::setting('.config/openbox/rc.xml', <<'__');
 
     <keybind key="W-w">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Web Browser</name>
-        </startupnotify>
-        <command>google-chrome</command>
+        <command>google-chrome --incognito --app=file:///home/spencertipping/conjectures/homepage/index.html</command>
       </action>
     </keybind>
 
@@ -2425,6 +2447,8 @@ battery = 0
 
 __
 meta::setting('.conkyrc', <<'__');
+# vim: set tw=0 :
+
 # Use Xft?
 use_xft yes
 xftalpha 0.8
@@ -2449,7 +2473,7 @@ total_run_times 0
 double_buffer yes
 
 # Minimum size of text area
-minimum_size 100 200
+minimum_size 100 580
 
 # Draw shades?
 draw_shades no
@@ -2501,26 +2525,57 @@ override_utf8_locale yes
 use_spacer none
 
 TEXT
-${font Candara:size=5}${color 403020}${cpubar cpu1 4,100}   ${cpubar cpu2 4,100}   ${alignr}${membar 4,100}   ${swapbar 4,100}
-${diskiograph_read sda 10,100}   ${diskiograph_write sda 10,100}   ${if_up wlan0}${alignr}${upspeedgraph wlan0 10,100}   ${downspeedgraph wlan0 10,100}
-                                                                          ${else}${alignr}${upspeedgraph eth0  10,100}   ${downspeedgraph eth0  10,100}${endif}
+${font Candara:size=5}${color 403020}${cpubar cpu1 4,150}   ${cpubar cpu2 4,150}   ${alignr}${membar 4,150}   ${swapbar 4,150}
+${diskiograph_read sda 10,150 -l}   ${diskiograph_write sda 10,150 -l}   ${if_up wlan0}${alignr}${upspeedgraph wlan0 10,150 -l}   ${downspeedgraph wlan0 10,150 -l}
+                                                                         ${else}       ${alignr}${upspeedgraph eth0  10,150 -l}   ${downspeedgraph eth0  10,150 -l}
+                                                                         ${endif}
 ${color ffffff}${voffset 10}${font Candara:size=14}${time %Y %m%d %H%M}${font Candara:size=8}${alignr}${voffset -10}${time %a} ${freq cpu1}MHz ${exec amixer get Master | grep 'Left.*on\W' | cut -d ' ' -f 6} :: ${exec sed 's/000$//' /sys/class/power_supply/BAT1/charge_now}+${exec sed 's/000$//' /sys/class/power_supply/BAT1/current_now}mA
 ${if_up wlan0}${alignr}${wireless_link_qual wlan0} :: ${upspeed wlan0}/${downspeed wlan0} :: ${addr wlan0} :: ${nameserver 0} :: ${gw_ip wlan0}
-       ${else}${alignr}                               ${upspeed  eth0}/${downspeed  eth0} :: ${addr  eth0} :: ${nameserver 0} :: ${gw_ip  eth0}${endif}
+${else}       ${alignr}                               ${upspeed  eth0}/${downspeed  eth0} :: ${addr  eth0} :: ${nameserver 0} :: ${gw_ip  eth0}
+${endif}
 
 ${alignr}${tcp_portmon 22 22 count} :: ${tcp_portmon 22 22 rip 0}
-${alignr}                           :: ${tcp_portmon 22 22 rip 1}
-${alignr}                           :: ${tcp_portmon 22 22 rip 2}
-${alignr}                           :: ${tcp_portmon 22 22 rip 3}
+${alignr}                              ${tcp_portmon 22 22 rip 1}
+${alignr}                              ${tcp_portmon 22 22 rip 2}
+${alignr}                              ${tcp_portmon 22 22 rip 3}
 
-${alignr}${tcp_portmon 1 65535 count} :: ${tcp_portmon 1 65535 rip 0}:${tcp_portmon 1 65535 lport 0}:${tcp_portmon 1 65535 rport 0}
-${alignr}                             :: ${tcp_portmon 1 65535 rip 1}:${tcp_portmon 1 65535 lport 1}:${tcp_portmon 1 65535 rport 1}
-${alignr}                             :: ${tcp_portmon 1 65535 rip 2}:${tcp_portmon 1 65535 lport 2}:${tcp_portmon 1 65535 rport 2}
-${alignr}                             :: ${tcp_portmon 1 65535 rip 3}:${tcp_portmon 1 65535 lport 3}:${tcp_portmon 1 65535 rport 3}
-${alignr}                             :: ${tcp_portmon 1 65535 rip 4}:${tcp_portmon 1 65535 lport 4}:${tcp_portmon 1 65535 rport 4}
-${alignr}                             :: ${tcp_portmon 1 65535 rip 5}:${tcp_portmon 1 65535 lport 5}:${tcp_portmon 1 65535 rport 5}
-${alignr}                             :: ${tcp_portmon 1 65535 rip 6}:${tcp_portmon 1 65535 lport 6}:${tcp_portmon 1 65535 rport 6}
-${alignr}                             :: ${tcp_portmon 1 65535 rip 7}:${tcp_portmon 1 65535 lport 7}:${tcp_portmon 1 65535 rport 7}
+${alignr}${tcp_portmon 80 80 count} :: ${tcp_portmon 80 80 rip 0}
+${alignr}                              ${tcp_portmon 80 80 rip 1}
+${alignr}                              ${tcp_portmon 80 80 rip 2}
+${alignr}                              ${tcp_portmon 80 80 rip 3}
+
+${alignr}${tcp_portmon 1 65535 count} :: ${tcp_portmon 1 65535 rip 0} ${tcp_portmon 1 65535 lport 0} ${tcp_portmon 1 65535 rport 0}
+${alignr}                                ${tcp_portmon 1 65535 rip 1} ${tcp_portmon 1 65535 lport 1} ${tcp_portmon 1 65535 rport 1}
+${alignr}                                ${tcp_portmon 1 65535 rip 2} ${tcp_portmon 1 65535 lport 2} ${tcp_portmon 1 65535 rport 2}
+${alignr}                                ${tcp_portmon 1 65535 rip 3} ${tcp_portmon 1 65535 lport 3} ${tcp_portmon 1 65535 rport 3}
+${alignr}                                ${tcp_portmon 1 65535 rip 4} ${tcp_portmon 1 65535 lport 4} ${tcp_portmon 1 65535 rport 4}
+${alignr}                                ${tcp_portmon 1 65535 rip 5} ${tcp_portmon 1 65535 lport 5} ${tcp_portmon 1 65535 rport 5}
+${alignr}                                ${tcp_portmon 1 65535 rip 6} ${tcp_portmon 1 65535 lport 6} ${tcp_portmon 1 65535 rport 6}
+${alignr}                                ${tcp_portmon 1 65535 rip 7} ${tcp_portmon 1 65535 lport 7} ${tcp_portmon 1 65535 rport 7}
+${alignr}                                ${tcp_portmon 1 65535 rip 8} ${tcp_portmon 1 65535 lport 8} ${tcp_portmon 1 65535 rport 8}
+${alignr}                                ${tcp_portmon 1 65535 rip 9} ${tcp_portmon 1 65535 lport 9} ${tcp_portmon 1 65535 rport 9}
+${alignr}                                ${tcp_portmon 1 65535 rip 10} ${tcp_portmon 1 65535 lport 10} ${tcp_portmon 1 65535 rport 10}
+${alignr}                                ${tcp_portmon 1 65535 rip 11} ${tcp_portmon 1 65535 lport 11} ${tcp_portmon 1 65535 rport 11}
+${alignr}                                ${tcp_portmon 1 65535 rip 12} ${tcp_portmon 1 65535 lport 12} ${tcp_portmon 1 65535 rport 12}
+${alignr}                                ${tcp_portmon 1 65535 rip 13} ${tcp_portmon 1 65535 lport 13} ${tcp_portmon 1 65535 rport 13}
+${alignr}                                ${tcp_portmon 1 65535 rip 14} ${tcp_portmon 1 65535 lport 14} ${tcp_portmon 1 65535 rport 14}
+${alignr}                                ${tcp_portmon 1 65535 rip 15} ${tcp_portmon 1 65535 lport 15} ${tcp_portmon 1 65535 rport 15}
+${alignr}                                ${tcp_portmon 1 65535 rip 16} ${tcp_portmon 1 65535 lport 16} ${tcp_portmon 1 65535 rport 16}
+${alignr}                                ${tcp_portmon 1 65535 rip 17} ${tcp_portmon 1 65535 lport 17} ${tcp_portmon 1 65535 rport 17}
+${alignr}                                ${tcp_portmon 1 65535 rip 18} ${tcp_portmon 1 65535 lport 18} ${tcp_portmon 1 65535 rport 18}
+${alignr}                                ${tcp_portmon 1 65535 rip 19} ${tcp_portmon 1 65535 lport 19} ${tcp_portmon 1 65535 rport 19}
+${alignr}                                ${tcp_portmon 1 65535 rip 20} ${tcp_portmon 1 65535 lport 20} ${tcp_portmon 1 65535 rport 20}
+${alignr}                                ${tcp_portmon 1 65535 rip 21} ${tcp_portmon 1 65535 lport 21} ${tcp_portmon 1 65535 rport 21}
+${alignr}                                ${tcp_portmon 1 65535 rip 22} ${tcp_portmon 1 65535 lport 22} ${tcp_portmon 1 65535 rport 22}
+${alignr}                                ${tcp_portmon 1 65535 rip 23} ${tcp_portmon 1 65535 lport 23} ${tcp_portmon 1 65535 rport 23}
+${alignr}                                ${tcp_portmon 1 65535 rip 24} ${tcp_portmon 1 65535 lport 24} ${tcp_portmon 1 65535 rport 24}
+${alignr}                                ${tcp_portmon 1 65535 rip 25} ${tcp_portmon 1 65535 lport 25} ${tcp_portmon 1 65535 rport 25}
+${alignr}                                ${tcp_portmon 1 65535 rip 26} ${tcp_portmon 1 65535 lport 26} ${tcp_portmon 1 65535 rport 26}
+${alignr}                                ${tcp_portmon 1 65535 rip 27} ${tcp_portmon 1 65535 lport 27} ${tcp_portmon 1 65535 rport 27}
+${alignr}                                ${tcp_portmon 1 65535 rip 28} ${tcp_portmon 1 65535 lport 28} ${tcp_portmon 1 65535 rport 28}
+${alignr}                                ${tcp_portmon 1 65535 rip 29} ${tcp_portmon 1 65535 lport 29} ${tcp_portmon 1 65535 rport 29}
+${alignr}                                ${tcp_portmon 1 65535 rip 30} ${tcp_portmon 1 65535 lport 30} ${tcp_portmon 1 65535 rport 30}
+${alignr}                                ${tcp_portmon 1 65535 rip 31} ${tcp_portmon 1 65535 lport 31} ${tcp_portmon 1 65535 rport 31}
 
 __
 meta::setting('.dir_colors', <<'__');
@@ -2561,6 +2616,39 @@ meta::setting('.mplayer/config', <<'__');
 #cache-min = 0.01
 
 __
+meta::setting('.muttrc', <<'__');
+color index default default .*
+color indicator green default
+color status blue default
+
+color index yellow default "~f joyce"
+
+set folder = ~/library/mail
+set help = no
+
+set record = ~/library/mail/sent
+set from   = spencer@spencertipping.com
+set mbox   = ~/library/mail/archive
+set move   = yes
+
+set pop_delete = yes
+
+folder-hook gmail|archive  "set smtp_url = smtps://spencertipping@gmail.com@smtp.gmail.com:465"
+folder-hook !gmail|archive "unset smtp_url"
+
+set index_format = "%Z %[%Y.%m%d.%H%M] %-20.20a %s"
+set status_format = "%f :: %V (%r) %n/%m"
+set tilde = yes
+
+macro index ig "cimaps://spencertipping@gmail.com@imap.gmail.com:993\n"
+macro index il "c/var/spool/mail/spencertipping\n"
+macro index ia "c/home/spencertipping/library/mail/archive\n"
+
+macro index iz "l~s zero\n"
+
+macro index ids "D~f spencer@spencertipping.com ~t spencer@spencertipping.com"
+
+__
 meta::setting('.notify-osd', <<'__');
 slot-allocation = fixed
 bubble-width = 160px
@@ -2585,12 +2673,15 @@ meta::setting('.vimrc', <<'__');
 " Custom VIMRC file by Spencer Tipping
 " Do whatever the heck you want to with it
 
-set nu sta et sc fdc=2 sw=2 tw=192 ai mouse=a nowrap nojs hls is foldlevel=10 enc=utf8 tenc=utf8 title visualbell noerrorbells hidden pastetoggle=<F2> foldenable tags=tags;/
-set wildmenu wildmode=list:longest scrolloff=3 shortmess=atI incsearch hlsearch hidden history=1000 ignorecase smartcase list listchars=tab:>-,trail:. wm=1
+set nonu sta et sc fdc=0 sw=2 tw=80 ai mouse=a nowrap nojs hls is foldlevel=10 enc=utf8 tenc=utf8 title visualbell noerrorbells hidden pastetoggle=<F2> foldenable tags=tags;/
+set wildmenu wildmode=list:longest scrolloff=3 shortmess=atI incsearch hlsearch hidden history=1000 list listchars=tab:>-,trail:. wm=1
 
 nnoremap ' `
 nnoremap ` '
 
+map <F3> :if &tw == 192 \| set tw=80 \| echo "tw is 80" \| else \| set tw=192 \| echo "tw is 192" \| endif<CR>
+map <F4> :if &nu == 1 \| set nonu \| else \| set nu \| endif<CR>
+map <F5> :if &spell == 1 \| set nospell \| else \| set spell \| endif<CR>
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 filetype plugin on
@@ -2615,8 +2706,8 @@ hi Exception   ctermfg=3 cterm=bold
 hi Repeat      ctermfg=3 cterm=bold
 hi Statement   ctermfg=3 cterm=bold
 
-hi NonText     ctermfg=0 cterm=bold
-hi SpecialKey  ctermfg=0 cterm=bold
+hi NonText     ctermfg=16 cterm=bold
+hi SpecialKey  ctermfg=0  cterm=bold
 
 " Custom syntax stuff
 au BufRead,BufReadPost,BufNewFile *.js        set syntax=caterwaul
@@ -2631,6 +2722,11 @@ au BufRead,BufReadPost,BufNewFile *.pickle    set syntax=pickle
 au BufRead,BufReadPost,BufNewFile *.havoc     set syntax=havoc
 au BufRead,BufReadPost,BufNewFile *.mh        set syntax=mh
 au BufRead,BufReadPost,BufNewFile *.binary    set syntax=binary
+au BufRead,BufReadPost,BufNewFile *.fth       set syntax=forth
+au BufRead,BufReadPost,BufNewFile *.canard    set syntax=canard
+
+au BufRead,BufReadPost,BufNewFile *.S         set syntax=gas
+au BufRead,BufReadPost,BufNewFile *.s         set syntax=gas
 
 __
 meta::setting('.xinitrc', <<'__');
@@ -2638,8 +2734,22 @@ meta::setting('.xinitrc', <<'__');
 xrdb ~/.Xresources &
 exec openbox-session
 __
+meta::setting('.xresources/rxvt-clear', <<'__');
+URxvt.background: rgba:0000/0000/0000/0800
+URxvt.borderColor: rgba:0000/0000/0000/2000
+URxvt.externalBorder: 1
+
+__
+meta::setting('.xresources/rxvt-dark-translucent', <<'__');
+URxvt.background: rgba:0000/0000/0000/8000
+
+__
 meta::setting('.xresources/rxvt-large', <<'__');
 URxvt.font: xft:Monospace:bold:size=10:hinting=none,xft:FreeMono:bold:size=10:hinting=none
+
+__
+meta::setting('.xresources/rxvt-translucent', <<'__');
+URxvt.background: rgba:0000/0000/0000/4000
 
 __
 meta::template('comment', '\'\';     # A mechanism for line or block comments.');
