@@ -8,6 +8,10 @@
 BASHRC_PREFIX=$HOME/r/initiative
 we_have() { [[ -d $BASHRC_PREFIX/$1 ]]; }
 
+if we_have bash-hats; then
+  . $BASHRC_PREFIX/bash-hats/bash-hats
+fi
+
 if we_have bashrc-tmux; then
   . $BASHRC_PREFIX/bashrc-tmux/bashrc-tmux
   . $BASHRC_PREFIX/bashrc-tmux/bashrc-xpra
