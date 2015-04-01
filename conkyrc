@@ -1,0 +1,134 @@
+# vim: set tw=1000 :
+
+use_xft yes
+xftalpha 0.8
+text_buffer_size 2048
+
+temperature_unit fahrenheit
+update_interval 1
+update_interval_on_battery 4
+total_run_times 0
+
+own_window yes
+own_window_argb_visual yes
+own_window_argb_value 0
+own_window_transparent no
+own_window_type override
+own_window_hints below,sticky,skip_taskbar,skip_pager
+own_window_colour 000000
+double_buffer yes
+
+if_up_strictness link
+
+minimum_size 280 50
+maximum_width 1104
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 0
+border_width 1
+
+default_graph_size 290 8
+
+draw_graph_borders no
+short_units yes
+
+alignment bottom_right
+
+gap_x 0
+gap_y -144
+
+no_buffers yes
+
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+use_spacer none
+
+TEXT
+${font Ubuntu:size=12}${color 303030}
+${voffset -19}${voffset 100}${goto 0}${offset 263}${cpubar cpu1 4,122}  ${goto 0}${offset 389}${cpubar cpu2 4,122}  ${voffset 7}${goto 0}${offset 515}${swapbar 4,80} ${voffset 7}${goto 0}${offset 452}${color 303030}${membar 4,395}${color 303030}
+${voffset -19}${voffset -7}${goto 0}${offset 263}${cpubar cpu3 4,122}  ${goto 0}${offset 389}${cpubar cpu4 4,122}  ${goto 0}${offset 515}${goto 0}${offset 599}${wireless_link_bar 4,80 wlan0}
+${voffset -19}
+${voffset -19}${font Ubuntu:size=14}${color 606060}
+${voffset -22}${voffset -7}${goto 0}${offset 348}${voffset -54}${goto 0}${offset 516}${goto 0}${offset 684}${goto 0}${offset 852}${goto 0}${offset 894}${color 303030}  // ${color c0c0c0} ${time %H%M}
+${voffset -22}
+${voffset -22}${font Ubuntu:size=7}
+${voffset -11}${voffset 35}${goto 0}${offset 0}${voffset -36}${goto 0}${offset 0}${color 303030}${loadgraph 8,386}
+${voffset -11}${voffset 8}${goto 0}${offset 1}${battery_bar 4,384}
+${voffset -11}${voffset 10}${goto 0}${offset 0}${time %Y} ${color 303030} // ${color 606060} ${time %m%d}
+${voffset -11}${goto 0}${offset 263}${freq cpu1} ${color 303030} // ${color 606060} ${desktop}
+${voffset -11}
+${voffset -11}${voffset 37}${goto 0}${offset 348}${voffset -54}${goto 0}${offset 516}${goto 0}${offset 684}${color 606060}${uptime_short}${color 606060}
+${voffset -11}         ${voffset 9}${goto 0}${offset 684}${fs_free /}
+${voffset -11}         ${voffset 9}${goto 0}${offset 684}${color 303030}${loadavg 1}
+${voffset -11}         ${voffset 9}${goto 0}${offset 684}${loadavg 2}
+${voffset -11}         ${voffset 9}${goto 0}${offset 684}${loadavg 3}
+${voffset -11}         ${voffset -18}${goto 0}${offset 792}${top name 1}
+${voffset -11}         ${voffset 9}${goto 0}${offset 792}${top name 2}
+${voffset -11}         ${voffset 9}${goto 0}${offset 792}${top name 3}
+${voffset -11}         ${voffset 9}${goto 0}${offset 792}${top name 4}
+${voffset -11}         ${voffset -27}${goto 0}${offset 763}${top cpu 1}
+${voffset -11}         ${voffset 9}${goto 0}${offset 763}${top cpu 2}
+${voffset -11}         ${voffset 9}${goto 0}${offset 763}${top cpu 3}
+${voffset -11}         ${voffset 9}${goto 0}${offset 763}${top cpu 4}
+${voffset -11}         ${voffset -27}${goto 0}${offset 723}${top mem 1}
+${voffset -11}         ${voffset 9}${goto 0}${offset 723}${top mem 2}
+${voffset -11}         ${voffset 9}${goto 0}${offset 723}${top mem 3}
+${voffset -11}         ${voffset 9}${goto 0}${offset 723}${top mem 4}
+${voffset -11}
+${voffset -11}${voffset 9}${goto 0}${offset 263}
+${voffset -11}${voffset -9}${goto 0}${offset 263}
+${voffset -11}${voffset -9}${goto 0}${offset 263}${color c0c0c0}${exec cat /sys/class/backlight/intel*/brightness}${color 606060}
+${voffset -11}
+${voffset -11}${color c0c0c0}
+${voffset -11}${voffset -36}${goto 0}${offset 263}
+${voffset -11}${voffset -9}${goto 0}${offset 263}${tcp_portmon 22 22 rip 0}
+${voffset -11}${voffset -9}${goto 0}${offset 263}${tcp_portmon 22 22 rip 1}
+${voffset -11}${voffset -9}${goto 0}${offset 263}${tcp_portmon 22 22 rip 2}
+${voffset -11}${voffset -9}${goto 0}${offset 263}${tcp_portmon 22 22 rip 3}
+${voffset -11}${color 303030}
+${voffset -11}
+${voffset -11}${voffset 90}${goto 0}${offset 263}
+${voffset -11}${voffset -9}${goto 0}${offset 389}
+${voffset -11}${voffset -9}${goto 0}${offset 389}${color c0c0c0}${exec sed 's/000$//' /sys/class/power_supply/[Bb]*/power_now} mW ${color 606060}
+${voffset -11}${voffset -9}${goto 0}${offset 389}${color c0c0c0}${exec sed 's/000$//' /sys/class/power_supply/[Bb]*/energy_now}${color 303030} / ${color 606060}${exec sed 's/000$//' /sys/class/power_supply/[Bb]*/energy_full} mWh
+${voffset -11}
+${voffset -11}${voffset 27}${goto 0}${offset 515}
+${voffset -11}${voffset -9}${goto 0}${offset 515}${color c0c0c0}${wireless_essid wlan0}${color 606060} ${wireless_bitrate wlan0}
+${voffset -11}${voffset -9}${goto 0}${offset 515}${color c0c0c0}${addr wlan0}${color 606060}
+${voffset -11}${voffset -9}${goto 0}${offset 515}${nameserver 0}
+${voffset -11}${voffset -9}${goto 0}${offset 515}${gw_ip}
+${voffset -11}${voffset -18}${goto 0}${offset 515}${color c0c0c0}${voffset -1}${goto 0}${offset 451}${memgraph 8,228}${voffset 1}${goto 0}${offset 515}${color 606060}
+${voffset -11}
+${voffset -11}${voffset 54}${goto 0}${offset 599}
+${voffset -11}${voffset -9}${goto 0}${offset 599}
+${voffset -11}${voffset -9}${goto 0}${offset 599}${color c0c0c0}${addr eth0}${color 606060}
+${voffset -11}${voffset -9}${goto 0}${offset 599}${nameserver 1}
+${voffset -11}${voffset -9}${goto 0}${offset 599}${nameserver 2}
+${voffset -11}${voffset -30}${goto 0}${offset 599}${color 303030}${execgraph perl -pe '$_ /= 400000' /sys/class/power_supply/BAT0/power_now}
+${voffset -11}
+${voffset -11}${voffset 11}${goto 0}${offset 683}${goto 0}${offset 725}${color c0c0c0}${cpugraph cpu0 8,164} ${goto 0}${offset 599}
+${voffset -11}
+${voffset -11}${voffset 55}${goto 0}${offset 557}${color 303030}
+${voffset -11}${voffset 22}${goto 0}${offset 557}${diskiograph_read  /dev/sda 8,122} ${color 606060} ${goto 0}${offset 683}${diskio_read  /dev/sda} ${goto 0}${offset 557}${color 303030}
+${voffset -11}${voffset 11}${goto 0}${offset 557}${diskiograph_write /dev/sda 8,122} ${color 606060} ${goto 0}${offset 683}${diskio_write /dev/sda} ${goto 0}${offset 557}${color 303030}
+${voffset -11}${voffset 11}${goto 0}${offset 557}${if_existing /dev/sdb}${diskiograph       /dev/sdb 8,122} ${color 404040} ${goto 0}${offset 683}${diskio       /dev/sdb} ${goto 0}${offset 557}${color 303030} ${endif}
+${voffset -11}${voffset 11}${goto 0}${offset 557}${if_existing /dev/sdc}${diskiograph       /dev/sdc 8,122} ${color 404040} ${goto 0}${offset 683}${diskio       /dev/sdc} ${goto 0}${offset 557}${color 303030} ${endif}
+${voffset -11}${voffset 11}${goto 0}${offset 557}${if_existing /dev/sdd}${diskiograph       /dev/sdd 8,122} ${color 404040} ${goto 0}${offset 683}${diskio       /dev/sdd} ${goto 0}${offset 557}${color 303030} ${endif}
+${voffset -11}
+${voffset -11}${voffset -55}${goto 0}${offset 527}
+${voffset -11}${voffset 11}${goto 0}${offset 527}${execi 5 amixer get Master | tail -n1 | sed 's/.*\[\([0-9]\+\)%.*/\1/g'}%
+${voffset -11}${voffset 11}${goto 0}${offset 527}${execi 5 sed 's/000$//' /sys/class/thermal/thermal_zone0/temp}C
+${voffset -11}${goto 0}${offset 557}
+${voffset -11}
+${voffset -11}${voffset -11}${goto 0}${offset 725}${downspeedgraph wlan0 8,123} ${color 606060} ${goto 0}${offset 851}${downspeed wlan0} ${goto 0}${offset 893}${totaldown wlan0} ${goto 0}${offset 725}${color 303030}
+${voffset -11}${voffset 11}${goto 0}${offset 725}${upspeedgraph   wlan0 8,123} ${color 606060} ${goto 0}${offset 851}${upspeed   wlan0} ${goto 0}${offset 893}${totalup   wlan0} ${goto 0}${offset 725}${color 303030}
+${voffset -11}${voffset 11}${goto 0}${offset 767}${color 303030}${audacious_bar 4,80} ${goto 0}${offset 852}${audacious_bitrate}
+${voffset -11}
+${voffset -11}${voffset -33}${goto 0}${offset 263}
+${voffset -11}${goto 0}${offset 389}${font Ubuntu:size=7}${execi 5 wc -l < ~/r/persistent/self/queue}${font Ubuntu:size=14} ${execi 5 ls ~/.cd/mountpoints | wc -l} ${font Ubuntu:size=22}${execi 5 ~/bin/alerts | wc -l}
+${voffset -35}

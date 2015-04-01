@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_config xmlns="http://openbox.org/3.4/rc">
+  <resistance><strength>10</strength>
+              <screen_edge_strength>20</screen_edge_strength></resistance>
+
+  <focus><focusNew>yes</focusNew>
+         <followMouse>yes</followMouse>
+         <focusLast>yes</focusLast>
+         <underMouse>yes</underMouse>
+         <focusDelay>0</focusDelay>
+         <raiseOnFocus>no</raiseOnFocus></focus>
+
+  <placement><policy>Smart</policy></placement>
+
+  <theme><keepBorder>no</keepBorder></theme>
+
+  <desktops><number>100</number>
+            <firstdesk>1</firstdesk>
+            <popupTime>150</popupTime></desktops>
+
+  <resize><drawContents>no</drawContents>
+          <popupShow>Nonpixel</popupShow>
+          <popupPosition>Center</popupPosition></resize>
+
+  <margins><top>0</top>
+           <bottom>0</bottom>
+           <left>0</left>
+           <right>0</right></margins>
+
+  <keyboard>
+    <chainQuitKey>C-g</chainQuitKey>
+
+    <keybind key='W-v'><action name='ToggleMaximizeVert'></action></keybind>
+    <keybind key='W-g'><action name='ToggleMaximizeHorz'></action></keybind>
+    <keybind key='W-s'><action name='ToggleOmnipresent'></action></keybind>
+    <keybind key="W-d"><action name="ToggleShowDesktop"/></keybind>
+
+    <keybind key='W-8'><action name='MoveResizeTo'>
+      <x>48</x><y>12</y><height>590</height></action></keybind>
+    <keybind key='W-9'><action name='MoveResizeTo'>
+      <x>462</x><y>12</y><height>482</height></action></keybind>
+    <keybind key='W-0'><action name='MoveResizeTo'>
+      <x>876</x><y>12</y><height>566</height></action></keybind>
+
+    <keybind key='W-bracketright'><action name='MoveResizeTo'>
+      <x>920</x><y>36</y><height>242</height></action></keybind>
+    <keybind key='W-apostrophe'><action name='MoveResizeTo'>
+      <x>920</x><y>280</y></action></keybind>
+    <keybind key='W-slash'><action name='MoveResizeTo'>
+      <x>920</x><y>524</y></action></keybind>
+
+    <keybind key='W-e'><action name='MoveResizeTo'>
+      <!-- 80 columns -->
+      <width client='yes'>402</width></action></keybind>
+
+    <keybind key='W-S-e'><action name='MoveResizeTo'>
+      <!-- 242 columns -->
+      <width client='yes'>1212</width></action></keybind>
+
+    <keybind key='W-S-d'><action name='Execute'>
+      <command>toggle-conky</command></action></keybind>
+
+    <keybind key='W-n'><action name='Execute'>
+      <command>synclient TouchpadOff=1</command></action></keybind>
+    <keybind key='W-S-n'><action name='Execute'>
+      <command>synclient TouchpadOff=0</command></action></keybind>
+
+    <keybind key='C-W-Up'><action name='Execute'>
+      <command>backlight +100</command></action></keybind>
+    <keybind key='C-W-Down'><action name='Execute'>
+      <command>backlight -100</command></action></keybind>
+    <keybind key='S-C-W-Up'><action name='Execute'>
+      <command>backlight +5</command></action></keybind>
+    <keybind key='S-C-W-Down'><action name='Execute'>
+      <command>backlight -5</command></action></keybind>
+
+    <keybind key='W-Down'>
+      <action name='Execute'><command>vol-delta -5</command></action></keybind>
+    <keybind key='W-Up'>
+      <action name='Execute'><command>vol-delta 5</command></action></keybind>
+
+    <keybind key='W-S-Left'><action name='Execute'>
+      <command>vol-absolute 0</command></action></keybind>
+    <keybind key='W-S-Right'><action name='Execute'>
+      <command>vol-absolute 47</command></action></keybind>
+    <keybind key='W-Left'><action name='Execute'>
+      <command>vol-absolute 24</command></action></keybind>
+    <keybind key='W-Right'><action name='Execute'>
+      <command>vol-absolute 41</command></action></keybind>
+
+    <keybind key="W-t"><action name="Execute">
+      <command>gnome-terminal --window-with-profile=dark
+      </command></action></keybind>
+    <keybind key="W-S-t"><action name="Execute">
+      <command>gnome-terminal --window-with-profile=translucent
+      </command></action></keybind>
+
+    <keybind key="W-S-w"><action name="Execute">
+      <command>google-chrome</command></action></keybind>
+    <keybind key="W-w"><action name="Execute">
+      <command>firefox</command></action></keybind>
+    <keybind key="A-F2"><action name="Execute">
+      <command>gmrun</command></action></keybind>
+    <keybind key='W-a'><action name='Execute'>
+      <command>audacious</command></action></keybind>
+    <keybind key='W-b'><action name='Execute'>
+      <command>/home/spencertipping/bin/mdb random</command></action></keybind>
+
+    <keybind key="W-q"><action name="Execute">
+      <command>xtrlock</command></action></keybind>
+    <keybind key='W-S-q'><action name='Execute'>
+      <command>/home/spencertipping/bin/locksleep</command></action></keybind>
+    <keybind key='W-S-o'><action name='Execute'>
+      <command>in 1 xset dpms force off</command></action></keybind>
+    <keybind key='W-S-p'><action name='Execute'>
+      <command>toggle alert-stay-on</command></action></keybind>
+
+    <keybind key='W-r'><action name='Execute'>
+      <command>/home/spencertipping/bin/rb</command></action></keybind>
+
+    <keybind key='W-A-r'><action name='Execute'>
+      <command>xset r off</command></action></keybind>
+    <keybind key='W-A-S-r'><action name='Execute'>
+      <command>xset r rate 150 30</command></action></keybind>
+
+    <!-- Keybindings for desktop switching -->
+    <keybind key='W-i'><action name='GoToDesktop'><to>24</to></action></keybind>
+    <keybind key='W-o'><action name='GoToDesktop'><to>37</to></action></keybind>
+    <keybind key='W-m'><action name='GoToDesktop'><to>54</to></action></keybind>
+    <keybind key='W-comma'><action name='GoToDesktop'><to>67</to></action></keybind>
+
+    <keybind key="W-h"><action name="DesktopLeft"/></keybind>
+    <keybind key="W-l"><action name="DesktopRight"/></keybind>
+    <keybind key="W-k"><action name="DesktopUp"/></keybind>
+    <keybind key="W-j"><action name="DesktopDown"/></keybind>
+
+    <keybind key="S-W-h"><action name="SendToDesktopLeft"/></keybind>
+    <keybind key="S-W-l"><action name="SendToDesktopRight"/></keybind>
+    <keybind key="S-W-k"><action name="SendToDesktopUp"/></keybind>
+    <keybind key="S-W-j"><action name="SendToDesktopDown"/></keybind>
+
+    <!-- Keybindings for windows -->
+    <keybind key="A-F4"><action name="Close"/></keybind>
+    <keybind key="A-space"><action name="ShowMenu">
+      <menu>client-menu</menu></action></keybind>
+
+    <!-- Keybindings for window switching -->
+    <keybind key="A-Tab"><action name="NextWindow"/></keybind>
+    <keybind key="A-S-Tab"><action name="NextWindow">
+      <allDesktops>yes</allDesktops></action></keybind>
+
+    <keybind key="W-space">
+      <action name="ShowMenu"><menu>root-menu</menu></action></keybind>
+  </keyboard>
+
+  <mouse>
+    <dragThreshold>2</dragThreshold>
+    <doubleClickTime>200</doubleClickTime>
+    <screenEdgeWarpTime>150</screenEdgeWarpTime>
+
+    <context name="Frame">
+      <mousebind button="A-Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/></mousebind>
+
+      <mousebind button="A-Left" action="Drag">
+        <action name="Move"/></mousebind>
+
+      <mousebind button="A-S-Left" action="Drag">
+        <action name="Resize"/></mousebind>
+    </context>
+  </mouse>
+
+  <menu><file>menu.xml</file>
+        <hideDelay>200</hideDelay>
+        <middle>no</middle>
+        <submenuShowDelay>100</submenuShowDelay>
+        <applicationIcons>no</applicationIcons></menu>
+
+  <applications>
+    <application name='*'><decor>no</decor>
+                          <shade>no</shade></application>
+
+    <application name='audacious'><desktop>all</desktop>
+                                  <layer>normal</layer></application>
+    <application name='Conky'><layer>below</layer></application>
+  </applications>
+</openbox_config>
