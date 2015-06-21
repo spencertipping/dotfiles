@@ -37,17 +37,32 @@
 
     <keybind key='W-8'><action name='MoveResizeTo'>
       <x>48</x><y>12</y><height>590</height></action></keybind>
+    <keybind key='W-S-8'><action name='MoveResizeTo'>
+      <x>137</x><y>12</y><height>590</height></action></keybind>
     <keybind key='W-9'><action name='MoveResizeTo'>
-      <x>462</x><y>12</y><height>482</height></action></keybind>
+      <x>462</x><y>12</y><height>566</height></action></keybind>
+    <keybind key='W-S-9'><action name='MoveResizeTo'>
+      <x>552</x><y>12</y><height>566</height></action></keybind>
     <keybind key='W-0'><action name='MoveResizeTo'>
       <x>876</x><y>12</y><height>566</height></action></keybind>
 
     <keybind key='W-bracketright'><action name='MoveResizeTo'>
       <x>920</x><y>36</y><height>242</height></action></keybind>
+    <keybind key='W-S-bracketright'><action name='MoveResizeTo'>
+      <x>964</x><y>36</y><height>242</height></action></keybind>
     <keybind key='W-apostrophe'><action name='MoveResizeTo'>
       <x>920</x><y>280</y></action></keybind>
+    <keybind key='W-S-apostrophe'><action name='MoveResizeTo'>
+      <x>964</x><y>280</y></action></keybind>
     <keybind key='W-slash'><action name='MoveResizeTo'>
       <x>920</x><y>524</y></action></keybind>
+    <keybind key='W-S-slash'><action name='MoveResizeTo'>
+      <x>964</x><y>524</y></action></keybind>
+
+    <keybind key='C-W-h'><action name='MoveRelative'><x>-404</x></action></keybind>
+    <keybind key='C-W-j'><action name='MoveRelative'><y>244</y></action></keybind>
+    <keybind key='C-W-k'><action name='MoveRelative'><y>-244</y></action></keybind>
+    <keybind key='C-W-l'><action name='MoveRelative'><x>404</x></action></keybind>
 
     <keybind key='W-e'><action name='MoveResizeTo'>
       <!-- 80 columns -->
@@ -57,8 +72,10 @@
       <!-- 242 columns -->
       <width client='yes'>1212</width></action></keybind>
 
+    <keybind key='W-S-s'><action name='Execute'>
+      <command>toggle-process synergys</command></action></keybind>
     <keybind key='W-S-d'><action name='Execute'>
-      <command>toggle-conky</command></action></keybind>
+      <command>toggle-process conky</command></action></keybind>
 
     <keybind key='W-n'><action name='Execute'>
       <command>synclient TouchpadOff=1</command></action></keybind>
@@ -108,8 +125,6 @@
 
     <keybind key="W-q"><action name="Execute">
       <command>xtrlock</command></action></keybind>
-    <keybind key='W-S-q'><action name='Execute'>
-      <command>/home/spencertipping/bin/locksleep</command></action></keybind>
     <keybind key='W-S-o'><action name='Execute'>
       <command>in 1 xset dpms force off</command></action></keybind>
     <keybind key='W-S-p'><action name='Execute'>
