@@ -142,7 +142,16 @@
     <keybind key='W-S-b'><action name='Execute'>
       <command>/home/spencertipping/bin/mdb random</command></action></keybind>
     <keybind key='W-b'>
-      <keybind key='0'><action name='Execute'><command>mdb nm0</command></action></keybind>
+      <keybind key='S-1'><action name='Execute'><command>mdb md1</command></action></keybind>
+      <keybind key='S-2'><action name='Execute'><command>mdb md2</command></action></keybind>
+      <keybind key='S-3'><action name='Execute'><command>mdb md3</command></action></keybind>
+      <keybind key='S-4'><action name='Execute'><command>mdb md4</command></action></keybind>
+      <keybind key='S-5'><action name='Execute'><command>mdb md5</command></action></keybind>
+      <keybind key='S-6'><action name='Execute'><command>mdb md6</command></action></keybind>
+      <keybind key='S-7'><action name='Execute'><command>mdb md7</command></action></keybind>
+      <keybind key='S-8'><action name='Execute'><command>mdb md8</command></action></keybind>
+      <keybind key='S-9'><action name='Execute'><command>mdb md9</command></action></keybind>
+
       <keybind key='1'><action name='Execute'><command>mdb nm1</command></action></keybind>
       <keybind key='2'><action name='Execute'><command>mdb nm2</command></action></keybind>
       <keybind key='3'><action name='Execute'><command>mdb nm3</command></action></keybind>
@@ -179,6 +188,73 @@
       <keybind key='x'><action name='Execute'><command>mdb nmx</command></action></keybind>
       <keybind key='y'><action name='Execute'><command>mdb nmy</command></action></keybind>
       <keybind key='z'><action name='Execute'><command>mdb nmz</command></action></keybind>
+      <keybind key='period'><action name='Execute'><command>mdb nm.</command></action></keybind>
+
+      <keybind key='0'>
+        <keybind key='1'><action name='Execute'><command>mdb nm01</command></action></keybind>
+        <keybind key='2'><action name='Execute'><command>mdb nm02</command></action></keybind>
+        <keybind key='3'><action name='Execute'><command>mdb nm03</command></action></keybind>
+        <keybind key='4'><action name='Execute'><command>mdb nm04</command></action></keybind>
+        <keybind key='5'><action name='Execute'><command>mdb nm05</command></action></keybind>
+        <keybind key='6'><action name='Execute'><command>mdb nm06</command></action></keybind>
+        <keybind key='7'><action name='Execute'><command>mdb nm07</command></action></keybind>
+        <keybind key='8'><action name='Execute'><command>mdb nm08</command></action></keybind>
+        <keybind key='9'><action name='Execute'><command>mdb nm09</command></action></keybind>
+
+        <keybind key='a'><action name='Execute'><command>mdb nm0a</command></action></keybind>
+        <keybind key='b'><action name='Execute'><command>mdb nm0b</command></action></keybind>
+        <keybind key='c'><action name='Execute'><command>mdb nm0c</command></action></keybind>
+        <keybind key='d'><action name='Execute'><command>mdb nm0d</command></action></keybind>
+        <keybind key='e'><action name='Execute'><command>mdb nm0e</command></action></keybind>
+        <keybind key='f'><action name='Execute'><command>mdb nm0f</command></action></keybind>
+        <keybind key='g'><action name='Execute'><command>mdb nm0g</command></action></keybind>
+        <keybind key='h'><action name='Execute'><command>mdb nm0h</command></action></keybind>
+        <keybind key='i'><action name='Execute'><command>mdb nm0i</command></action></keybind>
+        <keybind key='j'><action name='Execute'><command>mdb nm0j</command></action></keybind>
+        <keybind key='k'><action name='Execute'><command>mdb nm0k</command></action></keybind>
+        <keybind key='l'><action name='Execute'><command>mdb nm0l</command></action></keybind>
+        <keybind key='m'><action name='Execute'><command>mdb nm0m</command></action></keybind>
+        <keybind key='n'><action name='Execute'><command>mdb nm0n</command></action></keybind>
+        <keybind key='o'><action name='Execute'><command>mdb nm0o</command></action></keybind>
+        <keybind key='p'><action name='Execute'><command>mdb nm0p</command></action></keybind>
+        <keybind key='q'><action name='Execute'><command>mdb nm0q</command></action></keybind>
+        <keybind key='r'><action name='Execute'><command>mdb nm0r</command></action></keybind>
+        <keybind key='s'><action name='Execute'><command>mdb nm0s</command></action></keybind>
+        <keybind key='t'><action name='Execute'><command>mdb nm0t</command></action></keybind>
+        <keybind key='u'><action name='Execute'><command>mdb nm0u</command></action></keybind>
+        <keybind key='v'><action name='Execute'><command>mdb nm0v</command></action></keybind>
+        <keybind key='w'><action name='Execute'><command>mdb nm0w</command></action></keybind>
+        <keybind key='x'><action name='Execute'><command>mdb nm0x</command></action></keybind>
+        <keybind key='y'><action name='Execute'><command>mdb nm0y</command></action></keybind>
+        <keybind key='z'><action name='Execute'><command>mdb nm0z</command></action></keybind>
+
+        <keybind key='S-a'><action name='Execute'><command>mdb nm0A</command></action></keybind>
+        <keybind key='S-b'><action name='Execute'><command>mdb nm0B</command></action></keybind>
+        <keybind key='S-c'><action name='Execute'><command>mdb nm0C</command></action></keybind>
+        <keybind key='S-d'><action name='Execute'><command>mdb nm0D</command></action></keybind>
+        <keybind key='S-e'><action name='Execute'><command>mdb nm0E</command></action></keybind>
+        <keybind key='S-f'><action name='Execute'><command>mdb nm0F</command></action></keybind>
+        <keybind key='S-g'><action name='Execute'><command>mdb nm0G</command></action></keybind>
+        <keybind key='S-h'><action name='Execute'><command>mdb nm0H</command></action></keybind>
+        <keybind key='S-i'><action name='Execute'><command>mdb nm0I</command></action></keybind>
+        <keybind key='S-j'><action name='Execute'><command>mdb nm0J</command></action></keybind>
+        <keybind key='S-k'><action name='Execute'><command>mdb nm0K</command></action></keybind>
+        <keybind key='S-l'><action name='Execute'><command>mdb nm0L</command></action></keybind>
+        <keybind key='S-m'><action name='Execute'><command>mdb nm0M</command></action></keybind>
+        <keybind key='S-n'><action name='Execute'><command>mdb nm0N</command></action></keybind>
+        <keybind key='S-o'><action name='Execute'><command>mdb nm0O</command></action></keybind>
+        <keybind key='S-p'><action name='Execute'><command>mdb nm0P</command></action></keybind>
+        <keybind key='S-q'><action name='Execute'><command>mdb nm0Q</command></action></keybind>
+        <keybind key='S-r'><action name='Execute'><command>mdb nm0R</command></action></keybind>
+        <keybind key='S-s'><action name='Execute'><command>mdb nm0S</command></action></keybind>
+        <keybind key='S-t'><action name='Execute'><command>mdb nm0T</command></action></keybind>
+        <keybind key='S-u'><action name='Execute'><command>mdb nm0U</command></action></keybind>
+        <keybind key='S-v'><action name='Execute'><command>mdb nm0V</command></action></keybind>
+        <keybind key='S-w'><action name='Execute'><command>mdb nm0W</command></action></keybind>
+        <keybind key='S-x'><action name='Execute'><command>mdb nm0X</command></action></keybind>
+        <keybind key='S-y'><action name='Execute'><command>mdb nm0Y</command></action></keybind>
+        <keybind key='S-z'><action name='Execute'><command>mdb nm0Z</command></action></keybind>
+      </keybind>
 
       <keybind key='S-a'><action name='Execute'><command>mdb knob1</command></action></keybind>
       <keybind key='S-b'><action name='Execute'><command>mdb knob2</command></action></keybind>
@@ -211,6 +287,11 @@
 
     <keybind key='W-r'><action name='Execute'>
       <command>/home/spencertipping/bin/rb</command></action></keybind>
+    <keybind key='W-S-r'>
+      <action name='Execute'>
+        <command>xsel -bc</command></action>
+      <action name='Execute'>
+        <command>xsel -c</command></action></keybind>
 
     <keybind key='W-A-r'><action name='Execute'>
       <command>xset r off</command></action></keybind>
