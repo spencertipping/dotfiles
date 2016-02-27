@@ -106,7 +106,7 @@ ${voffset -11}${voffset -18}${goto 0}${offset 515}${color c0c0c0}${voffset -1}${
 ${voffset -11}
 ${voffset -11}${voffset 54}${goto 0}${offset 599}
 ${voffset -11}${voffset -9}${goto 0}${offset 599}
-${voffset -11}${voffset -9}${goto 0}${offset 599}${color c0c0c0}${execi 10 curl spencertipping.com/ip.php}${color 606060}
+${voffset -11}${voffset -9}${goto 0}${offset 599}${color c0c0c0}${execi 10 curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'}${color 606060}
 ${voffset -11}${voffset -9}${goto 0}${offset 599}${nameserver 1}
 ${voffset -11}${voffset -9}${goto 0}${offset 599}${nameserver 2}
 ${voffset -11}${voffset -30}${goto 0}${offset 599}${color 303030}${execgraph perl -pe '$_ /= 400000' /sys/class/power_supply/BAT0/power_now}
