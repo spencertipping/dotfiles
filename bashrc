@@ -49,6 +49,7 @@ export PATH="$PATH:$HOME/r/persistent/local/bin"
 export PATH="$PATH:$HOME/r/initiative/perl-objects"
 export PATH="$PATH:$HOME/r/initiative/caterwaul"
 export PATH="$PATH:$HOME/r/initiative/nfu"
+export PATH="$PATH:$HOME/r/initiative/ni"
 export PATH="$PATH:."
 
 export NODE_PATH="$HOME/.node:$NODE_PATH"
