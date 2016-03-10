@@ -90,6 +90,8 @@ export PS1='\[\033[1;32m\]\h\[\033[1;30m\]\W\[\033[0;0m\] '
 export NFU_ALWAYS_VERBOSE=yes
 export NFU_SORT_PARALLEL=$(grep ^processor /proc/cpuinfo | wc -l)
 
+export LC_ALL=${LC_ALL:-C}
+
 if [[ $TERM == 'xterm' ]]; then
   export TERM='xterm-color'
 fi
