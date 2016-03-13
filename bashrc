@@ -89,7 +89,15 @@ export EDITOR=$VISUAL
 export PS1='\[\033[1;32m\]\h\[\033[1;30m\]\W\[\033[0;0m\] '
 
 export NFU_ALWAYS_VERBOSE=yes
-export NFU_SORT_PARALLEL=$(grep ^processor /proc/cpuinfo | wc -l)
+export NFU_SORT_BUFFER=$(( $(free -m | nfu -FSD1T1f1) / 8 ))M
+
+if which lz4 >& /dev/null; then
+  export NFU_SORT_COMPRESS=lz4
+elif which lzop >& /dev/null; then
+  export NFU_SORT_COMPRESS=lzop
+else
+  export NFU_SORT_COMPRESS=gzip
+fi
 
 export GNUTERM=wxt
 
