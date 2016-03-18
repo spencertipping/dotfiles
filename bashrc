@@ -18,7 +18,7 @@ if we_have bashrc-tmux; then
 fi
 
 if we_have cd; then
-  CD_EXTENSIONS=(ssh archive dev loop encfs git history missing-mkdir)
+  CD_EXTENSIONS=(ssh archive dev loop encfs git nfs history missing-mkdir)
   . $BASHRC_PREFIX/cd/cd
 fi
 

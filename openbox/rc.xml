@@ -190,6 +190,15 @@
       <keybind key='z'><action name='Execute'><command>mdb nmz</command></action></keybind>
       <keybind key='period'><action name='Execute'><command>mdb nm.</command></action></keybind>
 
+      <keybind key='comma'>
+        <keybind key='a'><action name='Execute'><command>mdb dr5r</command></action></keybind>
+        <keybind key='b'><action name='Execute'><command>mdb wtw3</command></action></keybind>
+        <keybind key='c'><action name='Execute'><command>mdb 9q5c</command></action></keybind>
+        <keybind key='d'><action name='Execute'><command>mdb 9q8y</command></action></keybind>
+        <keybind key='e'><action name='Execute'><command>mdb ucfu</command></action></keybind>
+        <keybind key='f'><action name='Execute'><command>mdb 9whp</command></action></keybind>
+      </keybind>
+
       <keybind key='0'>
         <keybind key='1'><action name='Execute'><command>mdb nm01</command></action></keybind>
         <keybind key='2'><action name='Execute'><command>mdb nm02</command></action></keybind>
