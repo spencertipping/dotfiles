@@ -5,7 +5,7 @@
 [[ -e ~/.bash_aliases ]] && source ~/.bash_aliases
 
 # Extension time!
-BASHRC_PREFIX=$HOME/r/initiative
+BASHRC_PREFIX=$HOME
 we_have() { [[ -d $BASHRC_PREFIX/$1 ]]; }
 
 if we_have bash-hats; then
