@@ -2,6 +2,12 @@
 Released into the public domain for anyone unfortunate enough to share my
 sensibilities.
 
+To install these as your dotfiles:
+
+```sh
+$ ./setup 'yes-really'
+```
+
 Bash extensions:
 - [cd](https://github.com/spencertipping/cd)
 - [bashrc-tmux](https://github.com/spencertipping/bashrc-tmux)

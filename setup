@@ -1,0 +1,20 @@
+#!/bin/bash
+# Usage: ./setup "yes-really"
+
+if [[ $1 != yes-really ]]; then
+  {
+    echo 'WARNING: this will overwrite any dotfiles you happen to have,'
+    echo '         replacing them with symlinks to the files here.'
+    echo '         If you really want to do this, run this script as:'
+    echo "         $0 'yes-really'"
+  } >&2
+  exit 1
+fi
+
+cd "$(dirname "$0")"
+for file in *; do
+  if [[ "$file" != setup ]]; then
+    mv -f "~/.$file" "~/.$file.original"
+    ln -s "$PWD/$file" "~/.$file"
+  fi
+done
