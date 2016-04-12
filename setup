@@ -13,8 +13,8 @@ fi
 
 cd "$(dirname "$0")"
 for file in *; do
-  if [[ "$file" != setup ]]; then
-    mv -f "~/.$file" "~/.$file.original"
-    ln -s "$PWD/$file" "~/.$file"
+  if [[ "$file" != setup ]] && [[ "$file" != README.md ]]; then
+    mv -f "$HOME/.$file" "$HOME/.$file.original"
+    ln -s "$PWD/$file" "$HOME/.$file"
   fi
 done
