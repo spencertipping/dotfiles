@@ -10,6 +10,9 @@ we_have() { [[ -d $BASHRC_PREFIX/$1 ]]; }
 
 if we_have bash-hats; then
   . $BASHRC_PREFIX/bash-hats/bash-hats
+else
+  hat_identity() { :; }
+  hat_observe() { :; }
 fi
 
 if we_have bashrc-tmux; then
@@ -34,6 +37,26 @@ if we_have bash-lambda; then
   }
 fi
 
+# Docker stuff!
+dr() {
+  # Launch a "docker repl" using a Dockerfile whose command is /bin/bash.
+  # Builds an untagged image and runs it with a transient TTY-enabled
+  # container whose /data is mounted to the current directory. Also sets up an
+  # X11 connection to the current host display, so the docker can run graphical
+  # applications.
+
+  XAUTH=/tmp/.docker.xauth${DISPLAY//:/.}
+  [ -n "$DISPLAY" ] \
+    && xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+
+  docker run -v $PWD:/data \
+             -v /tmp/.X11-unix:/tmp/.X11-unix \
+             -v $XAUTH:$XAUTH \
+             -e XAUTHORITY=$XAUTH \
+             -e DISPLAY=$DISPLAY \
+             --rm -it $(docker build -q .)
+}
+
 # If we don't have a DISPLAY already, set it to :0
 # (in practice this happens if you don't have bashrc-xpra and you're sshing
 # somewhere without -X)
@@ -45,12 +68,7 @@ shopt -s checkwinsize extglob
 umask 022
 
 # Path extensions
-export PATH="$PATH:$HOME/r/persistent/local/bin"
-export PATH="$PATH:$HOME/r/initiative/perl-objects"
-export PATH="$PATH:$HOME/r/initiative/caterwaul"
-export PATH="$PATH:$HOME/r/initiative/nfu"
-export PATH="$PATH:$HOME/r/initiative/ni"
-export PATH="$PATH:."
+export PATH="$PATH:$HOME/bin:."
 
 export NODE_PATH="$HOME/.node:$NODE_PATH"
 
