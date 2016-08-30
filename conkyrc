@@ -36,7 +36,7 @@ short_units yes
 alignment bottom_right
 
 gap_x 0
-gap_y -144
+gap_y -112
 
 no_buffers yes
 
@@ -106,10 +106,10 @@ ${voffset -11}${voffset -18}${goto 0}${offset 515}${color c0c0c0}${voffset -1}${
 ${voffset -11}
 ${voffset -11}${voffset 54}${goto 0}${offset 599}
 ${voffset -11}${voffset -9}${goto 0}${offset 599}
-${voffset -11}${voffset -9}${goto 0}${offset 599}${color c0c0c0}${execi 10 curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'}${color 606060}
+${voffset -11}${voffset -9}${goto 0}${offset 599}${color c0c0c0}${execi 10 timeout 5 curl -s spencertipping.com/ip.php}${color 606060}
 ${voffset -11}${voffset -9}${goto 0}${offset 599}${nameserver 1}
 ${voffset -11}${voffset -9}${goto 0}${offset 599}${nameserver 2}
-${voffset -11}${voffset -30}${goto 0}${offset 599}${color 303030}${execgraph perl -pe '$_ /= 400000' /sys/class/power_supply/BAT0/power_now}
+${voffset -11}${voffset -30}${goto 0}${offset 599}
 ${voffset -11}
 ${voffset -11}${voffset 11}${goto 0}${offset 683}${goto 0}${offset 725}${color c0c0c0}${cpugraph cpu0 8,164} ${goto 0}${offset 599}
 ${voffset -11}
@@ -127,8 +127,7 @@ ${voffset -11}${goto 0}${offset 557}
 ${voffset -11}
 ${voffset -11}${voffset -11}${goto 0}${offset 725}${downspeedgraph wlan0 8,123} ${color 606060} ${goto 0}${offset 851}${downspeed wlan0} ${goto 0}${offset 893}${totaldown wlan0} ${goto 0}${offset 725}${color 303030}
 ${voffset -11}${voffset 11}${goto 0}${offset 725}${upspeedgraph   wlan0 8,123} ${color 606060} ${goto 0}${offset 851}${upspeed   wlan0} ${goto 0}${offset 893}${totalup   wlan0} ${goto 0}${offset 725}${color 303030}
-${voffset -11}${voffset 11}${goto 0}${offset 767}${color 303030}${audacious_bar 4,80} ${goto 0}${offset 852}${audacious_bitrate}
 ${voffset -11}
-${voffset -11}${voffset -33}${goto 0}${offset 263}
+${voffset -11}${voffset -22}${goto 0}${offset 263}
 ${voffset -11}${goto 0}${offset 389}${font Ubuntu:size=7}${execi 5 wc -l < ~/r/persistent/self/queue}${font Ubuntu:size=14} ${execi 5 ls ~/.cd/mountpoints | wc -l} ${font Ubuntu:size=22}${execi 5 ~/bin/alerts | wc -l}
 ${voffset -35}

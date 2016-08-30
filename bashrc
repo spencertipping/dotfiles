@@ -38,7 +38,7 @@ fi
 
 export GNUTERM=wxt
 
-export LC_ALL=${LC_ALL:-C}
+export LC_ALL=${LC_ALL:-C.UTF-8}
 
 if [[ $TERM == 'xterm' ]]; then
   export TERM='xterm-color'
