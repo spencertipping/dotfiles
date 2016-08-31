@@ -3,7 +3,7 @@ openbox &
 wm_pid=$!
 
 init_session() {
-  xset r rate 150 120
+  xset r rate 150 60
   setlayout 0 10 10 0
   synclient VertEdgeScroll=0 \
             VertTwoFingerScroll=1 \
