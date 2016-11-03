@@ -53,6 +53,7 @@ hi DiffDelete ctermfg=1 ctermbg=15 cterm=bold
 hi DiffText   ctermfg=8 ctermbg=15 cterm=bold
 
 " Custom syntax stuff
+au BufRead,BufReadPost,BufNewFile css         set syntax=css
 au BufRead,BufReadPost,BufNewFile *.js        set syntax=caterwaul
 au BufRead,BufReadPost,BufNewFile *.waul      set syntax=caterwaul
 au BufRead,BufReadPost,BufNewFile *.caterwaul set syntax=caterwaul
