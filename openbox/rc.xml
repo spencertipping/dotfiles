@@ -41,28 +41,24 @@
       <direction>north</direction></action></keybind>
 
     <keybind key='W-8'><action name='MoveResizeTo'>
-      <x>48</x><y>12</y><height>590</height></action></keybind>
-    <keybind key='W-S-8'><action name='MoveResizeTo'>
-      <x>134</x><y>12</y><height>590</height></action></keybind>
+      <x>48</x><y>14</y><height>728</height></action></keybind>
     <keybind key='W-9'><action name='MoveResizeTo'>
-      <x>462</x><y>12</y><height>566</height></action></keybind>
-    <keybind key='W-S-9'><action name='MoveResizeTo'>
-      <x>549</x><y>12</y><height>566</height></action></keybind>
+      <x>548</x><y>14</y><height>673</height></action></keybind>
     <keybind key='W-0'><action name='MoveResizeTo'>
-      <x>876</x><y>12</y><height>566</height></action></keybind>
+      <x>1048</x><y>14</y><height>662</height></action></keybind>
 
     <keybind key='W-bracketright'><action name='MoveResizeTo'>
-      <x>920</x><y>36</y><height>242</height></action></keybind>
+      <x>1074</x><y>36</y><height>242</height></action></keybind>
     <keybind key='W-S-bracketright'><action name='MoveResizeTo'>
-      <x>966</x><y>36</y><height>242</height></action></keybind>
+      <x>1118</x><y>36</y><height>242</height></action></keybind>
     <keybind key='W-apostrophe'><action name='MoveResizeTo'>
-      <x>920</x><y>280</y></action></keybind>
+      <x>1074</x><y>280</y></action></keybind>
     <keybind key='W-S-apostrophe'><action name='MoveResizeTo'>
-      <x>966</x><y>280</y></action></keybind>
+      <x>1118</x><y>280</y></action></keybind>
     <keybind key='W-slash'><action name='MoveResizeTo'>
-      <x>920</x><y>524</y></action></keybind>
+      <x>1074</x><y>524</y></action></keybind>
     <keybind key='W-S-slash'><action name='MoveResizeTo'>
-      <x>966</x><y>524</y></action></keybind>
+      <x>1118</x><y>524</y></action></keybind>
 
     <keybind key='W-bracketleft'><action name='Execute'>
       <command>terminal-opacity 0.1</command></action></keybind>
@@ -85,14 +81,12 @@
 
     <keybind key='W-e'><action name='MoveResizeTo'>
       <!-- 80 columns -->
-      <width client='yes'>402</width></action></keybind>
+      <width client='yes'>482</width></action></keybind>
 
     <keybind key='W-S-e'><action name='MoveResizeTo'>
       <!-- 242 columns -->
-      <width client='yes'>1212</width></action></keybind>
+      <width client='yes'>1154</width></action></keybind>
 
-    <keybind key='W-S-s'><action name='Execute'>
-      <command>toggle-process synergys</command></action></keybind>
     <keybind key='W-S-d'><action name='Execute'>
       <command>toggle-process conky</command></action></keybind>
 
@@ -100,15 +94,6 @@
       <command>synclient TouchpadOff=1</command></action></keybind>
     <keybind key='W-S-n'><action name='Execute'>
       <command>synclient TouchpadOff=0</command></action></keybind>
-
-    <keybind key='C-W-Up'><action name='Execute'>
-      <command>backlight +100</command></action></keybind>
-    <keybind key='C-W-Down'><action name='Execute'>
-      <command>backlight -100</command></action></keybind>
-    <keybind key='S-C-W-Up'><action name='Execute'>
-      <command>backlight +5</command></action></keybind>
-    <keybind key='S-C-W-Down'><action name='Execute'>
-      <command>backlight -5</command></action></keybind>
 
     <keybind key='W-Down'>
       <action name='Execute'><command>vol-delta -5</command></action></keybind>
@@ -129,7 +114,7 @@
       </command></action></keybind>
 
     <keybind key="W-S-w"><action name="Execute">
-      <command>google-chrome</command></action></keybind>
+      <command>chromium-browser</command></action></keybind>
     <keybind key="W-w"><action name="Execute">
       <command>firefox</command></action></keybind>
     <keybind key="A-F2"><action name="Execute">
