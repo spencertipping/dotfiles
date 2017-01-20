@@ -129,7 +129,7 @@
       </command></action></keybind>
 
     <keybind key="W-S-w"><action name="Execute">
-      <command>google-chrome</command></action></keybind>
+      <command>chromium-browser</command></action></keybind>
     <keybind key="W-w"><action name="Execute">
       <command>firefox</command></action></keybind>
     <keybind key="A-F2"><action name="Execute">
