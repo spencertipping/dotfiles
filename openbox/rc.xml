@@ -48,17 +48,17 @@
       <x>1048</x><y>14</y><height>662</height></action></keybind>
 
     <keybind key='W-bracketright'><action name='MoveResizeTo'>
-      <x>1074</x><y>36</y><height>242</height></action></keybind>
+      <x>1074</x><y>36</y></action></keybind>
     <keybind key='W-S-bracketright'><action name='MoveResizeTo'>
-      <x>1118</x><y>36</y><height>242</height></action></keybind>
+      <x>1118</x><y>36</y></action></keybind>
     <keybind key='W-apostrophe'><action name='MoveResizeTo'>
-      <x>1074</x><y>280</y></action></keybind>
+      <x>1074</x><y>266</y></action></keybind>
     <keybind key='W-S-apostrophe'><action name='MoveResizeTo'>
-      <x>1118</x><y>280</y></action></keybind>
+      <x>1118</x><y>266</y></action></keybind>
     <keybind key='W-slash'><action name='MoveResizeTo'>
-      <x>1074</x><y>524</y></action></keybind>
+      <x>1074</x><y>496</y></action></keybind>
     <keybind key='W-S-slash'><action name='MoveResizeTo'>
-      <x>1118</x><y>524</y></action></keybind>
+      <x>1118</x><y>496</y></action></keybind>
 
     <keybind key='W-bracketleft'><action name='Execute'>
       <command>terminal-opacity 0.1</command></action></keybind>
