@@ -67,7 +67,7 @@
     <keybind key='W-C-S-bracketleft'><action name='Execute'>
       <command>terminal-opacity 0.7</command></action></keybind>
     <keybind key='W-S-bracketleft'><action name='Execute'>
-      <command>terminal-opacity 0.9</command></action></keybind>
+      <command>terminal-opacity 0.8</command></action></keybind>
 
     <keybind key='C-W-h'><action name='MoveRelative'><x>-404</x></action></keybind>
     <keybind key='C-W-j'><action name='MoveRelative'><y>244</y></action></keybind>
@@ -125,7 +125,7 @@
       <command>transset -n Audacious 0.1</command></action></keybind>
 
     <keybind key='W-S-b'><action name='Execute'>
-      <command>/home/spencertipping/bin/mdb random</command></action></keybind>
+      <command>/home/spencertipping/bin/mdb</command></action></keybind>
     <keybind key='W-b'>
       <keybind key='S-1'><action name='Execute'><command>mdb md1</command></action></keybind>
       <keybind key='S-2'><action name='Execute'><command>mdb md2</command></action></keybind>
@@ -274,6 +274,10 @@
 
     <keybind key="W-q"><action name="Execute">
       <command>xtrlock</command></action></keybind>
+    <keybind key="W-S-q"><action name="Execute">
+      <command>/home/spencertipping/bin/locksleep</command></action></keybind>
+    <keybind key="W-S-s"><action name="Execute">
+      <command>sudo pm-suspend</command></action></keybind>
     <keybind key='W-S-o'><action name='Execute'>
       <command>in 1 xset dpms force off</command></action></keybind>
     <keybind key='W-S-p'><action name='Execute'>

@@ -65,7 +65,7 @@ before layers configuration."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed.
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'."
    dotspacemacs-startup-lists '()
@@ -99,121 +99,11 @@ before layers configuration."
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    ;; The command key used for Evil commands (ex-commands) and
    ;; Emacs commands (M-x).
-   ;; By default the command key is `:' so ex-commands are executed like in Vim
-   ;; with `:' and Emacs commands are executed with `<leader> :'.
-   dotspacemacs-command-key ":"
-   ;; Location where to auto-save files. Possible values are `original' to
-   ;; auto-save the file in-place, `cache' to auto-save the file to another
-   ;; file stored in the cache directory and `nil' to disable auto-saving.
-   ;; Default value is `cache'.
-   dotspacemacs-auto-save-file-location 'cache
-   ;; If non nil then `ido' replaces `helm' for some commands. For now only
-   ;; `find-files' (SPC f f) is replaced.
-   dotspacemacs-use-ido nil
-   ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
-   ;; several times cycle between the kill ring content.
-   dotspacemacs-enable-paste-micro-state t
-   ;; Guide-key delay in seconds. The Guide-key is the popup buffer listing
-   ;; the commands bound to the current keystrokes.
-   dotspacemacs-guide-key-delay 0.2
-   ;; If non nil a progress bar is displayed when spacemacs is loading. This
-   ;; may increase the boot time on some systems and emacs builds, set it to
-   ;; nil ;; to boost the loading time.
-   dotspacemacs-loading-progress-bar nil
-   ;; If non nil the frame is fullscreen when Emacs starts up.
-   ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup nil
-   ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
-   ;; Use to disable fullscreen animations in OSX."
-   dotspacemacs-fullscreen-use-non-native nil
-   ;; If non nil the frame is maximized when Emacs starts up.
-   ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
-   ;; (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
-   ;; A value from the range (0..100), in increasing opacity, which describes
-   ;; the transparency level of a frame when it's active or selected.
-   ;; Transparency can be toggled through `toggle-transparency'.
-   dotspacemacs-active-transparency 90
-   ;; A value from the range (0..100), in increasing opacity, which describes
-   ;; the transparency level of a frame when it's inactive or deselected.
-   ;; Transparency can be toggled through `toggle-transparency'.
-   dotspacemacs-inactive-transparency 90
-   ;; If non nil unicode symbols are displayed in the mode line.
-   dotspacemacs-mode-line-unicode-symbols t
-   ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
-   ;; scrolling overrides the default behavior of Emacs which recenters the
-   ;; point when it reaches the top or bottom of the screen.
-   dotspacemacs-smooth-scrolling t
-   ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
-   dotspacemacs-smartparens-strict-mode t
-   ;; Select a scope to highlight delimiters. Possible value is `all',
-   ;; `current' or `nil'. Default is `all'
-   dotspacemacs-highlight-delimiters 'all
-   ;; If non nil advises quit functions to keep server open when quitting.
-   dotspacemacs-persistent-server nil
-   ;; List of search tool executable names. Spacemacs uses the first installed
-   ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
-   ;; The default package repository used if no explicit repository has been
-   ;; specified with an installed package.
-   ;; Not used for now.
-   dotspacemacs-default-package-repository nil
+   ;; By default the command key is `:' so ex-com)
    )
-
-  ;; User initialization goes here
-  )
-
-(defun defvimkey (name binding)
-  (define-key evil-normal-state-map (kbd name) binding)
-  (define-key evil-insert-state-map (kbd name) binding))
-
-(defun setup-buffer ()
-  (interactive)
-  (auto-fill-mode 1)
-  (smartparens-mode 1))
-
-(defun kill-start-of-line ()
-  "Kill from point to start of line"
-  (interactive)
-  (kill-line 0))
-
-(defun clojure-repl-set-namespace ()
-  (interactive)
-  (cider-repl-set-ns (cider-current-ns))
-  (cider-switch-to-repl-buffer))
-
-(defun dotspacemacs/config ()
-  "Configuration function.
- This function is called at the very end of Spacemacs initialization after
-layers configuration."
-
-  (fringe-mode 0)
-  (scroll-bar-mode -1)
-  (global-hl-line-mode -1)
-  (electric-indent-mode -1)
-
-  (setq evil-shift-width 2)
-  (setq fill-column 80)
-  (setq focus-follows-mouse 1)
-  (setq mouse-autoselect-window t)
-  (setq powerline-default-separator 'slant)
-  (setq x-select-enable-clipboard t)
-
-  (add-to-list 'default-frame-alist '(alpha 90 90))
-  (add-to-list 'default-frame-alist '(width . 81))
-  (add-hook 'before-save-hook 'whitespace-cleanup)
-  (add-hook 'after-change-major-mode-hook 'setup-buffer)
-
-  ;; Keybindings
-  (define-key evil-insert-state-map (kbd "C-u") 'kill-start-of-line)
-  (define-key evil-normal-state-map (kbd "C-k") 'sp-kill-sexp)
 
   (define-key evil-normal-state-map (kbd "C-+") 'text-scale-increase)
   (define-key evil-normal-state-map (kbd "C--") 'text-scale-decrease)
-
-  (defvimkey "C-c C-n" 'clojure-repl-set-namespace)
-  (defvimkey "M-."     'cider-jump-to-var)
-  (defvimkey "M-,"     'cider-jump-back)
 
   (defvimkey "C-(" 'sp-backward-slurp-sexp)
   (defvimkey "C-)" 'sp-forward-slurp-sexp)
@@ -232,22 +122,41 @@ layers configuration."
       (interactive)
       (evil-shift-right (region-beginning) (region-end))
       (evil-normal-state)
-      (evil-visual-restore)))
+      (evil-visual-restore))))
 
-  (custom-set-faces
-   '(default ((t (:inherit nil :stipple nil :background "black" :foreground
-                           "#f6f6f6" :inverse-video nil :box nil :strike-through
-                           nil :overline nil
-                           :underline nil :slant normal :weight normal :height
-                           64 :width normal :foundry
-                           "unknown" :family "DejaVu Sans Mono"))))
-   '(border ((t (:background "black"))))
-   '(ein:cell-input-area ((((class color) (background dark)) nil)))
-   '(ein:cell-input-prompt ((t (:inherit header-line :background "black"
-                                         :foreground "gray30"))))
-   '(ein:cell-output-prompt ((t (:inherit header-line :background "black"
-                                          :foreground "gray30"))))
-   '(mode-line ((t (:background "black" :foreground "#f6f3e8"))))))
+(custom-set-faces
+ '(default ((t (:inherit nil :stipple nil :background "black" :foreground
+                         "#f6f6f6" :inverse-video nil :box nil :strike-through
+                         nil :overline nil
+                         :underline nil :slant normal :weight normal :height
+                         96 :width normal :foundry
+                         "unknown" :family "DejaVu Sans Mono"))))
+ '(border ((t (:background "black"))))
+ '(ein:cell-input-area ((((class color) (background dark)) nil)))
+ '(ein:cell-input-prompt ((t (:inherit header-line :background "black"
+                                       :foreground "gray30"))))
+ '(ein:cell-output-prompt ((t (:inherit header-line :background "black"
+                                        :foreground "gray30"))))
+ '(mode-line ((t (:background "black" :foreground "#f6f3e8")))))
+
+(defun defvimkey (name binding)
+  (define-key evil-normal-state-map (kbd name) binding)
+  (define-key evil-insert-state-map (kbd name) binding))
+
+(defun setup-buffer ()
+  (interactive)
+  (auto-fill-mode 1)
+  (smartparens-mode 1))
+
+(defun kill-start-of-line ()
+  "Kill from point to start of line"
+  (interactive)
+  (kill-line 0))
+
+(defun dotspacemacs/config ()
+  "Configuration function.
+ This function is called at the very end of Spacemacs initialization after
+layers configuration.")
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

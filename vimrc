@@ -1,7 +1,7 @@
 set nonu sta et sc fdc=0 sw=2 ai mouse=a nowrap nojs hls is foldlevel=10 enc=utf8
 set tenc=utf8 title visualbell noerrorbells hidden pastetoggle=<F2> foldenable tags=tags;/
 set wildmenu wildmode=list:longest scrolloff=3 shortmess=atI incsearch hlsearch hidden
-set history=1000 list listchars=tab:>-,trail:. wm=1
+set history=1000 list listchars=tab:>-,trail:. wm=1 clipboard=unnamedplus
 
 nnoremap ' `
 nnoremap ` '
@@ -47,10 +47,10 @@ hi StatusLine   ctermbg=15 ctermfg=4 cterm=none
 hi StatusLineNC ctermbg=15 ctermfg=0 cterm=none
 hi VertSplit    ctermbg=15 ctermfg=4 cterm=none
 
-hi DiffAdd    ctermfg=4 ctermbg=15 cterm=bold
-hi DiffChange ctermfg=6 ctermbg=15 cterm=bold
-hi DiffDelete ctermfg=1 ctermbg=15 cterm=bold
-hi DiffText   ctermfg=8 ctermbg=15 cterm=bold
+hi DiffAdd    ctermfg=4 ctermbg=none cterm=bold
+hi DiffChange ctermfg=6 ctermbg=none cterm=bold
+hi DiffDelete ctermfg=1 ctermbg=none cterm=bold
+hi DiffText   ctermfg=8 ctermbg=none cterm=bold
 
 " Custom syntax stuff
 au BufRead,BufReadPost,BufNewFile css         set syntax=css
