@@ -125,7 +125,7 @@ before layers configuration."
       (evil-visual-restore))))
 
 (custom-set-faces
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground
+ '(default ((t (:inherit nil :stipple nil :background "none" :foreground
                          "#f6f6f6" :inverse-video nil :box nil :strike-through
                          nil :overline nil
                          :underline nil :slant normal :weight normal :height
@@ -137,7 +137,7 @@ before layers configuration."
                                        :foreground "gray30"))))
  '(ein:cell-output-prompt ((t (:inherit header-line :background "black"
                                         :foreground "gray30"))))
- '(mode-line ((t (:background "black" :foreground "#f6f3e8")))))
+ '(mode-line ((t (:background "none" :foreground "#f6f3e8")))))
 
 (defun defvimkey (name binding)
   (define-key evil-normal-state-map (kbd name) binding)

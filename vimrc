@@ -1,33 +1,33 @@
-set nonu sta et sc fdc=0 sw=2 ai mouse=a nowrap nojs hls is foldlevel=10 enc=utf8
-set tenc=utf8 title visualbell noerrorbells hidden pastetoggle=<F2> foldenable tags=tags;/
-set wildmenu wildmode=list:longest scrolloff=3 shortmess=atI incsearch hlsearch hidden
-set history=1000 list listchars=tab:>-,trail:. wm=1 clipboard=unnamedplus
+set foldenable foldcolumn=0 foldlevel=10
+set expandtab shiftwidth=2
+set autoindent
+set mouse=a
+set nowrap nojoinspaces
+set hlsearch incsearch
+set enc=utf8 tenc=utf8
+set visualbell noerrorbells
+set title
+set tags=tags;/
+set wildmenu wildmode=list:longest
+set scrolloff=3
+set shortmess=atI
+set history=1000
+set list listchars=tab:>-,trail:.
+set fillchars+=vert:·
 
-nnoremap ' `
-nnoremap ` '
-
-map <F3> :if &tw == 192 \| set tw=80 \| echo "tw is 80" \| else \| set tw=192 \| echo "tw is 192" \| endif<CR>
-map <F4> :if &nu == 1 \| set nonu \| else \| set nu \| endif<CR>
-map <F5> :if &spell == 1 \| set nospell \| else \| set spell \| endif<CR>
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-
-map <C-@> :161vsplit \| :80vsplit <CR>
+vnoremap <C-c> "+y
 
 map q :x<CR>
 map Q :xa<CR>
 
-filetype plugin on
-syntax on
 let perl_extended_vars=1
 
-if $TERM == 'screen' || $TERM == 'rxvt-unicode-256color'
-  set term=rxvt-unicode
+if has('gui')
+  set guioptions=Pc
 endif
 
-set fillchars+=vert:·
-
-hi Folded     ctermbg=none
-hi FoldColumn ctermbg=none
+hi Folded      ctermbg=none
+hi FoldColumn  ctermbg=none
 
 hi Todo        ctermfg=5 ctermbg=3
 
@@ -40,8 +40,11 @@ hi Exception   ctermfg=3 cterm=bold
 hi Repeat      ctermfg=3 cterm=bold
 hi Statement   ctermfg=3 cterm=bold
 
-hi NonText     ctermfg=16 cterm=bold
-hi SpecialKey  ctermfg=0  cterm=bold
+hi Comment     ctermfg=4
+hi Special     ctermfg=5
+hi Constant    ctermfg=1
+
+hi SpecialKey  ctermfg=0 cterm=bold
 
 hi StatusLine   ctermbg=15 ctermfg=4 cterm=none
 hi StatusLineNC ctermbg=15 ctermfg=0 cterm=none
@@ -52,34 +55,11 @@ hi DiffChange ctermfg=6 ctermbg=none cterm=bold
 hi DiffDelete ctermfg=1 ctermbg=none cterm=bold
 hi DiffText   ctermfg=8 ctermbg=none cterm=bold
 
-" Custom syntax stuff
-au BufRead,BufReadPost,BufNewFile css         set syntax=css
-au BufRead,BufReadPost,BufNewFile *.js        set syntax=caterwaul
-au BufRead,BufReadPost,BufNewFile *.waul      set syntax=caterwaul
-au BufRead,BufReadPost,BufNewFile *.caterwaul set syntax=caterwaul
-au BufRead,BufReadPost,BufNewFile *.cltex     set syntax=cltex
-au BufRead,BufReadPost,BufNewFile *.perltex   set syntax=perltex
-au BufRead,BufReadPost,BufNewFile *.gnarly    set syntax=gnarly
-au BufRead,BufReadPost,BufNewFile *.scala     set syntax=scala
-au BufRead,BufReadPost,BufNewFile *.hx        set syntax=haxe
-au BufRead,BufReadPost,BufNewFile *.fig       set syntax=figment
-au BufRead,BufReadPost,BufNewFile *.pickle    set syntax=pickle
-au BufRead,BufReadPost,BufNewFile *.havoc     set syntax=havoc
-au BufRead,BufReadPost,BufNewFile *.mh        set syntax=mh
-au BufRead,BufReadPost,BufNewFile *.binary    set syntax=binary
-au BufRead,BufReadPost,BufNewFile *.fth       set syntax=forth
-au BufRead,BufReadPost,BufNewFile *.canard    set syntax=canard
-au BufRead,BufReadPost,BufNewFile *.coffee    set syntax=coffee
-au BufRead,BufReadPost,BufNewFile *.jade      set syntax=jade
-au BufRead,BufReadPost,BufNewFile *.rho       set syntax=rho
-au BufRead,BufReadPost,BufNewFile *.x         set syntax=ld
-au BufRead,BufReadPost,BufNewFile *.md        set syntax=markdown
-au BufRead,BufReadPost,BufNewFile *.xh        set syntax=xh
-au BufRead,BufReadPost,BufNewFile *.ni        set syntax=ni
-au BufRead,BufReadPost,BufNewFile *.ledger    set syntax=ledger
-au BufRead,BufReadPost,BufNewFile *.se        set syntax=synecdoche
-
-au BufRead,BufReadPost,BufNewFile *.gdb       set syntax=gdb
-
-au BufRead,BufReadPost,BufNewFile *.S         set syntax=gas
-au BufRead,BufReadPost,BufNewFile *.s         set syntax=gas
+hi link markdownValid Comment
+hi link markdownLineStart Comment
+hi link markdownH1 Special
+hi link markdownH2 Special
+hi link markdownH3 Special
+hi link markdownH4 Special
+hi link markdownH5 Special
+hi link markdownH6 Special

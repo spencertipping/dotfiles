@@ -61,7 +61,7 @@
       <x>1118</x><y>496</y></action></keybind>
 
     <keybind key='W-bracketleft'><action name='Execute'>
-      <command>terminal-opacity 0.1</command></action></keybind>
+      <command>terminal-opacity 0.05</command></action></keybind>
     <keybind key='W-C-bracketleft'><action name='Execute'>
       <command>terminal-opacity 0.5</command></action></keybind>
     <keybind key='W-C-S-bracketleft'><action name='Execute'>
@@ -273,7 +273,7 @@
     </keybind>
 
     <keybind key="W-q"><action name="Execute">
-      <command>xtrlock</command></action></keybind>
+      <command>xscreensaver-command -lock</command></action></keybind>
     <keybind key="W-S-q"><action name="Execute">
       <command>/home/spencertipping/bin/locksleep</command></action></keybind>
     <keybind key="W-S-s"><action name="Execute">

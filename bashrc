@@ -10,6 +10,7 @@ source ~/.bash/init
 [[ -e ~/.bash_aliases ]] && source ~/.bash_aliases
 
 alias pd='rlwrap perl -de1'
+alias em='emacs -nw'
 
 # If we don't have a DISPLAY already, set it to :0
 # (in practice this happens if you don't have bashrc-xpra and you're sshing
