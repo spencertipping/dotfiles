@@ -110,8 +110,7 @@
       <command>vol-absolute 41</command></action></keybind>
 
     <keybind key="W-t"><action name="Execute">
-      <command>gnome-terminal --window-with-profile=dark
-      </command></action></keybind>
+      <command>urxvt</command></action></keybind>
 
     <keybind key="W-S-w"><action name="Execute">
       <command>chromium-browser</command></action></keybind>

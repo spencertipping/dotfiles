@@ -18,10 +18,8 @@
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     auctex
-     better-defaults
+     ;better-defaults
      c-c++
-     clojure
      emacs-lisp
      ;git
      html
@@ -68,7 +66,7 @@ before layers configuration."
    dotspacemacs-startup-banner nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'."
-   dotspacemacs-startup-lists '()
+   dotspacemacs-startup-lists nil
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
@@ -105,11 +103,6 @@ before layers configuration."
   (define-key evil-normal-state-map (kbd "C-+") 'text-scale-increase)
   (define-key evil-normal-state-map (kbd "C--") 'text-scale-decrease)
 
-  (defvimkey "C-(" 'sp-backward-slurp-sexp)
-  (defvimkey "C-)" 'sp-forward-slurp-sexp)
-  (defvimkey "C-{" 'sp-backward-barf-sexp)
-  (defvimkey "C-}" 'sp-forward-barf-sexp)
-
   (define-key evil-visual-state-map (kbd "<")
     (lambda ()
       (interactive)
@@ -132,11 +125,6 @@ before layers configuration."
                          96 :width normal :foundry
                          "unknown" :family "DejaVu Sans Mono"))))
  '(border ((t (:background "black"))))
- '(ein:cell-input-area ((((class color) (background dark)) nil)))
- '(ein:cell-input-prompt ((t (:inherit header-line :background "black"
-                                       :foreground "gray30"))))
- '(ein:cell-output-prompt ((t (:inherit header-line :background "black"
-                                        :foreground "gray30"))))
  '(mode-line ((t (:background "none" :foreground "#f6f3e8")))))
 
 (defun defvimkey (name binding)
@@ -148,15 +136,14 @@ before layers configuration."
   (auto-fill-mode 1)
   (smartparens-mode 1))
 
-(defun kill-start-of-line ()
-  "Kill from point to start of line"
-  (interactive)
-  (kill-line 0))
-
 (defun dotspacemacs/config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
-layers configuration.")
+layers configuration."
+  (define-key evil-insert-state-map (kbd "C-u")
+    (lambda ()
+      (interactive)
+      (kill-line 0))))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

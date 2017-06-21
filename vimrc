@@ -1,5 +1,5 @@
 set foldenable foldcolumn=0 foldlevel=10
-set expandtab shiftwidth=2
+set expandtab shiftwidth=2 tabstop=2
 set autoindent
 set mouse=a
 set nowrap nojoinspaces
@@ -24,6 +24,10 @@ let perl_extended_vars=1
 
 if has('gui')
   set guioptions=Pc
+endif
+
+if &term == "screen"
+  set term=rxvt-unicode-256color
 endif
 
 hi Folded      ctermbg=none
