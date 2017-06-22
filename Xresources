@@ -6,7 +6,7 @@ Xft.hinting: true
 Xft.hintstyle: hintnone
 Xft.rgba: rgb
 
-URxvt.perl-ext-common: default,clipboard
+URxvt.perl-ext-common: default,clipboard,font-size
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0000/d000
 URxvt.borderLess: true
@@ -15,6 +15,13 @@ URxvt.externalBorder: 0
 URxvt*visualBell: false
 URxvt*scrollTtyOutput: false
 URxvt*scrollTtyKeypress: true
+
+URxvt.keysym.C-minus: font-size:decrease
+URxvt.keysym.C-plus:  font-size:increase
+URxvt.keysym.C-equal: font-size:show
+URxvt.font-size.step: 2
+
+URxvt*print-pipe: cat > /dev/null
 
 URxvt.keysym.Control-Up: \033[1;5A
 URxvt.keysym.Control-Down: \033[1;5B
