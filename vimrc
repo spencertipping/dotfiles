@@ -63,4 +63,7 @@ hi DiffText   ctermfg=8 ctermbg=none cterm=bold
 hi link markdownH1 Comment
 hi link markdownH2 Comment
 hi link markdownH3 Comment
+hi link markdownH4 Comment
+hi link markdownH5 Comment
+hi link markdownH6 Comment
 hi link markdownHeadingDelimiter Comment
