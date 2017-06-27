@@ -33,18 +33,18 @@ endif
 hi Folded      ctermbg=none
 hi FoldColumn  ctermbg=none
 
-hi Todo        ctermfg=5 ctermbg=3
+hi Todo        ctermfg=4 ctermbg=none cterm=bold
 
 hi LineNr      ctermfg=3
 hi Keyword     ctermfg=3 cterm=bold
-hi Operator    ctermfg=3 cterm=bold
-hi Conditional ctermfg=3 cterm=bold
-hi Label       ctermfg=3 cterm=bold
-hi Exception   ctermfg=3 cterm=bold
-hi Repeat      ctermfg=3 cterm=bold
+hi Operator    ctermfg=3
+hi Conditional ctermfg=3
+hi Label       ctermfg=3
+hi Exception   ctermfg=3
+hi Repeat      ctermfg=3
 hi Statement   ctermfg=3 cterm=bold
 
-hi Comment     ctermfg=4
+hi Comment     ctermfg=4 cterm=italic
 hi Special     ctermfg=5
 hi Constant    ctermfg=1
 

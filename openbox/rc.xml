@@ -30,16 +30,15 @@
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
 
+    <!-- Window operations -->
     <keybind key='W-v'><action name='ToggleMaximizeVert'></action></keybind>
     <keybind key='W-g'><action name='ToggleMaximizeHorz'></action></keybind>
     <keybind key='W-s'><action name='ToggleOmnipresent'></action></keybind>
     <keybind key="W-d"><action name="ToggleShowDesktop"/></keybind>
+    <keybind key="A-F4"><action name="Close"/></keybind>
+    <keybind key="A-space"><action name="ShowMenu"><menu>client-menu</menu></action></keybind>
 
-    <keybind key='W-S-v'><action name='GrowToEdge'>
-      <direction>south</direction></action></keybind>
-    <keybind key='W-C-v'><action name='GrowToEdge'>
-      <direction>north</direction></action></keybind>
-
+    <!-- Fixed locations -->
     <keybind key='W-8'><action name='MoveResizeTo'>
       <x>48</x><y>14</y><height>728</height></action></keybind>
     <keybind key='W-9'><action name='MoveResizeTo'>
@@ -60,33 +59,7 @@
     <keybind key='W-S-slash'><action name='MoveResizeTo'>
       <x>1118</x><y>496</y></action></keybind>
 
-    <keybind key='W-bracketleft'><action name='Execute'>
-      <command>terminal-opacity 0.05</command></action></keybind>
-    <keybind key='W-C-bracketleft'><action name='Execute'>
-      <command>terminal-opacity 0.5</command></action></keybind>
-    <keybind key='W-C-S-bracketleft'><action name='Execute'>
-      <command>terminal-opacity 0.7</command></action></keybind>
-    <keybind key='W-S-bracketleft'><action name='Execute'>
-      <command>terminal-opacity 0.8</command></action></keybind>
-
-    <keybind key='C-W-h'><action name='MoveRelative'><x>-404</x></action></keybind>
-    <keybind key='C-W-j'><action name='MoveRelative'><y>244</y></action></keybind>
-    <keybind key='C-W-k'><action name='MoveRelative'><y>-244</y></action></keybind>
-    <keybind key='C-W-l'><action name='MoveRelative'><x>404</x></action></keybind>
-
-    <keybind key='A-W-h'><action name='MoveRelative'><x>-101</x></action></keybind>
-    <keybind key='A-W-j'><action name='MoveRelative'><y>61</y></action></keybind>
-    <keybind key='A-W-k'><action name='MoveRelative'><y>-61</y></action></keybind>
-    <keybind key='A-W-l'><action name='MoveRelative'><x>101</x></action></keybind>
-
-    <keybind key='W-e'><action name='MoveResizeTo'>
-      <!-- 80 columns -->
-      <width client='yes'>482</width></action></keybind>
-
-    <keybind key='W-S-e'><action name='MoveResizeTo'>
-      <!-- 242 columns -->
-      <width client='yes'>1154</width></action></keybind>
-
+    <!-- Misc integration -->
     <keybind key='W-S-d'><action name='Execute'>
       <command>toggle-process conky</command></action></keybind>
 
@@ -95,11 +68,11 @@
     <keybind key='W-S-n'><action name='Execute'>
       <command>synclient TouchpadOff=0</command></action></keybind>
 
+    <!-- Audio -->
     <keybind key='W-Down'>
       <action name='Execute'><command>vol-delta -5</command></action></keybind>
     <keybind key='W-Up'>
       <action name='Execute'><command>vol-delta 5</command></action></keybind>
-
     <keybind key='W-S-Left'><action name='Execute'>
       <command>vol-absolute 0</command></action></keybind>
     <keybind key='W-S-Right'><action name='Execute'>
@@ -109,6 +82,7 @@
     <keybind key='W-Right'><action name='Execute'>
       <command>vol-absolute 41</command></action></keybind>
 
+    <!-- App integrations -->
     <keybind key="W-t"><action name="Execute">
       <command>urxvt</command></action></keybind>
 
@@ -123,6 +97,7 @@
     <keybind key='W-S-a'><action name='Execute'>
       <command>transset -n Audacious 0.1</command></action></keybind>
 
+    <!-- Backgrounds -->
     <keybind key='W-S-b'><action name='Execute'>
       <command>/home/spencertipping/bin/mdb</command></action></keybind>
     <keybind key='W-b'>
@@ -271,6 +246,7 @@
       <keybind key='S-t'><action name='Execute'><command>mdb rail3</command></action></keybind>
     </keybind>
 
+    <!-- Power -->
     <keybind key="W-q"><action name="Execute">
       <command>xscreensaver-command -lock</command></action></keybind>
     <keybind key="W-S-q"><action name="Execute">
@@ -282,6 +258,7 @@
     <keybind key='W-S-p'><action name='Execute'>
       <command>toggle alert-stay-on</command></action></keybind>
 
+    <!-- xsel -->
     <keybind key='W-r'><action name='Execute'>
       <command>/home/spencertipping/bin/rb</command></action></keybind>
     <keybind key='W-S-r'>
@@ -310,11 +287,6 @@
     <keybind key="S-W-l"><action name="SendToDesktopRight"/></keybind>
     <keybind key="S-W-k"><action name="SendToDesktopUp"/></keybind>
     <keybind key="S-W-j"><action name="SendToDesktopDown"/></keybind>
-
-    <!-- Keybindings for windows -->
-    <keybind key="A-F4"><action name="Close"/></keybind>
-    <keybind key="A-space"><action name="ShowMenu">
-      <menu>client-menu</menu></action></keybind>
 
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab"><action name="NextWindow"/></keybind>

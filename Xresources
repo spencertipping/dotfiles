@@ -6,11 +6,11 @@ Xft.hinting: true
 Xft.hintstyle: hintnone
 Xft.rgba: rgb
 
-URxvt.perl-ext-common: default,clipboard,font-size
+URxvt.perl-ext-common: default,clipboard,font-size,transparency
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0000/d000
 URxvt.borderLess: true
-URxvt.internalBorder: 1
+URxvt.internalBorder: 0
 URxvt.externalBorder: 0
 URxvt*visualBell: false
 URxvt*scrollTtyOutput: false
@@ -20,6 +20,13 @@ URxvt.keysym.C-minus: font-size:decrease
 URxvt.keysym.C-plus:  font-size:increase
 URxvt.keysym.C-equal: font-size:show
 URxvt.font-size.step: 2
+
+URxvt.keysym.C-M-1: transparency:alpha=1000
+URxvt.keysym.C-M-2: transparency:alpha=4000
+URxvt.keysym.C-M-3: transparency:alpha=8000
+URxvt.keysym.C-M-4: transparency:alpha=b000
+URxvt.keysym.C-M-5: transparency:alpha=d000
+URxvt.transparency.bgcolor: rgba:0000/0000/0000/XXXX
 
 URxvt*print-pipe: cat > /dev/null
 
@@ -42,8 +49,29 @@ URxvt.foreground: rgba:ffff/ffff/ffff/ffff
 URxvt*lineSpace: -1
 URxvt*letterSpace: -2
 
-! Desert color scheme
+! Wombat color scheme, modified slightly
 #if 1
+URxvt*color0: #f6f3e8
+URxvt*color1: #e5786d
+URxvt*color2: #aac97b
+URxvt*color3: #8ac6f2
+URxvt*color4: #a9a69b
+URxvt*color5: #e7f6da
+URxvt*color6: #cae682
+URxvt*color7: #8f8f8f
+
+URxvt*color8: #99968b
+URxvt*color9: #e5786d
+URxvt*color10: #aac97b
+URxvt*color11: #8ac6f2
+URxvt*color12: #a9a69b
+URxvt*color13: #e7f6da
+URxvt*color14: #cae682
+URxvt*color15: #8f8f8f
+#endif
+
+! Desert color scheme
+#if 0
 URxvt*color0: #ffffff
 URxvt*color1: #ffa0a0
 URxvt*color2: #bdb76b

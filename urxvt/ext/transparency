@@ -1,0 +1,15 @@
+#!/usr/bin/env perl
+# On-the-fly background transparency adjustment in urxvt
+
+use strict;
+use warnings;
+
+sub on_start
+{ my $self = shift;
+  $$self{bgcolor} = $self->x_resource('bgcolor') || 'rgba:0000/0000/0000/XXXX' }
+
+sub on_action
+{ my ($self, $action) = @_;
+  return unless $action =~ s/^alpha=([0-9a-fA-F]{4})$/$1/;
+  (my $new_bg = $$self{bgcolor}) =~ s/XXXX/$action/;
+  $self->cmd_parse("\033]11;$new_bg\x9c") }
