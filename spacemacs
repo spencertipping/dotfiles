@@ -97,7 +97,7 @@ before layers configuration."
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    ;; The command key used for Evil commands (ex-commands) and
    ;; Emacs commands (M-x).
-   ;; By default the command key is `:' so ex-com)
+   ;; By default the command key is `:' so ex-com
    )
 
   (define-key evil-normal-state-map (kbd "C-+") 'text-scale-increase)
@@ -118,14 +118,14 @@ before layers configuration."
       (evil-visual-restore))))
 
 (custom-set-faces
- '(default ((t (:inherit nil :stipple nil :background "none" :foreground
+ '(default ((t (:inherit nil :stipple nil :background nil :foreground
                          "#f6f6f6" :inverse-video nil :box nil :strike-through
                          nil :overline nil
                          :underline nil :slant normal :weight normal :height
                          96 :width normal :foundry
                          "unknown" :family "DejaVu Sans Mono"))))
  '(border ((t (:background "black"))))
- '(mode-line ((t (:background "none" :foreground "#f6f3e8")))))
+ '(mode-line ((t (:background nil :foreground "#f6f3e8")))))
 
 (defun defvimkey (name binding)
   (define-key evil-normal-state-map (kbd name) binding)

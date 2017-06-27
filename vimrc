@@ -21,6 +21,7 @@ map q :x<CR>
 map Q :xa<CR>
 
 let perl_extended_vars=1
+let g:markdown_fenced_languages = ["perl", "sh"]
 
 if has('gui')
   set guioptions=Pc
@@ -59,11 +60,7 @@ hi DiffChange ctermfg=6 ctermbg=none cterm=bold
 hi DiffDelete ctermfg=1 ctermbg=none cterm=bold
 hi DiffText   ctermfg=8 ctermbg=none cterm=bold
 
-hi link markdownValid Comment
-hi link markdownLineStart Comment
-hi link markdownH1 Special
-hi link markdownH2 Special
-hi link markdownH3 Special
-hi link markdownH4 Special
-hi link markdownH5 Special
-hi link markdownH6 Special
+hi link markdownH1 Comment
+hi link markdownH2 Comment
+hi link markdownH3 Comment
+hi link markdownHeadingDelimiter Comment

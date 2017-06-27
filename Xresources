@@ -6,7 +6,7 @@ Xft.hinting: true
 Xft.hintstyle: hintnone
 Xft.rgba: rgb
 
-URxvt.perl-ext-common: default,clipboard,font-size,transparency
+URxvt.perl-ext-common: default,font-size,transparency
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0000/d000
 URxvt.borderLess: true
