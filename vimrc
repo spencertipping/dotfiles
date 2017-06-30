@@ -60,10 +60,14 @@ hi DiffChange ctermfg=6 ctermbg=none cterm=bold
 hi DiffDelete ctermfg=1 ctermbg=none cterm=bold
 hi DiffText   ctermfg=8 ctermbg=none cterm=bold
 
-hi link markdownH1 Comment
-hi link markdownH2 Comment
-hi link markdownH3 Comment
-hi link markdownH4 Comment
-hi link markdownH5 Comment
-hi link markdownH6 Comment
-hi link markdownHeadingDelimiter Comment
+hi markdownHeadingThing ctermfg=4 cterm=bold
+
+hi link markdownH1 markdownHeadingThing
+hi link markdownH2 markdownHeadingThing
+hi link markdownH3 markdownHeadingThing
+hi link markdownH4 markdownHeadingThing
+hi link markdownH5 markdownHeadingThing
+hi link markdownH6 markdownHeadingThing
+hi link markdownHeadingDelimiter markdownHeadingThing
+hi link markdownCodeDelimiter Comment
+hi link markdownCode Special
