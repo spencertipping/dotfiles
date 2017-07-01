@@ -1,5 +1,5 @@
 set foldenable foldcolumn=0 foldlevel=10
-set expandtab shiftwidth=2 tabstop=2
+set expandtab shiftwidth=2 tabstop=8
 set autoindent
 set mouse=a
 set nowrap nojoinspaces
