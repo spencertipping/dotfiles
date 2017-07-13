@@ -8,7 +8,7 @@ Xft.rgba: rgb
 
 URxvt.perl-ext-common: default,font-size,transparency
 URxvt.depth: 32
-URxvt.background: rgba:0000/0000/0000/d000
+URxvt.background: rgba:0000/0000/0000/4000
 URxvt.borderLess: true
 URxvt.internalBorder: 0
 URxvt.externalBorder: 0
@@ -39,7 +39,7 @@ URxvt.geometry: 80x20
 
 URxvt.scrollBar: false
 URxvt.thickness: 2
-URxvt.font: xft:Ubuntu Mono:size=14:hinting=none
+URxvt.font: xft:Ubuntu Mono:size=10:hinting=none
 
 URxvt*saveLines: 65536
 URxvt*borderless: true
