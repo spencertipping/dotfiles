@@ -21,7 +21,7 @@ map q :x<CR>
 map Q :xa<CR>
 
 let perl_extended_vars=1
-let g:markdown_fenced_languages = ["perl", "sh"]
+let g:markdown_fenced_languages = ["perl", "sh", "c", "ocaml"]
 
 if has('gui')
   set guioptions=Pc

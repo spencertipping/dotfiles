@@ -97,6 +97,12 @@
     <keybind key='W-S-a'><action name='Execute'>
       <command>transset -n Audacious 0.1</command></action></keybind>
 
+    <!-- Home automation -->
+    <keybind key='W-e'>
+      <keybind key='o'><action name='Execute'><command>curl http://192.168.0.34:8180/0</command></action></keybind>
+      <keybind key='f'><action name='Execute'><command>curl http://192.168.0.34:8180/4</command></action></keybind>
+      <keybind key='h'><action name='Execute'><command>curl http://192.168.0.34:8180/5</command></action></keybind></keybind>
+
     <!-- Backgrounds -->
     <keybind key='W-S-b'><action name='Execute'>
       <command>/home/spencertipping/bin/mdb</command></action></keybind>

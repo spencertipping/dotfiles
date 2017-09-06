@@ -8,7 +8,7 @@ Xft.rgba: rgb
 
 URxvt.perl-ext-common: default,font-size,transparency
 URxvt.depth: 32
-URxvt.background: rgba:0000/0000/0000/4000
+URxvt.background: rgba:0000/0000/0000/c000
 URxvt.borderLess: true
 URxvt.internalBorder: 0
 URxvt.externalBorder: 0
