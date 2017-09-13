@@ -301,6 +301,13 @@
 
     <keybind key="W-space">
       <action name="ShowMenu"><menu>root-menu</menu></action></keybind>
+
+    <!-- Automation -->
+    <keybind key='W-C-l'>
+      <keybind key='a'><action name='Execute'><command>/home/spencertipping/bin/lab azc</command></action></keybind>
+      <keybind key='x'><action name='Execute'><command>/home/spencertipping/bin/lab xrc</command></action></keybind>
+      <keybind key='o'><action name='Execute'><command>/home/spencertipping/bin/lab ric</command></action></keybind>
+    </keybind>
   </keyboard>
 
   <mouse>
