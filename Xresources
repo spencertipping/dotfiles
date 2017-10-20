@@ -26,6 +26,8 @@ URxvt.keysym.C-M-2: transparency:alpha=4000
 URxvt.keysym.C-M-3: transparency:alpha=8000
 URxvt.keysym.C-M-4: transparency:alpha=b000
 URxvt.keysym.C-M-5: transparency:alpha=d000
+URxvt.keysym.C-M-6: transparency:alpha=e000
+URxvt.keysym.C-M-7: transparency:alpha=f000
 URxvt.transparency.bgcolor: rgba:0000/0000/0000/XXXX
 
 URxvt*print-pipe: cat > /dev/null
@@ -49,8 +51,74 @@ URxvt.foreground: rgba:ffff/ffff/ffff/ffff
 URxvt*lineSpace: -1
 URxvt*letterSpace: -2
 
-! Wombat color scheme, modified slightly
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: true
+
+! Indicator color scheme
+#if 0
+URxvt*color0: gray
+URxvt*color1: red
+URxvt*color2: orange
+URxvt*color3: yellow
+URxvt*color4: green
+URxvt*color5: cyan
+URxvt*color6: blue
+URxvt*color7: purple
+
+URxvt*color8: DarkSlateGray
+URxvt*color9: coral1
+URxvt*color10: burlywood
+URxvt*color11: beige
+URxvt*color12: OliveDrab1
+URxvt*color13: SpringGreen1
+URxvt*color14: CadetBlue1
+URxvt*color15: DarkOrchid
+#endif
+
+! Photo color scheme
+#if 0
+URxvt*color0: #a0a0a0
+URxvt*color1: #ffffff
+URxvt*color2: #808080
+URxvt*color3: #c8c8c8
+URxvt*color4: #babbbb
+URxvt*color5: #696e71
+URxvt*color6: #d8d8d8
+URxvt*color7: #686868
+
+URxvt*color8: #ffffff
+URxvt*color9: #e0e0e0
+URxvt*color10: #e8e8e8
+URxvt*color11: #a0a0a0
+URxvt*color12: #f4f5f7
+URxvt*color13: #b0b0b0
+URxvt*color14: #979491
+URxvt*color15: #ffffff
+#endif
+
+! Mono color scheme (WIP)
 #if 1
+URxvt*color0: #a0a0a0
+URxvt*color1: #ffffff
+URxvt*color2: #808080
+URxvt*color3: #c8c8c8
+URxvt*color4: #70b070
+URxvt*color5: #90a8c0
+URxvt*color6: #d8d8d8
+URxvt*color7: #686868
+
+URxvt*color8: #ffffff
+URxvt*color9: #e0e0e0
+URxvt*color10: #e8e8e8
+URxvt*color11: #a0a0a0
+URxvt*color12: #f4c590
+URxvt*color13: #b0b0b0
+URxvt*color14: #7088b0
+URxvt*color15: #ffffff
+#endif
+
+! Wombat color scheme, modified slightly
+#if 0
 URxvt*color0: #f6f3e8
 URxvt*color1: #e5786d
 URxvt*color2: #aac97b
@@ -111,6 +179,3 @@ URxvt*color13: #dfc9de
 URxvt*color14: #f4e6ab
 URxvt*color15: #caccc9
 #endif
-
-URxvt*cursorBlink: true
-URxvt*cursorUnderline: true

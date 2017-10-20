@@ -31,34 +31,15 @@ if &term == "screen"
   set term=rxvt-unicode-256color
 endif
 
-hi Folded      ctermbg=none
-hi FoldColumn  ctermbg=none
+hi Normal       ctermfg=0
+hi Comment      cterm=italic
+hi LineNr       ctermfg=8
+hi CursorLineNr ctermfg=8
+hi Statement    ctermfg=2
+hi Type         ctermfg=8
 
-hi Todo        ctermfg=4 ctermbg=none cterm=bold
-
-hi LineNr      ctermfg=3
-hi Keyword     ctermfg=3 cterm=bold
-hi Operator    ctermfg=3
-hi Conditional ctermfg=3
-hi Label       ctermfg=3
-hi Exception   ctermfg=3
-hi Repeat      ctermfg=3
-hi Statement   ctermfg=3 cterm=bold
-
-hi Comment     ctermfg=4 cterm=italic
-hi Special     ctermfg=5
-hi Constant    ctermfg=1
-
-hi SpecialKey  ctermfg=0 cterm=bold
-
-hi StatusLine   ctermbg=15 ctermfg=4 cterm=none
-hi StatusLineNC ctermbg=15 ctermfg=0 cterm=none
-hi VertSplit    ctermbg=15 ctermfg=4 cterm=none
-
-hi DiffAdd    ctermfg=4 ctermbg=none cterm=bold
-hi DiffChange ctermfg=6 ctermbg=none cterm=bold
-hi DiffDelete ctermfg=1 ctermbg=none cterm=bold
-hi DiffText   ctermfg=8 ctermbg=none cterm=bold
+hi perlSubName  ctermfg=12
+hi perlOperator ctermfg=4
 
 hi markdownHeadingThing ctermfg=4 cterm=bold
 
