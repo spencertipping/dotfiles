@@ -27,16 +27,30 @@ if has('gui')
   set guioptions=Pc
 endif
 
+augroup vimrc_todo
+  au!
+  au Syntax * syn match TodoExtra /\v<(NB|WARNING|Q):|\v<(\d+)\./
+     \ containedin=.*Comment,vimCommentTitle,perlPOD
+augroup END
+
+hi def link TodoExtra Todo
+
 if &term == "screen"
   set term=rxvt-unicode-256color
+  hi Comment cterm=none
+else
+  hi Comment cterm=italic
 endif
 
 hi Normal       ctermfg=0
-hi Comment      cterm=italic
 hi LineNr       ctermfg=8
 hi CursorLineNr ctermfg=8
 hi Statement    ctermfg=2
 hi Type         ctermfg=8
+
+hi NonText      ctermfg=2 cterm=none
+
+hi Todo         ctermfg=12 ctermbg=none cterm=italic
 
 hi perlSubName  ctermfg=12
 hi perlOperator ctermfg=4
