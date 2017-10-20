@@ -29,11 +29,9 @@ endif
 
 augroup vimrc_todo
   au!
-  au Syntax * syn match TodoExtra /\v<(NB|WARNING|Q):|\v<(\d+)\./
-     \ containedin=.*Comment,vimCommentTitle,perlPOD
+  au Syntax * syn match TodoExtra /\v<(NB|WARNING|Q):|\v<(\d+)\. /
+     \ contained containedin=.*Comment,vimCommentTitle,perlPOD
 augroup END
-
-hi def link TodoExtra Todo
 
 if &term == "screen"
   set term=rxvt-unicode-256color
@@ -41,6 +39,8 @@ if &term == "screen"
 else
   hi Comment cterm=italic
 endif
+
+hi def link TodoExtra Todo
 
 hi Normal       ctermfg=0
 hi LineNr       ctermfg=8
