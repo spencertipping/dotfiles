@@ -41,7 +41,7 @@ URxvt.geometry: 80x20
 
 URxvt.scrollBar: false
 URxvt.thickness: 2
-URxvt.font: xft:Ubuntu Mono:size=10:hinting=none
+URxvt.font: xft:Ubuntu Mono:size=14:hinting=none
 
 URxvt*saveLines: 65536
 URxvt*borderless: true
@@ -102,7 +102,7 @@ URxvt*color0: #a0a0a0
 URxvt*color1: #ffffff
 URxvt*color2: #808080
 URxvt*color3: #c8c8c8
-URxvt*color4: #70b070
+URxvt*color4: #80b880
 URxvt*color5: #90a8c0
 URxvt*color6: #d8d8d8
 URxvt*color7: #686868

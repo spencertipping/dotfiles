@@ -14,6 +14,7 @@ set shortmess=atI
 set history=1000
 set list listchars=tab:>-,trail:.
 set fillchars+=vert:·
+set textwidth=80
 
 vnoremap <C-c> "+y
 
@@ -47,13 +48,15 @@ hi LineNr       ctermfg=8
 hi CursorLineNr ctermfg=8
 hi Statement    ctermfg=2
 hi Type         ctermfg=8
+hi SpecialKey   ctermfg=7
 
 hi NonText      ctermfg=2 cterm=none
 
 hi Todo         ctermfg=12 ctermbg=none cterm=italic
 
-hi perlSubName  ctermfg=12
-hi perlOperator ctermfg=4
+hi perlSubName     ctermfg=12
+hi perlConditional ctermfg=5
+hi perlRepeat      ctermfg=5
 
 hi markdownHeadingThing ctermfg=4 cterm=bold
 
