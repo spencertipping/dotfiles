@@ -34,6 +34,8 @@ augroup vimrc_todo
      \ contained containedin=.*Comment,vimCommentTitle,perlPOD
 augroup END
 
+au BufNew,BufReadPost *.md syn sync fromstart
+
 if &term == "screen"
   set term=rxvt-unicode-256color
   hi Comment cterm=none
@@ -69,3 +71,5 @@ hi link markdownH6 markdownHeadingThing
 hi link markdownHeadingDelimiter markdownHeadingThing
 hi link markdownCodeDelimiter Comment
 hi link markdownCode Special
+
+autocmd BufReadPost,BufNew *.phi set syntax=perl
