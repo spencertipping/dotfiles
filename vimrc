@@ -35,6 +35,8 @@ augroup vimrc_todo
 augroup END
 
 au BufNew,BufReadPost *.md syn sync fromstart
+au BufNew,BufReadPost *.pm syn sync fromstart
+au BufNew,BufReadPost *.pl syn sync fromstart
 
 if &term == "screen"
   set term=rxvt-unicode-256color
