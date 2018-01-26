@@ -76,11 +76,6 @@
     <keybind key='W-S-d'><action name='Execute'>
       <command>toggle-process conky</command></action></keybind>
 
-    <keybind key='W-n'><action name='Execute'>
-      <command>synclient TouchpadOff=1</command></action></keybind>
-    <keybind key='W-S-n'><action name='Execute'>
-      <command>synclient TouchpadOff=0</command></action></keybind>
-
     <!-- Audio -->
     <keybind key='W-Down'>
       <action name='Execute'><command>vol-delta -5</command></action></keybind>
@@ -1097,7 +1092,7 @@
     <keybind key='W-i'><action name='GoToDesktop'><to>24</to></action></keybind>
     <keybind key='W-o'><action name='GoToDesktop'><to>37</to></action></keybind>
     <keybind key='W-m'><action name='GoToDesktop'><to>54</to></action></keybind>
-    <keybind key='W-S-m'><action name='GoToDesktop'><to>42</to></action></keybind>
+    <keybind key='W-n'><action name='GoToDesktop'><to>42</to></action></keybind>
     <keybind key='W-comma'><action name='GoToDesktop'><to>67</to></action></keybind>
 
     <keybind key="W-h"><action name="DesktopLeft"/></keybind>
