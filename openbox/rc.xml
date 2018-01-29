@@ -72,6 +72,11 @@
     <keybind key='W-C-k'><action name='MoveRelative'><x>0</x><y>-8</y></action></keybind>
     <keybind key='W-C-l'><action name='MoveRelative'><x>8</x><y>0</y></action></keybind>
 
+    <keybind key='W-C-S-h'><action name='ResizeRelative'><right>-8</right></action></keybind>
+    <keybind key='W-C-S-j'><action name='ResizeRelative'><bottom>8</bottom></action></keybind>
+    <keybind key='W-C-S-k'><action name='ResizeRelative'><bottom>-8</bottom></action></keybind>
+    <keybind key='W-C-S-l'><action name='ResizeRelative'><right>8</right></action></keybind>
+
     <!-- Misc integration -->
     <keybind key='W-S-d'><action name='Execute'>
       <command>toggle-process conky</command></action></keybind>
