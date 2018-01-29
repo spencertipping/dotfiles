@@ -9,7 +9,8 @@ init_session() {
             VertTwoFingerScroll=1 \
             HorizTwoFingerScroll=1 \
             RTCornerButton=0 \
-            RBCornerButton=0
+            RBCornerButton=0 \
+            TouchpadOff=1
   xrdb ~/.Xresources
   lxsession &
   xcompmgr &
