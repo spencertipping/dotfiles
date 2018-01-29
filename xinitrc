@@ -23,4 +23,11 @@ init_session() {
 
 sleep 2 && init_session
 
+case $HOSTNAME in
+iniidae)
+  # Work around Lenovo's pathological End/Insert key overloading on the X250
+  xmodmap -e 'keycode 118 = End'
+  ;;
+esac
+
 wait $wm_pid
