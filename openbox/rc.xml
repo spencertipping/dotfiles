@@ -31,9 +31,9 @@
     <chainQuitKey>C-g</chainQuitKey>
 
     <!-- Window operations -->
-    <keybind key='W-v'><action name='ToggleMaximizeVert'></action></keybind>
-    <keybind key='W-g'><action name='ToggleMaximizeHorz'></action></keybind>
-    <keybind key='W-s'><action name='ToggleOmnipresent'></action></keybind>
+    <keybind key='W-v'><action name='ToggleMaximize'><direction>vertical</direction></action></keybind>
+    <keybind key='W-g'><action name='ToggleMaximize'><direction>horizontal</direction></action></keybind>
+    <keybind key='W-s'><action name='ToggleOmnipresent'/></keybind>
     <keybind key="W-d"><action name="ToggleShowDesktop"/></keybind>
     <keybind key="A-F4"><action name="Close"/></keybind>
     <keybind key="A-space"><action name="ShowMenu"><menu>client-menu</menu></action></keybind>
@@ -94,6 +94,17 @@
       <command>vol-absolute 24</command></action></keybind>
     <keybind key='W-Right'><action name='Execute'>
       <command>vol-absolute 41</command></action></keybind>
+
+    <!-- Backlight (for machines where hardware keys aren't supported) -->
+    <keybind key='W-C-Left'><action name='Execute'>
+      <command>backlight 100</command></action></keybind>
+    <keybind key='W-C-Right'><action name='Execute'>
+      <command>backlight 852</command></action></keybind>
+
+    <keybind key='W-C-Up'><action name='Execute'>
+      <command>backlight +50</command></action></keybind>
+    <keybind key='W-C-Down'><action name='Execute'>
+      <command>backlight -50</command></action></keybind>
 
     <!-- App integrations -->
     <keybind key="W-t"><action name="Execute">

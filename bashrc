@@ -4,6 +4,8 @@
 hat_identity() { :; }
 hat_observe()  { :; }
 
+[[ -d ~/.bash ]] || git clone git://github.com/spencertipping/dotbash ~/.bash
+
 source ~/.bash/init
 
 # Source any machine-specific aliases if we have them
