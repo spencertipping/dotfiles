@@ -15,7 +15,7 @@ sub on_start
 {
   my $self = shift;
   $$self{bgopacity}  = $self->x_resource('bgopacity')  || 'c000';
-  $$self{bguopacity} = $self->x_resource('bguopacity') || 'c000';
+  $$self{bguopacity} = $self->x_resource('bguopacity') || '4000';
   $$self{bgcolor}    = $self->x_resource('bgcolor')    || 'rgba:0000/0000/0000/XXXX';
 
   set_bg_opacity $self, $$self{bgopacity};
@@ -30,7 +30,9 @@ sub on_action
 
   if ($k eq 'alpha')
   {
-    $$self{bgopacity} = $$self{bguopacity} = $v;
+    my $sync = $$self{bgopacity} eq $$self{bguopacity};
+    $$self{bgopacity} = $v;
+    $$self{bguopacity} = $$self{bgopacity} if $sync;
     set_bg_opacity $self, $v;
   }
   elsif ($k eq 'ualpha')

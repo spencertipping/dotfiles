@@ -39,7 +39,9 @@ URxvt.keysym.C-M-percent:     transparency:ualpha=d000
 URxvt.keysym.C-M-asciicircum: transparency:ualpha=e000
 URxvt.keysym.C-M-ampersand:   transparency:ualpha=f000
 
-URxvt.transparency.bgcolor: rgba:0000/0000/0000/XXXX
+URxvt.transparency.bgcolor:    rgba:0000/0000/0000/XXXX
+URxvt.transparency.bgopacity:  c000
+URxvt.transparency.bguopacity: 4000
 
 URxvt*print-pipe: cat > /dev/null
 
@@ -57,6 +59,7 @@ URxvt.font: xft:Ubuntu Mono:size=14:hinting=none
 URxvt*saveLines: 65536
 URxvt*borderless: true
 
+URxvt.background: rgba:0000/0000/0000/c000
 URxvt.foreground: rgba:ffff/ffff/ffff/ffff
 
 URxvt*lineSpace: -5
@@ -97,8 +100,8 @@ URxvt*color5: #90a8c0
 URxvt*color6: #d8d8d8
 URxvt*color7: #686868
 
-URxvt*color8: #ffffff
-URxvt*color9: #e0e0e0
+URxvt*color8:  #ffffff
+URxvt*color9:  #e0e0e0
 URxvt*color10: #e8e8e8
 URxvt*color11: #a0a0a0
 URxvt*color12: #f4c590

@@ -47,25 +47,25 @@
       <x>1048</x><y>14</y><height>662</height></action></keybind>
 
     <keybind key='W-bracketleft'><action name='MoveResizeTo'>
-      <x>156</x><y>36</y></action></keybind>
+      <x>-816</x><y>14</y></action></keybind>
     <keybind key='W-bracketright'><action name='MoveResizeTo'>
-      <x>638</x><y>36</y></action></keybind>
+      <x>-408</x><y>14</y></action></keybind>
     <keybind key='W-S-bracketright'><action name='MoveResizeTo'>
-      <x>1120</x><y>36</y></action></keybind>
+      <x>-0</x><y>14</y></action></keybind>
 
     <keybind key='W-semicolon'><action name='MoveResizeTo'>
-      <x>156</x><y>298</y></action></keybind>
+      <x>-816</x><y>320</y></action></keybind>
     <keybind key='W-apostrophe'><action name='MoveResizeTo'>
-      <x>638</x><y>298</y></action></keybind>
+      <x>-408</x><y>320</y></action></keybind>
     <keybind key='W-S-apostrophe'><action name='MoveResizeTo'>
-      <x>1120</x><y>298</y></action></keybind>
+      <x>-0</x><y>320</y></action></keybind>
 
     <keybind key='W-period'><action name='MoveResizeTo'>
-      <x>156</x><y>560</y></action></keybind>
+      <x>-816</x><y>626</y></action></keybind>
     <keybind key='W-slash'><action name='MoveResizeTo'>
-      <x>638</x><y>560</y></action></keybind>
+      <x>-408</x><y>626</y></action></keybind>
     <keybind key='W-S-slash'><action name='MoveResizeTo'>
-      <x>1120</x><y>560</y></action></keybind>
+      <x>-0</x><y>626</y></action></keybind>
 
     <keybind key='W-C-h'><action name='MoveRelative'><x>-8</x><y>0</y></action></keybind>
     <keybind key='W-C-j'><action name='MoveRelative'><x>0</x><y>8</y></action></keybind>
