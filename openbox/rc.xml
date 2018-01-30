@@ -40,11 +40,11 @@
 
     <!-- Fixed locations -->
     <keybind key='W-8'><action name='MoveResizeTo'>
-      <x>48</x><y>14</y><height>728</height></action></keybind>
+      <x>-936</x><y>14</y><height>400</height></action></keybind>
     <keybind key='W-9'><action name='MoveResizeTo'>
-      <x>548</x><y>14</y><height>673</height></action></keybind>
+      <x>-836</x><y>14</y><height>400</height></action></keybind>
     <keybind key='W-0'><action name='MoveResizeTo'>
-      <x>1048</x><y>14</y><height>662</height></action></keybind>
+      <x>-108</x><y>14</y><height>400</height></action></keybind>
 
     <keybind key='W-bracketleft'><action name='MoveResizeTo'>
       <x>-816</x><y>14</y></action></keybind>
