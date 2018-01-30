@@ -6,9 +6,11 @@ Xft.hinting: true
 Xft.hintstyle: hintnone
 Xft.rgba: rgb
 
+URxvt.iso14755:    false
+URxvt.iso14755_52: false
+
 URxvt.perl-ext-common: default,font-size,transparency
 URxvt.depth: 32
-URxvt.background: rgba:0000/0000/0000/c000
 URxvt.borderLess: true
 URxvt.internalBorder: 0
 URxvt.externalBorder: 0
@@ -28,6 +30,15 @@ URxvt.keysym.C-M-4: transparency:alpha=b000
 URxvt.keysym.C-M-5: transparency:alpha=d000
 URxvt.keysym.C-M-6: transparency:alpha=e000
 URxvt.keysym.C-M-7: transparency:alpha=f000
+
+URxvt.keysym.C-M-exclam:      transparency:ualpha=1000
+URxvt.keysym.C-M-at:          transparency:ualpha=4000
+URxvt.keysym.C-M-numbersign:  transparency:ualpha=8000
+URxvt.keysym.C-M-dollar:      transparency:ualpha=b000
+URxvt.keysym.C-M-percent:     transparency:ualpha=d000
+URxvt.keysym.C-M-asciicircum: transparency:ualpha=e000
+URxvt.keysym.C-M-ampersand:   transparency:ualpha=f000
+
 URxvt.transparency.bgcolor: rgba:0000/0000/0000/XXXX
 
 URxvt*print-pipe: cat > /dev/null
@@ -48,7 +59,7 @@ URxvt*borderless: true
 
 URxvt.foreground: rgba:ffff/ffff/ffff/ffff
 
-URxvt*lineSpace: -1
+URxvt*lineSpace: -5
 URxvt*letterSpace: -2
 
 URxvt*cursorBlink: true
@@ -75,27 +86,6 @@ URxvt*color14: CadetBlue1
 URxvt*color15: DarkOrchid
 #endif
 
-! Photo color scheme
-#if 0
-URxvt*color0: #a0a0a0
-URxvt*color1: #ffffff
-URxvt*color2: #808080
-URxvt*color3: #c8c8c8
-URxvt*color4: #babbbb
-URxvt*color5: #696e71
-URxvt*color6: #d8d8d8
-URxvt*color7: #686868
-
-URxvt*color8: #ffffff
-URxvt*color9: #e0e0e0
-URxvt*color10: #e8e8e8
-URxvt*color11: #a0a0a0
-URxvt*color12: #f4f5f7
-URxvt*color13: #b0b0b0
-URxvt*color14: #979491
-URxvt*color15: #ffffff
-#endif
-
 ! Mono color scheme (WIP)
 #if 1
 URxvt*color0: #a0a0a0
@@ -115,67 +105,4 @@ URxvt*color12: #f4c590
 URxvt*color13: #b0b0b0
 URxvt*color14: #7088b0
 URxvt*color15: #ffffff
-#endif
-
-! Wombat color scheme, modified slightly
-#if 0
-URxvt*color0: #f6f3e8
-URxvt*color1: #e5786d
-URxvt*color2: #aac97b
-URxvt*color3: #8ac6f2
-URxvt*color4: #a9a69b
-URxvt*color5: #e7f6da
-URxvt*color6: #cae682
-URxvt*color7: #8f8f8f
-
-URxvt*color8: #99968b
-URxvt*color9: #e5786d
-URxvt*color10: #aac97b
-URxvt*color11: #8ac6f2
-URxvt*color12: #a9a69b
-URxvt*color13: #e7f6da
-URxvt*color14: #cae682
-URxvt*color15: #8f8f8f
-#endif
-
-! Desert color scheme
-#if 0
-URxvt*color0: #ffffff
-URxvt*color1: #ffa0a0
-URxvt*color2: #bdb76b
-URxvt*color3: #f0e68c
-URxvt*color4: #87ceeb
-URxvt*color5: #cd5c5c
-URxvt*color6: #98fb98
-URxvt*color7: #969696
-
-URxvt*color8: #969696
-URxvt*color9: #ffa0a0
-URxvt*color10: #bdb76b
-URxvt*color11: #f0e68c
-URxvt*color12: #87ceeb
-URxvt*color13: #cd5c5c
-URxvt*color14: #98fb98
-URxvt*color15: #969696
-#endif
-
-! Curved Sublime color scheme
-#if 0
-URxvt*color0: #ffffff
-URxvt*color1: #e2a53e
-URxvt*color2: #dcb539
-URxvt*color3: #d5dda1
-URxvt*color4: #bdcce3
-URxvt*color5: #dfc9de
-URxvt*color6: #f4e6ab
-URxvt*color7: #caccc9
-
-URxvt*color8: #caccc9
-URxvt*color9: #e2a53e
-URxvt*color10: #dcb539
-URxvt*color11: #d5dda1
-URxvt*color12: #bdcce3
-URxvt*color13: #dfc9de
-URxvt*color14: #f4e6ab
-URxvt*color15: #caccc9
 #endif

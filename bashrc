@@ -8,6 +8,8 @@ hat_observe()  { :; }
 
 source ~/.bash/init
 
+export GPG_TTY=`tty`
+
 # Source any machine-specific aliases if we have them
 [[ -e ~/.bash_aliases ]] && source ~/.bash_aliases
 

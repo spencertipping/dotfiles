@@ -4,12 +4,49 @@
 use strict;
 use warnings;
 
+sub set_bg_opacity
+{
+  my ($self, $opacity_hex) = @_;
+  (my $new_bg = $$self{bgcolor}) =~ s/XXXX/$opacity_hex/;
+  $self->cmd_parse("\033]11;$new_bg\x9c");
+}
+
 sub on_start
-{ my $self = shift;
-  $$self{bgcolor} = $self->x_resource('bgcolor') || 'rgba:0000/0000/0000/XXXX' }
+{
+  my $self = shift;
+  $$self{bgopacity}  = $self->x_resource('bgopacity')  || 'c000';
+  $$self{bguopacity} = $self->x_resource('bguopacity') || 'c000';
+  $$self{bgcolor}    = $self->x_resource('bgcolor')    || 'rgba:0000/0000/0000/XXXX';
+
+  set_bg_opacity $self, $$self{bgopacity};
+}
 
 sub on_action
-{ my ($self, $action) = @_;
-  return unless $action =~ s/^alpha=([0-9a-fA-F]{4})$/$1/;
-  (my $new_bg = $$self{bgcolor}) =~ s/XXXX/$action/;
-  $self->cmd_parse("\033]11;$new_bg\x9c") }
+{
+  my ($self, $action) = @_;
+  my ($k, $v) = split /=/, $action;
+
+  print STDERR "k = $k, v = $v\n";
+
+  if ($k eq 'alpha')
+  {
+    $$self{bgopacity} = $$self{bguopacity} = $v;
+    set_bg_opacity $self, $v;
+  }
+  elsif ($k eq 'ualpha')
+  {
+    $$self{bguopacity} = $v;
+  }
+}
+
+sub on_focus_in
+{
+  my $self = shift;
+  set_bg_opacity $self, $$self{bgopacity};
+}
+
+sub on_focus_out
+{
+  my $self = shift;
+  set_bg_opacity $self, $$self{bguopacity};
+}
