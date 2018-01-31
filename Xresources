@@ -40,8 +40,8 @@ URxvt.keysym.C-M-asciicircum: transparency:ualpha=e000
 URxvt.keysym.C-M-ampersand:   transparency:ualpha=f000
 
 URxvt.transparency.bgcolor:    rgba:0000/0000/0000/XXXX
-URxvt.transparency.bgopacity:  c000
-URxvt.transparency.bguopacity: 4000
+URxvt.transparency.bgopacity:  d000
+URxvt.transparency.bguopacity: d000
 
 URxvt*print-pipe: cat > /dev/null
 

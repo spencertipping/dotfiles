@@ -27,6 +27,9 @@ case $HOSTNAME in
 iniidae)
   # Work around Lenovo's pathological End/Insert key overloading on the X250
   xmodmap -e 'keycode 118 = End'
+
+  # Fix screen colors, unscientifically
+  xgamma -rgamma 1.2 -ggamma 1.2 -bgamma 1.5
   ;;
 esac
 
