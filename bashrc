@@ -31,6 +31,11 @@ export VISUAL="/usr/bin/vim"
 export EDITOR=$VISUAL
 export PS1='\[\033[1;32m\]\h\[\033[1;30m\]\W\[\033[0;0m\] '
 
+# ni configuration
+export NI_ROW_SORT_BUFFER=1024M
+export NI_ROW_SORT_COMPRESS=gzip
+export NI_ROW_SORT_PARALLEL=`cat /proc/cpuinfo | grep vendor_id | wc -l`
+
 export GNUTERM=wxt
 
 export LC_ALL=${LC_ALL:-C.UTF-8}
