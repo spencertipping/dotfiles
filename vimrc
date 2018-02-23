@@ -38,6 +38,8 @@ au BufNew,BufReadPost *.md syn sync fromstart
 au BufNew,BufReadPost *.pm syn sync fromstart
 au BufNew,BufReadPost *.pl syn sync fromstart
 
+au Syntax * syn keyword cppType let
+
 if &term == "screen"
   set term=rxvt-unicode-256color
   hi Comment cterm=none
