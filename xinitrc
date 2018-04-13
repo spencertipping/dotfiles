@@ -12,25 +12,22 @@ init_session() {
             RBCornerButton=0 \
             TouchpadOff=1
   xrdb ~/.Xresources
-  lxsession &
   xcompmgr &
-  conky &
-  redshift -l 35.194134:-106.481888 -t 6500:4100
   pulseaudio --start
 
-  [[ -x ~/bin/mdb ]] && ~/bin/mdb nm7
+  [[ -x ~/bin/mdb ]] && ~/bin/mdb jbn8I
+
+  case $HOSTNAME in
+  iniidae)
+    # Work around Lenovo's pathological End/Insert key overloading on the X250
+    xmodmap -e 'keycode 118 = End'
+
+    # Fix screen colors, unscientifically
+    xgamma -rgamma 1.2 -ggamma 1.2 -bgamma 1.5
+    ;;
+  esac
 }
 
 sleep 2 && init_session
-
-case $HOSTNAME in
-iniidae)
-  # Work around Lenovo's pathological End/Insert key overloading on the X250
-  xmodmap -e 'keycode 118 = End'
-
-  # Fix screen colors, unscientifically
-  xgamma -rgamma 1.2 -ggamma 1.2 -bgamma 1.5
-  ;;
-esac
 
 wait $wm_pid
