@@ -76,4 +76,6 @@ hi link markdownHeadingDelimiter markdownHeadingThing
 hi link markdownCodeDelimiter Comment
 hi link markdownCode Special
 
+hi link perlPOD Comment
+
 autocmd BufReadPost,BufNew *.phi set syntax=perl

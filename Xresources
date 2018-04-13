@@ -29,7 +29,7 @@ URxvt.keysym.C-M-3: transparency:alpha=8000
 URxvt.keysym.C-M-4: transparency:alpha=b000
 URxvt.keysym.C-M-5: transparency:alpha=d000
 URxvt.keysym.C-M-6: transparency:alpha=e000
-URxvt.keysym.C-M-7: transparency:alpha=f000
+URxvt.keysym.C-M-7: transparency:alpha=ffff
 
 URxvt.keysym.C-M-exclam:      transparency:ualpha=1000
 URxvt.keysym.C-M-at:          transparency:ualpha=4000
@@ -37,7 +37,7 @@ URxvt.keysym.C-M-numbersign:  transparency:ualpha=8000
 URxvt.keysym.C-M-dollar:      transparency:ualpha=b000
 URxvt.keysym.C-M-percent:     transparency:ualpha=d000
 URxvt.keysym.C-M-asciicircum: transparency:ualpha=e000
-URxvt.keysym.C-M-ampersand:   transparency:ualpha=f000
+URxvt.keysym.C-M-ampersand:   transparency:ualpha=ffff
 
 URxvt.transparency.bgcolor:    rgba:0000/0000/0000/XXXX
 URxvt.transparency.bgopacity:  d000
