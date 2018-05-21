@@ -5,7 +5,7 @@ machines working, but it might be a useful starting point for your own dotfiles
 (these were started with
 [Crunchbang](https://en.wikipedia.org/wiki/CrunchBang_Linux) defaults).
 
-![image](http://spencertipping.com/dotfiles-desktop.png)
+![image](http://spencertipping.com/dotfiles-desktop.jpg)
 
 The background in that screenshot is
 [here](http://spencertipping.com/dotfiles-background.jpg).
