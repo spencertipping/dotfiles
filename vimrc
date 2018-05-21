@@ -34,9 +34,9 @@ augroup vimrc_todo
      \ contained containedin=.*Comment,vimCommentTitle,perlPOD
 augroup END
 
-au BufNew,BufReadPost *.md syn sync fromstart
-au BufNew,BufReadPost *.pm syn sync fromstart
-au BufNew,BufReadPost *.pl syn sync fromstart
+au BufNew,BufReadPost * syn sync fromstart
+
+au BufNew,BufReadPost *.binary set syntax=binary
 
 au Syntax * syn keyword cppType let
 
@@ -49,7 +49,10 @@ endif
 
 hi def link TodoExtra Todo
 
-hi Normal       ctermfg=0
+if &term != "linux"
+  hi Normal ctermfg=0
+endif
+
 hi LineNr       ctermfg=8
 hi CursorLineNr ctermfg=8
 hi Statement    ctermfg=2
@@ -77,5 +80,3 @@ hi link markdownCodeDelimiter Comment
 hi link markdownCode Special
 
 hi link perlPOD Comment
-
-autocmd BufReadPost,BufNew *.phi set syntax=perl

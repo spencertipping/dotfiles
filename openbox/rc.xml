@@ -67,6 +67,9 @@
     <keybind key='W-S-slash'><action name='MoveResizeTo'>
       <x>-0</x><y>626</y></action></keybind>
 
+    <keybind key='W-S-period'><action name='MoveResizeTo'>
+      <x>-0</x><y>-0</y><height>85</height></action></keybind>
+
     <keybind key='W-C-h'><action name='MoveRelative'><x>-8</x><y>0</y></action></keybind>
     <keybind key='W-C-j'><action name='MoveRelative'><x>0</x><y>8</y></action></keybind>
     <keybind key='W-C-k'><action name='MoveRelative'><x>0</x><y>-8</y></action></keybind>
@@ -80,6 +83,8 @@
     <!-- Misc integration -->
     <keybind key='W-S-d'><action name='Execute'>
       <command>toggle-process conky</command></action></keybind>
+    <keybind key='Print'><action name='Execute'>
+      <command>shutter -f</command></action></keybind>
 
     <!-- Audio -->
     <keybind key='W-Down'>
