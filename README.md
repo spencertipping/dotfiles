@@ -78,8 +78,8 @@ like the way they work. Almost every shortcut uses the `Win` key.
 
 ### Windows
 - `Alt+F4`: close a window
-- `Alt+Tab`: select window on this desktop
-- `Alt+Shift+Tab`: select window on all desktops
+- `Alt+Tab`: select window on this desktop (`Alt+Shift+Tab` reverses)
+- `Win+Tab`: select window on all desktops (`Win+Shift+Tab` reverses)
 - `Alt+Space`: show window menu
 
 - `W-s`: sticky
