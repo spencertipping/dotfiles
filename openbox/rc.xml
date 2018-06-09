@@ -85,25 +85,27 @@
       <command>toggle-process conky</command></action></keybind>
     <keybind key='Print'><action name='Execute'>
       <command>shutter -f</command></action></keybind>
+    <keybind key='S-Print'><action name='Execute'>
+      <command>snapmr</command></action></keybind>
 
     <!-- Audio -->
     <keybind key='W-Down'>
-      <action name='Execute'><command>vol-delta -5</command></action></keybind>
+      <action name='Execute'><command>vol-delta-pa -4096</command></action></keybind>
     <keybind key='W-Up'>
-      <action name='Execute'><command>vol-delta 5</command></action></keybind>
+      <action name='Execute'><command>vol-delta-pa 4096</command></action></keybind>
     <keybind key='W-S-Down'>
-      <action name='Execute'><command>vol-delta -1</command></action></keybind>
+      <action name='Execute'><command>vol-delta-pa -1024</command></action></keybind>
     <keybind key='W-S-Up'>
-      <action name='Execute'><command>vol-delta 1</command></action></keybind>
+      <action name='Execute'><command>vol-delta-pa 1024</command></action></keybind>
 
     <keybind key='W-S-Left'><action name='Execute'>
-      <command>vol-absolute 0</command></action></keybind>
+      <command>vol-absolute-pa 0</command></action></keybind>
     <keybind key='W-S-Right'><action name='Execute'>
-      <command>vol-absolute 56</command></action></keybind>
+      <command>vol-absolute-pa 32768</command></action></keybind>
     <keybind key='W-Left'><action name='Execute'>
-      <command>vol-absolute 24</command></action></keybind>
+      <command>vol-absolute-pa 19200</command></action></keybind>
     <keybind key='W-Right'><action name='Execute'>
-      <command>vol-absolute 41</command></action></keybind>
+      <command>vol-absolute-pa 24000</command></action></keybind>
 
     <!-- Backlight (for machines where hardware keys aren't supported) -->
     <keybind key='W-C-S-Left'><action name='Execute'>
@@ -117,6 +119,10 @@
       <command>backlight +100</command></action></keybind>
     <keybind key='W-C-Down'><action name='Execute'>
       <command>backlight -100</command></action></keybind>
+    <keybind key='W-C-S-Up'><action name='Execute'>
+      <command>backlight +5</command></action></keybind>
+    <keybind key='W-C-S-Down'><action name='Execute'>
+      <command>backlight -5</command></action></keybind>
 
     <!-- App integrations -->
     <keybind key="W-t"><action name="Execute">
