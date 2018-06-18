@@ -32,7 +32,6 @@
 
     <!-- Window operations -->
     <keybind key='W-v'><action name='ToggleMaximize'><direction>vertical</direction></action></keybind>
-    <keybind key='W-g'><action name='ToggleMaximize'><direction>horizontal</direction></action></keybind>
     <keybind key='W-s'><action name='ToggleOmnipresent'/></keybind>
     <keybind key="W-d"><action name="ToggleShowDesktop"/></keybind>
     <keybind key="A-F4"><action name="Close"/></keybind>
@@ -123,6 +122,13 @@
       <command>backlight +5</command></action></keybind>
     <keybind key='W-C-S-Down'><action name='Execute'>
       <command>backlight -5</command></action></keybind>
+
+    <keybind key='W-g'><action name='Execute'>
+      <command>xgamma -gamma 1.2</command></action></keybind>
+    <keybind key='W-S-g'><action name='Execute'>
+      <command>xgamma -rgamma 1.2 -ggamma 1.2 -bgamma 1.5</command></action></keybind>
+    <keybind key='W-C-g'><action name='Execute'>
+      <command>xgamma -rgamma 1.0 -ggamma 0.9 -bgamma 0.7</command></action></keybind>
 
     <!-- App integrations -->
     <keybind key="W-t"><action name="Execute">
