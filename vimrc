@@ -49,7 +49,11 @@ endif
 
 hi def link TodoExtra Todo
 
-if &term != "linux"
+let perl_fold=1
+let perl_nofold_packages=1
+let perl_nofold_subs=1
+
+if &term == "rxvt-unicode"
   hi Normal ctermfg=0
 endif
 

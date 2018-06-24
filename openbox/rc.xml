@@ -84,8 +84,11 @@
       <command>toggle-process conky</command></action></keybind>
     <keybind key='Print'><action name='Execute'>
       <command>shutter -f</command></action></keybind>
-    <keybind key='S-Print'><action name='Execute'>
+    <keybind key='W-Print'><action name='Execute'>
       <command>snapmr</command></action></keybind>
+    <keybind key='W-Delete'><action name='Execute'>
+      <command>delmr</command></action></keybind>
+
 
     <!-- Audio -->
     <keybind key='W-Down'>
