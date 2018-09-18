@@ -30,7 +30,7 @@ endif
 
 augroup vimrc_todo
   au!
-  au Syntax * syn match TodoExtra /\v<(NB|WARNING|Q):|\v<(\d+)\. /
+  au Syntax * syn match TodoExtra /\v<(NB|WARNING|Q):|\v^(\d+)\. /
      \ contained containedin=.*Comment,vimCommentTitle,perlPOD
 augroup END
 
