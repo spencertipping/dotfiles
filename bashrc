@@ -40,6 +40,14 @@ export GNUTERM=wxt
 
 export LC_ALL=${LC_ALL:-C.UTF-8}
 
+# Screenshot helpers
+ss_here() {
+  filename=`xsel -b`
+  destname=`uuid`."${filename##*.}"
+  cp "$filename" "./$destname"
+  echo "./$destname"
+}
+
 if [[ $TERM == 'xterm' ]]; then
   export TERM='xterm-color'
 fi
