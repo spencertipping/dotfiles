@@ -31,6 +31,7 @@
     <chainQuitKey>C-g</chainQuitKey>
 
     <!-- Window operations -->
+    <keybind key='W-f'><action name='ToggleMaximize'><direction>horizontal</direction></action></keybind>
     <keybind key='W-v'><action name='ToggleMaximize'><direction>vertical</direction></action></keybind>
     <keybind key='W-s'><action name='ToggleOmnipresent'/></keybind>
     <keybind key="W-d"><action name="ToggleShowDesktop"/></keybind>
