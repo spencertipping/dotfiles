@@ -70,15 +70,15 @@
     <keybind key='W-S-period'><action name='MoveResizeTo'>
       <x>-0</x><y>-0</y><height>85</height></action></keybind>
 
-    <keybind key='W-C-h'><action name='MoveRelative'><x>-8</x><y>0</y></action></keybind>
-    <keybind key='W-C-j'><action name='MoveRelative'><x>0</x><y>8</y></action></keybind>
-    <keybind key='W-C-k'><action name='MoveRelative'><x>0</x><y>-8</y></action></keybind>
-    <keybind key='W-C-l'><action name='MoveRelative'><x>8</x><y>0</y></action></keybind>
+    <keybind key='W-C-h'><action name='MoveRelative'><x>-4</x><y>0</y></action></keybind>
+    <keybind key='W-C-j'><action name='MoveRelative'><x>0</x><y>4</y></action></keybind>
+    <keybind key='W-C-k'><action name='MoveRelative'><x>0</x><y>-4</y></action></keybind>
+    <keybind key='W-C-l'><action name='MoveRelative'><x>4</x><y>0</y></action></keybind>
 
-    <keybind key='W-C-S-h'><action name='ResizeRelative'><right>-8</right></action></keybind>
-    <keybind key='W-C-S-j'><action name='ResizeRelative'><bottom>8</bottom></action></keybind>
-    <keybind key='W-C-S-k'><action name='ResizeRelative'><bottom>-8</bottom></action></keybind>
-    <keybind key='W-C-S-l'><action name='ResizeRelative'><right>8</right></action></keybind>
+    <keybind key='W-C-S-h'><action name='ResizeRelative'><right>-4</right></action></keybind>
+    <keybind key='W-C-S-j'><action name='ResizeRelative'><bottom>4</bottom></action></keybind>
+    <keybind key='W-C-S-k'><action name='ResizeRelative'><bottom>-4</bottom></action></keybind>
+    <keybind key='W-C-S-l'><action name='ResizeRelative'><right>4</right></action></keybind>
 
     <!-- Misc integration -->
     <keybind key='W-S-d'><action name='Execute'>
@@ -89,7 +89,6 @@
       <command>snapmr</command></action></keybind>
     <keybind key='W-Delete'><action name='Execute'>
       <command>delmr</command></action></keybind>
-
 
     <!-- Audio -->
     <keybind key='W-Down'>
@@ -127,13 +126,6 @@
     <keybind key='W-C-S-Down'><action name='Execute'>
       <command>backlight -5</command></action></keybind>
 
-    <keybind key='W-g'><action name='Execute'>
-      <command>xgamma -gamma 1.2</command></action></keybind>
-    <keybind key='W-S-g'><action name='Execute'>
-      <command>xgamma -rgamma 1.2 -ggamma 1.2 -bgamma 1.5</command></action></keybind>
-    <keybind key='W-C-g'><action name='Execute'>
-      <command>xgamma -rgamma 1.0 -ggamma 0.9 -bgamma 0.7</command></action></keybind>
-
     <!-- App integrations -->
     <keybind key="W-t"><action name="Execute">
       <command>urxvt</command></action></keybind>
@@ -146,8 +138,18 @@
       <command>gmrun</command></action></keybind>
     <keybind key='W-a'><action name='Execute'>
       <command>audacious</command></action></keybind>
-    <keybind key='W-S-a'><action name='Execute'>
-      <command>transset -n Audacious 0.1</command></action></keybind>
+    <keybind key='W-S-a'>
+      <action name='Execute'><command>transset -n Audacious 0.1</command></action>
+      <action name='Execute'><command>wmctrl -a audacious</command></action></keybind>
+    <keybind key='W-S-v'><action name='Execute'>
+      <command>pavucontrol</command></action></keybind>
+
+    <keybind key='W-z'><action name='Execute'>
+      <command>audacious -p</command></action></keybind>
+    <keybind key='W-x'><action name='Execute'>
+      <command>audacious -u</command></action></keybind>
+    <keybind key='W-c'><action name='Execute'>
+      <command>audacious -s</command></action></keybind>
 
     <!-- Home automation -->
     <keybind key='W-e'>
@@ -173,9 +175,9 @@
     <keybind key="W-S-q"><action name="Execute">
       <command>/home/spencertipping/bin/locksleep</command></action></keybind>
     <keybind key="W-S-s"><action name="Execute">
-      <command>sudo pm-suspend</command></action></keybind>
+      <command>~/r/resources/iniidae/synergy-connect</command></action></keybind>
     <keybind key='W-S-o'><action name='Execute'>
-      <command>in 1 xset dpms force off</command></action></keybind>
+      <command>~/r/resources/iniidae/lightsout</command></action></keybind>
     <keybind key='W-S-p'><action name='Execute'>
       <command>toggle alert-stay-on</command></action></keybind>
 
