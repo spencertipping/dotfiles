@@ -175,9 +175,9 @@
     <keybind key="W-S-q"><action name="Execute">
       <command>/home/spencertipping/bin/locksleep</command></action></keybind>
     <keybind key="W-S-s"><action name="Execute">
-      <command>~/r/resources/iniidae/synergy-connect</command></action></keybind>
+      <command>~/r/resources/iniidae/synergy-connect &amp;</command></action></keybind>
     <keybind key='W-S-o'><action name='Execute'>
-      <command>~/r/resources/iniidae/lightsout</command></action></keybind>
+      <command>~/r/resources/iniidae/lightsout &amp;</command></action></keybind>
     <keybind key='W-S-p'><action name='Execute'>
       <command>toggle alert-stay-on</command></action></keybind>
 
