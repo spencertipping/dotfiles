@@ -167,17 +167,13 @@
       <keybind key='f'><action name='Execute'><command>mdb 9whp</command></action></keybind>
     </keybind>
 
-    <!-- Power -->
-    <keybind key="W-q"><action name="Execute">
-      <command>xscreensaver-command -lock</command></action></keybind>
-    <keybind key="W-S-q"><action name="Execute">
-      <command>/home/spencertipping/bin/locksleep</command></action></keybind>
+    <!-- Power/remoting -->
+    <keybind key="W-S-d"><action name="Execute">
+      <command>~/r/resources/iniidae/synergy-disconnect &amp;</command></action></keybind>
     <keybind key="W-S-s"><action name="Execute">
       <command>~/r/resources/iniidae/synergy-connect &amp;</command></action></keybind>
     <keybind key='W-S-o'><action name='Execute'>
       <command>~/r/resources/iniidae/lightsout &amp;</command></action></keybind>
-    <keybind key='W-S-p'><action name='Execute'>
-      <command>toggle alert-stay-on</command></action></keybind>
 
     <!-- xsel -->
     <keybind key='W-r'><action name='Execute'>
