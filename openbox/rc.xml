@@ -81,10 +81,8 @@
     <keybind key='W-C-S-l'><action name='ResizeRelative'><right>4</right></action></keybind>
 
     <!-- Misc integration -->
-    <keybind key='W-S-d'><action name='Execute'>
-      <command>toggle-process conky</command></action></keybind>
     <keybind key='Print'><action name='Execute'>
-      <command>shutter -f</command></action></keybind>
+      <command>shutter</command></action></keybind>
     <keybind key='W-Print'><action name='Execute'>
       <command>snapmr</command></action></keybind>
     <keybind key='W-Delete'><action name='Execute'>
