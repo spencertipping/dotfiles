@@ -130,8 +130,6 @@
 
     <keybind key="W-S-w"><action name="Execute">
       <command>chromium-browser</command></action></keybind>
-    <keybind key="W-w"><action name="Execute">
-      <command>firefox</command></action></keybind>
     <keybind key="A-F2"><action name="Execute">
       <command>gmrun</command></action></keybind>
     <keybind key='W-a'><action name='Execute'>
@@ -142,12 +140,15 @@
     <keybind key='W-S-v'><action name='Execute'>
       <command>pavucontrol</command></action></keybind>
 
-    <keybind key='W-z'><action name='Execute'>
-      <command>audacious -p</command></action></keybind>
-    <keybind key='W-x'><action name='Execute'>
-      <command>audacious -u</command></action></keybind>
-    <keybind key='W-c'><action name='Execute'>
-      <command>audacious -s</command></action></keybind>
+    <keybind key='W-S-8'>
+      <action name='Execute'><command>transset 0.85</command></action></keybind>
+
+    <keybind key='W-z'>
+      <action name='Execute'><command>headset-audio headset_head_unit</command></action>
+      <action name='Execute'><command>mdb jbn8N</command></action>
+      <action name='Execute'><command>audacious -s</command></action></keybind>
+    <keybind key='W-S-z'><action name='Execute'>
+      <command>headset-audio a2dp_sink</command></action></keybind>
 
     <!-- Home automation -->
     <keybind key='W-e'>
