@@ -54,7 +54,7 @@ URxvt.geometry: 80x20
 
 URxvt.scrollBar: false
 URxvt.thickness: 2
-URxvt.font: xft:Ubuntu Mono:size=14:hinting=none
+URxvt.font: xft:Ubuntu Mono:size=24:hinting=none
 
 URxvt*saveLines: 65536
 URxvt*borderless: true
