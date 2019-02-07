@@ -4,17 +4,9 @@ wm_pid=$!
 
 init_session() {
   xset r rate 150 60
-  setlayout 0 10 10 0
-  synclient VertEdgeScroll=0 \
-            VertTwoFingerScroll=1 \
-            HorizTwoFingerScroll=1 \
-            RTCornerButton=0 \
-            RBCornerButton=0 \
-            TouchpadOff=1
   xrdb ~/.Xresources
+  feh --bg-fill ~/r/env/bg.jpg
   xcompmgr &
-  pulseaudio --start
-  nitrogen --set-zoom-fill ~/r/glacial/backrounds/jbn8I.jpg
 
   case `hostname` in
   iniidae)
@@ -29,6 +21,8 @@ init_session() {
     echo "got unknown hostname $HOSTNAME"
     ;;
   esac
+
+  setlayout 0 10 10 0
 }
 
 sleep 2 && init_session

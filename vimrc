@@ -55,7 +55,7 @@ let perl_fold=1
 let perl_nofold_packages=1
 let perl_nofold_subs=1
 
-if &term == "rxvt-unicode"
+if &term == "xterm-color"
   hi Normal ctermfg=0
 endif
 

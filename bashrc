@@ -48,7 +48,8 @@ ss_here() {
   echo "./$destname"
 }
 
-if [[ $TERM == 'xterm' ]]; then
+# The world is not prepared for urxvt. Tell them we're an xterm variant instead.
+if [[ "${TERM/rxvt-unicode/}" != "$TERM" ]]; then
   export TERM='xterm-color'
 fi
 
