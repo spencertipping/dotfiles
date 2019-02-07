@@ -48,9 +48,9 @@ ss_here() {
   echo "./$destname"
 }
 
-# The world is not prepared for urxvt. Tell them we're an xterm variant instead.
-if [[ "${TERM/rxvt-unicode/}" != "$TERM" ]]; then
-  export TERM='xterm-color'
+# The world is unprepared for colorful RXVT. Reduce it to just regular URXVT.
+if [[ "$TERM" = rxvt-unicode-256color ]]; then
+  export TERM='rxvt-unicode'
 fi
 
 if test -e ~/.dir_colors && which dircolors >& /dev/null; then
