@@ -57,7 +57,11 @@ if test -e ~/.dir_colors && which dircolors >& /dev/null; then
   eval $(dircolors ~/.dir_colors)
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+case $HOSTNAME in
+iota)
+  export GDK_SCALE=2
+  ;;
+esac
 
 [[ $PWD == $HOME && -d $HOME/r ]] && cd $HOME/r
 

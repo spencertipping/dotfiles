@@ -69,6 +69,8 @@ hi NonText      ctermfg=2 cterm=none
 
 hi Todo         ctermfg=12 ctermbg=none cterm=italic
 
+hi Pmenu ctermbg=none ctermfg=4
+
 hi perlSubName     ctermfg=12
 hi perlConditional ctermfg=5
 hi perlRepeat      ctermfg=5
