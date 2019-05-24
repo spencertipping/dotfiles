@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set foldenable foldcolumn=0 foldlevel=10
 set expandtab shiftwidth=2 tabstop=8 softtabstop=2
 set autoindent
@@ -15,6 +17,8 @@ set history=1000
 set list listchars=tab:>-,trail:.
 set fillchars+=vert:·
 set textwidth=80
+
+set number relativenumber
 
 vnoremap <C-c> "+y
 
@@ -37,7 +41,7 @@ augroup END
 au BufNew,BufReadPost * syn sync fromstart
 
 au BufNew,BufReadPost *.binary set syntax=binary
-au BufNew,BufReadPost *.waul   set syntax=javascript tw=0
+au BufNew,BufReadPost *.waul   set syntax=caterwaul tw=0
 au BufNew,BufReadPost *.tex    set tw=0
 
 au Syntax * syn keyword cppType let

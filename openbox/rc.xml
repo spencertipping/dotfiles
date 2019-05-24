@@ -87,12 +87,14 @@
       <command>snapmr</command></action></keybind>
     <keybind key='W-Delete'><action name='Execute'>
       <command>delmr</command></action></keybind>
+    <keybind key='W-q'><action name='Execute'>
+      <command>xtrlock</command></action></keybind>
 
     <!-- Audio -->
     <keybind key='W-Down'>
-      <action name='Execute'><command>vol-delta-pa -4096</command></action></keybind>
+      <action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
     <keybind key='W-Up'>
-      <action name='Execute'><command>vol-delta-pa 4096</command></action></keybind>
+      <action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
     <keybind key='W-S-Down'>
       <action name='Execute'><command>vol-delta-pa -1024</command></action></keybind>
     <keybind key='W-S-Up'>
@@ -101,11 +103,11 @@
     <keybind key='W-S-Left'><action name='Execute'>
       <command>vol-absolute-pa 0</command></action></keybind>
     <keybind key='W-S-Right'><action name='Execute'>
-      <command>vol-absolute-pa 32768</command></action></keybind>
-    <keybind key='W-Left'><action name='Execute'>
-      <command>vol-absolute-pa 19200</command></action></keybind>
-    <keybind key='W-Right'><action name='Execute'>
       <command>vol-absolute-pa 24000</command></action></keybind>
+    <keybind key='W-Left'><action name='Execute'>
+      <command>vol-absolute-pa 14400</command></action></keybind>
+    <keybind key='W-Right'><action name='Execute'>
+      <command>vol-absolute-pa 19200</command></action></keybind>
 
     <!-- Backlight (for machines where hardware keys aren't supported) -->
     <keybind key='W-C-S-Left'><action name='Execute'>
@@ -143,13 +145,6 @@
     <keybind key='W-S-8'>
       <action name='Execute'><command>transset 0.85</command></action></keybind>
 
-    <keybind key='W-z'>
-      <action name='Execute'><command>headset-audio headset_head_unit</command></action>
-      <action name='Execute'><command>mdb jbn8N</command></action>
-      <action name='Execute'><command>audacious -s</command></action></keybind>
-    <keybind key='W-S-z'><action name='Execute'>
-      <command>headset-audio a2dp_sink</command></action></keybind>
-
     <!-- Home automation -->
     <keybind key='W-e'>
       <keybind key='o'><action name='Execute'><command>curl http://192.168.0.34:8180/0</command></action></keybind>
@@ -159,22 +154,6 @@
     <!-- Backgrounds -->
     <keybind key='W-S-b'><action name='Execute'>
       <command>/home/spencertipping/bin/mdb</command></action></keybind>
-    <keybind key='W-b'>
-      <keybind key='a'><action name='Execute'><command>mdb dr5r</command></action></keybind>
-      <keybind key='b'><action name='Execute'><command>mdb wtw3</command></action></keybind>
-      <keybind key='c'><action name='Execute'><command>mdb 9q5c</command></action></keybind>
-      <keybind key='d'><action name='Execute'><command>mdb 9q8y</command></action></keybind>
-      <keybind key='e'><action name='Execute'><command>mdb ucfu</command></action></keybind>
-      <keybind key='f'><action name='Execute'><command>mdb 9whp</command></action></keybind>
-    </keybind>
-
-    <!-- Power/remoting -->
-    <keybind key="W-S-d"><action name="Execute">
-      <command>~/r/resources/iniidae/synergy-disconnect &amp;</command></action></keybind>
-    <keybind key="W-S-s"><action name="Execute">
-      <command>~/r/resources/iniidae/synergy-connect &amp;</command></action></keybind>
-    <keybind key='W-S-o'><action name='Execute'>
-      <command>~/r/resources/iniidae/lightsout &amp;</command></action></keybind>
 
     <!-- xsel -->
     <keybind key='W-r'><action name='Execute'>
