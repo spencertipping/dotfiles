@@ -129,6 +129,8 @@
     <!-- App integrations -->
     <keybind key="W-t"><action name="Execute">
       <command>urxvt</command></action></keybind>
+    <keybind key="W-S-t"><action name="Execute">
+      <command>urxvt -geometry 198x20</command></action></keybind>
 
     <keybind key="W-S-w"><action name="Execute">
       <command>chromium-browser</command></action></keybind>
