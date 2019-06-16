@@ -17,6 +17,7 @@ set history=1000
 set list listchars=tab:>-,trail:.
 set fillchars+=vert:·
 set textwidth=80
+set novisualbell
 
 set number relativenumber
 
