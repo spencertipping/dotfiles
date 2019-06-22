@@ -59,9 +59,11 @@ ${voffset -52}  ${goto 0}${offset 384}${cpubar cpu3 8,188}${goto 0}${offset 576}
 ${voffset -52}${voffset 12}${goto 0}${offset 0}${cpubar cpu5 8,188}${goto 0}${offset 192}${cpubar cpu6 8,188}
 ${voffset -52}  ${goto 0}${offset 384}${cpubar cpu7 8,188}${goto 0}${offset 576}${cpubar cpu8 8,188}
 ${voffset -52}${voffset 12}${goto 0}${offset 0}
-${voffset -52}${goto 0}${offset 192}${color 808080}${goto 0}${offset 192}${membar      8,840}
-${voffset -52}           ${color 808080}${voffset -12}${goto 0}${offset 576}${goto 0}${offset 960}${swapbar     8,72} ${goto 0}${offset 576}
-${voffset -52}           ${color 303030}${voffset 24}${goto 0}${offset 576}${battery_bar 8,860}
+${voffset -52}${goto 0}${offset 192}
+${voffset -52}  ${color 808080}${goto 0}${offset 192}${membar      8,840}
+${voffset -52}                 ${voffset -12}${goto 0}${offset 576}${goto 0}${offset 960}${swapbar     8,72} ${goto 0}${offset 576}
+${voffset -52}  ${if_match ${exec cat /sys/class/power_supply/AC/online} == 1}${color 303030}${else}${color 808080}${endif}
+${voffset -52}                 ${voffset 24}${goto 0}${offset 576}${battery_bar 8,860}
 ${voffset -52}${voffset -32}${goto 0}${offset 0}
 ${voffset -52}${goto 0}${offset 1236}${color 707070}${alignr 100}${time %m%d}
 ${voffset -52}${goto 0}${offset 1336}${color a0a0a0}${alignr 0}${time %H%M}
@@ -75,4 +77,6 @@ ${voffset -26}${goto 0}${offset 960}${diskio_write /dev/nvme0n1}
 ${voffset -26}
 ${voffset -26}${voffset 4}${goto 0}${offset 960}${goto 0}${offset 1032}${color 303030}${loadgraph 16,350 -l} ${voffset -4}${goto 0}${offset 960}
 ${voffset -26}${goto 0}${offset 960}${color c0c0c0}${alignr 0}${loadavg 1}
+${voffset -26}
+${voffset -26}${voffset 20}${goto 0}${offset 1236}${alignr 0}${battery_time}
 ${voffset -26}
