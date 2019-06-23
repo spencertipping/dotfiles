@@ -65,8 +65,8 @@ ${voffset -52}                 ${voffset -12}${goto 0}${offset 576}${goto 0}${of
 ${voffset -52}  ${if_match ${exec cat /sys/class/power_supply/AC/online} == 1}${color 303030}${else}${color 808080}${endif}
 ${voffset -52}                 ${voffset 24}${goto 0}${offset 576}${battery_bar 8,860}
 ${voffset -52}${voffset -32}${goto 0}${offset 0}
-${voffset -52}${goto 0}${offset 1236}${color 707070}${alignr 100}${time %m%d}
-${voffset -52}${goto 0}${offset 1336}${color a0a0a0}${alignr 0}${time %H%M}
+${voffset -52}${goto 0}${offset 1216}${color 707070}${alignr 110}${time %m%d}
+${voffset -52}${goto 0}${offset 1326}${color a0a0a0}${alignr 0}${time %H%M}
 ${voffset -52}
 ${voffset -52}${voffset 62}${goto 0}${offset 768}${font Jura:size=16}${color c0c0c0}
 ${voffset -52}${goto 0}${offset 672}
@@ -75,8 +75,8 @@ ${voffset -26}${goto 0}${offset 768}${upspeed   wlp2s0}
 ${voffset -26}${goto 0}${offset 864}${diskio_read  /dev/nvme0n1}
 ${voffset -26}${goto 0}${offset 960}${diskio_write /dev/nvme0n1}
 ${voffset -26}
-${voffset -26}${voffset 4}${goto 0}${offset 960}${goto 0}${offset 1032}${color 303030}${loadgraph 16,350 -l} ${voffset -4}${goto 0}${offset 960}
+${voffset -26}${voffset 4}${goto 0}${offset 960}${goto 0}${offset 1032}${color 303030}${loadgraph 16,355 -l} ${voffset -4}${goto 0}${offset 960}
 ${voffset -26}${goto 0}${offset 960}${color c0c0c0}${alignr 0}${loadavg 1}
 ${voffset -26}
-${voffset -26}${voffset 20}${goto 0}${offset 1236}${alignr 0}${battery_time}
+${voffset -26}${voffset 20}${goto 0}${offset 1216}${alignr 0}${battery_time}
 ${voffset -26}
