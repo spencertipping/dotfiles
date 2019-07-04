@@ -19,7 +19,7 @@ set fillchars+=vert:·
 set textwidth=80
 set novisualbell
 
-set number relativenumber
+"set number relativenumber
 
 vnoremap <C-c> "+y
 
@@ -27,7 +27,9 @@ map q :x<CR>
 map Q :xa<CR>
 
 let perl_extended_vars=1
-let g:markdown_fenced_languages = ["perl", "sh", "c", "ocaml"]
+let g:markdown_fenced_languages = [
+  \ "perl", "sh", "c", "ocaml", "python", "ruby", "javascript", "haskell",
+  \ "caterwaul"]
 
 if has('gui')
   set guioptions=Pc
