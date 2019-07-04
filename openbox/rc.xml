@@ -103,11 +103,11 @@
     <keybind key='W-S-Left'><action name='Execute'>
       <command>vol-absolute-pa 0</command></action></keybind>
     <keybind key='W-S-Right'><action name='Execute'>
-      <command>vol-absolute-pa 24000</command></action></keybind>
+      <command>vol-absolute-pa 32000</command></action></keybind>
     <keybind key='W-Left'><action name='Execute'>
-      <command>vol-absolute-pa 14400</command></action></keybind>
+      <command>vol-absolute-pa 16000</command></action></keybind>
     <keybind key='W-Right'><action name='Execute'>
-      <command>vol-absolute-pa 19200</command></action></keybind>
+      <command>vol-absolute-pa 24000</command></action></keybind>
 
     <!-- Backlight (for machines where hardware keys aren't supported) -->
     <keybind key='W-C-S-Left'><action name='Execute'>
