@@ -19,7 +19,7 @@ set fillchars+=vert:·
 set textwidth=80
 set novisualbell
 
-"set number relativenumber
+set number relativenumber
 
 vnoremap <C-c> "+y
 

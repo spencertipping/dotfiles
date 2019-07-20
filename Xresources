@@ -51,7 +51,7 @@ URxvt.keysym.Control-Down: \033[1;5B
 URxvt.keysym.Control-Left: \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
 
-URxvt.geometry: 80x20
+URxvt.geometry: 86x20
 
 URxvt.scrollBar: false
 URxvt.thickness: 2
