@@ -67,21 +67,24 @@ if &term == "xterm-color" || &term == "rxvt-unicode"
 endif
 
 hi LineNr       ctermfg=15
-hi CursorLineNr ctermfg=8
+hi CursorLineNr ctermfg=9
 hi Statement    ctermfg=10
 hi Type         ctermfg=8
 hi SpecialKey   ctermfg=7
 hi NonText      ctermfg=7 cterm=none
+hi Todo         ctermfg=12 ctermbg=none cterm=italic
 
 hi perlSubName     ctermfg=12
 hi perlConditional ctermfg=11
 hi perlRepeat      ctermfg=10
 
-hi Todo         ctermfg=12 ctermbg=none cterm=italic
-
 hi Pmenu ctermbg=none ctermfg=4
 
-hi markdownHeadingThing ctermfg=4 cterm=bold
+hi markdownHeadingThing ctermfg=9 cterm=bold
+hi link markdownLinkDelimiter NonText
+hi link markdownLinkTextDelimiter NonText
+hi link markdownLinkText Statement
+hi link markdownUrl LineNr
 
 hi link markdownH1 markdownHeadingThing
 hi link markdownH2 markdownHeadingThing
@@ -90,7 +93,7 @@ hi link markdownH4 markdownHeadingThing
 hi link markdownH5 markdownHeadingThing
 hi link markdownH6 markdownHeadingThing
 hi link markdownHeadingDelimiter markdownHeadingThing
-hi link markdownCodeDelimiter Comment
+hi link markdownCodeDelimiter NonText
 hi link markdownCode Special
 
 hi link perlPOD Comment

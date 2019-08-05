@@ -113,8 +113,8 @@ URxvt*color15: #ffffff
 
 ! Ayu color scheme (modified)
 #if 1
-URxvt*color0: #cbccc6
-URxvt*color1: #ff9940
+URxvt*color0: #abb0b6
+URxvt*color1: #fa8d3e
 URxvt*color2: #86c380
 URxvt*color3: #e6b450
 URxvt*color4: #5ccfe6
