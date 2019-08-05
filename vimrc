@@ -66,21 +66,20 @@ if &term == "xterm-color" || &term == "rxvt-unicode"
   hi Normal ctermfg=0
 endif
 
-hi LineNr       ctermfg=8
+hi LineNr       ctermfg=15
 hi CursorLineNr ctermfg=8
-hi Statement    ctermfg=2
+hi Statement    ctermfg=10
 hi Type         ctermfg=8
 hi SpecialKey   ctermfg=7
+hi NonText      ctermfg=7 cterm=none
 
-hi NonText      ctermfg=2 cterm=none
+hi perlSubName     ctermfg=12
+hi perlConditional ctermfg=11
+hi perlRepeat      ctermfg=10
 
 hi Todo         ctermfg=12 ctermbg=none cterm=italic
 
 hi Pmenu ctermbg=none ctermfg=4
-
-hi perlSubName     ctermfg=12
-hi perlConditional ctermfg=5
-hi perlRepeat      ctermfg=5
 
 hi markdownHeadingThing ctermfg=4 cterm=bold
 

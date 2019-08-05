@@ -42,7 +42,7 @@ URxvt.keysym.C-M-ampersand:   transparency:ualpha=ffff
 
 URxvt.transparency.bgcolor:    rgba:0000/0000/0000/XXXX
 URxvt.transparency.bgopacity:  d000
-URxvt.transparency.bguopacity: d000
+URxvt.transparency.bguopacity: b000
 
 URxvt*print-pipe: cat > /dev/null
 
@@ -60,7 +60,7 @@ URxvt.font: xft:Ubuntu Mono:size=24:hinting=none
 URxvt*saveLines: 65536
 URxvt*borderless: true
 
-URxvt.background: rgba:0000/0000/0000/c000
+URxvt.background: rgba:0000/0000/0000/d000
 URxvt.foreground: rgba:ffff/ffff/ffff/ffff
 
 URxvt*lineSpace: -5
@@ -91,7 +91,7 @@ URxvt*color15: DarkOrchid
 #endif
 
 ! Mono color scheme (WIP)
-#if 1
+#if 0
 URxvt*color0: #a0a0a0
 URxvt*color1: #e0e0e0
 URxvt*color2: #808080
@@ -109,4 +109,25 @@ URxvt*color12: #f4c590
 URxvt*color13: #b0b0b0
 URxvt*color14: #7088b0
 URxvt*color15: #ffffff
+#endif
+
+! Ayu color scheme (modified)
+#if 1
+URxvt*color0: #cbccc6
+URxvt*color1: #ff9940
+URxvt*color2: #86c380
+URxvt*color3: #e6b450
+URxvt*color4: #5ccfe6
+URxvt*color5: #f07178
+URxvt*color6: #95e6cb
+URxvt*color7: #626a73
+
+URxvt*color8:  #fafafa
+URxvt*color9:  #ffa759
+URxvt*color10: #bae67e
+URxvt*color11: #ffee99
+URxvt*color12: #73d0ff
+URxvt*color13: #ffa759
+URxvt*color14: #95e6cb
+URxvt*color15: #707a8c
 #endif
