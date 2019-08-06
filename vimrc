@@ -14,7 +14,7 @@ set wildmenu wildmode=list:longest
 set scrolloff=3
 set shortmess=atI
 set history=1000
-set list listchars=tab:>-,trail:.
+set list listchars=tab:>-,trail:·
 set fillchars+=vert:·
 set textwidth=80
 set novisualbell
