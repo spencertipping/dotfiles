@@ -166,6 +166,11 @@
       <action name='Execute'>
         <command>xsel -c</command></action></keybind>
 
+    <keybind key='W-c'><action name='Execute'>
+      <command>sh -c 'xsel | xsel -b'</command></action></keybind>
+    <keybind key='W-S-c'><action name='Execute'>
+      <command>sh -c 'xsel -b | xsel'</command></action></keybind>
+
     <keybind key='W-A-r'><action name='Execute'>
       <command>xset r off</command></action></keybind>
     <keybind key='W-A-S-r'><action name='Execute'>

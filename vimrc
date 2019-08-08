@@ -66,7 +66,7 @@ if &term == "xterm-color" || &term == "rxvt-unicode"
   hi Normal ctermfg=0
 endif
 
-hi LineNr       ctermfg=15
+hi LineNr       ctermfg=7
 hi CursorLineNr ctermfg=9
 hi Statement    ctermfg=10
 hi Type         ctermfg=8
