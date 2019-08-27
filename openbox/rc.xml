@@ -12,7 +12,12 @@
 
   <placement><policy>Smart</policy></placement>
 
-  <theme><keepBorder>no</keepBorder></theme>
+  <theme>
+    <keepBorder>no</keepBorder>
+    <font place='OnScreenDisplay'><name>sans</name><size>24</size></font>
+    <font place='MenuItem'><name>sans</name><size>24</size></font>
+    <font place='MenuHeader'><name>sans</name><size>24</size></font>
+  </theme>
 
   <desktops><number>100</number>
             <firstdesk>1</firstdesk>
