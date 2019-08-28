@@ -1,36 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openbox_config xmlns="http://openbox.org/3.4/rc">
-  <resistance><strength>10</strength>
-              <screen_edge_strength>20</screen_edge_strength></resistance>
+  <resistance> <strength>10</strength> <screen_edge_strength>20</screen_edge_strength> </resistance>
 
-  <focus><focusNew>yes</focusNew>
-         <followMouse>yes</followMouse>
-         <focusLast>yes</focusLast>
-         <underMouse>yes</underMouse>
-         <focusDelay>0</focusDelay>
-         <raiseOnFocus>no</raiseOnFocus></focus>
+  <focus> <focusNew>yes</focusNew>   <followMouse>yes</followMouse>
+          <focusLast>yes</focusLast> <underMouse>yes</underMouse>
+          <focusDelay>0</focusDelay> <raiseOnFocus>no</raiseOnFocus> </focus>
 
   <placement><policy>Smart</policy></placement>
 
-  <theme>
-    <keepBorder>no</keepBorder>
-    <font place='OnScreenDisplay'><name>sans</name><size>24</size></font>
-    <font place='MenuItem'><name>sans</name><size>24</size></font>
-    <font place='MenuHeader'><name>sans</name><size>24</size></font>
-  </theme>
+  <theme> <keepBorder>no</keepBorder>
+          <font place='OnScreenDisplay'><name>sans</name><size>24</size></font>
+          <font place='MenuItem'><name>sans</name><size>24</size></font>
+          <font place='MenuHeader'><name>sans</name><size>24</size></font> </theme>
 
-  <desktops><number>100</number>
-            <firstdesk>1</firstdesk>
-            <popupTime>150</popupTime></desktops>
+  <desktops><number>100</number> <firstdesk>1</firstdesk> <popupTime>150</popupTime></desktops>
+  <margins><top>0</top> <bottom>0</bottom> <left>0</left> <right>0</right></margins>
 
-  <resize><drawContents>no</drawContents>
-          <popupShow>Nonpixel</popupShow>
-          <popupPosition>Center</popupPosition></resize>
+  <resize><drawContents>no</drawContents> <popupShow>Nonpixel</popupShow> <popupPosition>Center</popupPosition></resize>
 
-  <margins><top>0</top>
-           <bottom>0</bottom>
-           <left>0</left>
-           <right>0</right></margins>
+  <mouse>
+    <dragThreshold>2</dragThreshold>
+    <doubleClickTime>200</doubleClickTime>
+    <screenEdgeWarpTime>150</screenEdgeWarpTime>
+
+    <context name="Frame">
+      <mousebind button="A-Left" action="Press">  <action name="Focus"/> <action name="Raise"/></mousebind>
+      <mousebind button="A-Left" action="Drag">   <action name="Move"/></mousebind>
+      <mousebind button="A-S-Left" action="Drag"> <action name="Resize"/></mousebind>
+    </context>
+  </mouse>
+
+  <menu><file>menu.xml</file>
+        <hideDelay>200</hideDelay>
+        <middle>no</middle>
+        <submenuShowDelay>100</submenuShowDelay>
+        <applicationIcons>no</applicationIcons></menu>
+
+  <applications>
+    <application name='*'><decor>no</decor><shade>no</shade></application>
+    <application name='audacious'><desktop>all</desktop> <layer>normal</layer></application>
+    <application name='Conky'><layer>below</layer></application>
+  </applications>
 
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
@@ -44,36 +54,23 @@
     <keybind key="A-space"><action name="ShowMenu"><menu>client-menu</menu></action></keybind>
 
     <!-- Fixed locations -->
-    <keybind key='W-8'><action name='MoveResizeTo'>
-      <x>-936</x><y>14</y><height>400</height></action></keybind>
-    <keybind key='W-9'><action name='MoveResizeTo'>
-      <x>-836</x><y>14</y><height>400</height></action></keybind>
-    <keybind key='W-0'><action name='MoveResizeTo'>
-      <x>-108</x><y>14</y><height>400</height></action></keybind>
+    <keybind key='W-8'><action name='MoveResizeTo'> <x>-936</x><y>14</y><height>400</height></action></keybind>
+    <keybind key='W-9'><action name='MoveResizeTo'> <x>-836</x><y>14</y><height>400</height></action></keybind>
+    <keybind key='W-0'><action name='MoveResizeTo'> <x>-108</x><y>14</y><height>400</height></action></keybind>
 
-    <keybind key='W-bracketleft'><action name='MoveResizeTo'>
-      <x>-816</x><y>14</y></action></keybind>
-    <keybind key='W-bracketright'><action name='MoveResizeTo'>
-      <x>-408</x><y>14</y></action></keybind>
-    <keybind key='W-S-bracketright'><action name='MoveResizeTo'>
-      <x>-0</x><y>14</y></action></keybind>
+    <keybind key='W-bracketleft'><action name='MoveResizeTo'>    <x>-816</x><y>14</y></action></keybind>
+    <keybind key='W-bracketright'><action name='MoveResizeTo'>   <x>-408</x><y>14</y></action></keybind>
+    <keybind key='W-S-bracketright'><action name='MoveResizeTo'> <x>-0</x>  <y>14</y></action></keybind>
 
-    <keybind key='W-semicolon'><action name='MoveResizeTo'>
-      <x>-816</x><y>320</y></action></keybind>
-    <keybind key='W-apostrophe'><action name='MoveResizeTo'>
-      <x>-408</x><y>320</y></action></keybind>
-    <keybind key='W-S-apostrophe'><action name='MoveResizeTo'>
-      <x>-0</x><y>320</y></action></keybind>
+    <keybind key='W-semicolon'><action name='MoveResizeTo'>    <x>-816</x><y>320</y></action></keybind>
+    <keybind key='W-apostrophe'><action name='MoveResizeTo'>   <x>-408</x><y>320</y></action></keybind>
+    <keybind key='W-S-apostrophe'><action name='MoveResizeTo'> <x>-0</x>  <y>320</y></action></keybind>
 
-    <keybind key='W-period'><action name='MoveResizeTo'>
-      <x>-816</x><y>626</y></action></keybind>
-    <keybind key='W-slash'><action name='MoveResizeTo'>
-      <x>-408</x><y>626</y></action></keybind>
-    <keybind key='W-S-slash'><action name='MoveResizeTo'>
-      <x>-0</x><y>626</y></action></keybind>
+    <keybind key='W-period'><action name='MoveResizeTo'>  <x>-816</x><y>626</y></action></keybind>
+    <keybind key='W-slash'><action name='MoveResizeTo'>   <x>-408</x><y>626</y></action></keybind>
+    <keybind key='W-S-slash'><action name='MoveResizeTo'> <x>-0</x>  <y>626</y></action></keybind>
 
-    <keybind key='W-S-period'><action name='MoveResizeTo'>
-      <x>-0</x><y>-0</y><height>85</height></action></keybind>
+    <keybind key='W-S-period'><action name='MoveResizeTo'> <x>-0</x><y>-0</y><height>85</height></action></keybind>
 
     <keybind key='W-C-h'><action name='MoveRelative'><x>-4</x><y>0</y></action></keybind>
     <keybind key='W-C-j'><action name='MoveRelative'><x>0</x><y>4</y></action></keybind>
@@ -86,106 +83,68 @@
     <keybind key='W-C-S-l'><action name='ResizeRelative'><right>4</right></action></keybind>
 
     <!-- Misc integration -->
-    <keybind key='Print'><action name='Execute'>
-      <command>shutter</command></action></keybind>
-    <keybind key='W-Print'><action name='Execute'>
-      <command>snapmr</command></action></keybind>
-    <keybind key='W-Delete'><action name='Execute'>
-      <command>delmr</command></action></keybind>
-    <keybind key='W-q'><action name='Execute'>
-      <command>xtrlock</command></action></keybind>
+    <keybind key='Print'><action name='Execute'><command>shutter</command></action></keybind>
+    <keybind key='W-q'>  <action name='Execute'><command>xtrlock</command></action></keybind>
 
     <!-- Audio -->
-    <keybind key='W-Down'>
-      <action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
-    <keybind key='W-Up'>
-      <action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
-    <keybind key='W-S-Down'>
-      <action name='Execute'><command>vol-delta-pa -1024</command></action></keybind>
-    <keybind key='W-S-Up'>
-      <action name='Execute'><command>vol-delta-pa 1024</command></action></keybind>
+    <keybind key='W-Down'>   <action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
+    <keybind key='W-Up'>     <action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
+    <keybind key='W-S-Down'> <action name='Execute'><command>vol-delta-pa -1024</command></action></keybind>
+    <keybind key='W-S-Up'>   <action name='Execute'><command>vol-delta-pa 1024</command></action></keybind>
 
-    <keybind key='W-S-Left'><action name='Execute'>
-      <command>vol-absolute-pa 0</command></action></keybind>
-    <keybind key='W-S-Right'><action name='Execute'>
-      <command>vol-absolute-pa 29000</command></action></keybind>
-    <keybind key='W-Left'><action name='Execute'>
-      <command>vol-absolute-pa 16000</command></action></keybind>
-    <keybind key='W-Right'><action name='Execute'>
-      <command>vol-absolute-pa 24000</command></action></keybind>
+    <keybind key='W-S-Left'><action name='Execute'>  <command>vol-absolute-pa 0</command></action></keybind>
+    <keybind key='W-S-Right'><action name='Execute'> <command>vol-absolute-pa 29000</command></action></keybind>
+    <keybind key='W-Left'><action name='Execute'>    <command>vol-absolute-pa 16000</command></action></keybind>
+    <keybind key='W-Right'><action name='Execute'>   <command>vol-absolute-pa 24000</command></action></keybind>
 
     <!-- Backlight (for machines where hardware keys aren't supported) -->
-    <keybind key='W-C-S-Left'><action name='Execute'>
-      <command>backlight 0</command></action></keybind>
-    <keybind key='W-C-Left'><action name='Execute'>
-      <command>backlight 100</command></action></keybind>
-    <keybind key='W-C-Right'><action name='Execute'>
-      <command>backlight 852</command></action></keybind>
+    <keybind key='W-C-S-Left'><action name='Execute'> <command>backlight 0</command></action></keybind>
+    <keybind key='W-C-Left'><action name='Execute'>   <command>backlight 100</command></action></keybind>
+    <keybind key='W-C-Right'><action name='Execute'>  <command>backlight 852</command></action></keybind>
 
-    <keybind key='W-C-Up'><action name='Execute'>
-      <command>backlight +100</command></action></keybind>
-    <keybind key='W-C-Down'><action name='Execute'>
-      <command>backlight -100</command></action></keybind>
-    <keybind key='W-C-S-Up'><action name='Execute'>
-      <command>backlight +5</command></action></keybind>
-    <keybind key='W-C-S-Down'><action name='Execute'>
-      <command>backlight -5</command></action></keybind>
+    <keybind key='W-C-Up'><action name='Execute'>     <command>backlight +100</command></action></keybind>
+    <keybind key='W-C-Down'><action name='Execute'>   <command>backlight -100</command></action></keybind>
+    <keybind key='W-C-S-Up'><action name='Execute'>   <command>backlight +5</command></action></keybind>
+    <keybind key='W-C-S-Down'><action name='Execute'> <command>backlight -5</command></action></keybind>
 
     <!-- App integrations -->
-    <keybind key="W-t"><action name="Execute">
-      <command>urxvt</command></action></keybind>
-    <keybind key="W-S-t"><action name="Execute">
-      <command>urxvt -geometry 198x20</command></action></keybind>
+    <keybind key="W-t"><action name="Execute">   <command>urxvt</command></action></keybind>
+    <keybind key="W-S-t"><action name="Execute"> <command>urxvt -geometry 198x20</command></action></keybind>
 
-    <keybind key="W-S-w"><action name="Execute">
-      <command>chromium-browser</command></action></keybind>
-    <keybind key="A-F2"><action name="Execute">
-      <command>urxvt -geometry 80x3 -name bashrun -e sh -c "/bin/bash -i -t"</command></action></keybind>
-    <keybind key='W-a'><action name='Execute'>
-      <command>audacious</command></action></keybind>
-    <keybind key='W-S-a'>
-      <action name='Execute'><command>transset -n Audacious 0.1</command></action>
-      <action name='Execute'><command>wmctrl -a audacious</command></action></keybind>
-    <keybind key='W-S-v'><action name='Execute'>
-      <command>pavucontrol</command></action></keybind>
+    <keybind key="W-S-w"><action name="Execute"> <command>chromium-browser</command></action></keybind>
+    <keybind key="A-F2"><action name="Execute">  <command>urxvt -geometry 80x3 -name bashrun -e sh -c "/bin/bash -i -t"</command></action></keybind>
+    <keybind key='W-a'><action name='Execute'>   <command>audacious</command></action></keybind>
+    <keybind key='W-S-v'><action name='Execute'> <command>pavucontrol</command></action></keybind>
+    <keybind key='W-S-a'> <action name='Execute'><command>transset -n Audacious 0.1</command></action>
+                          <action name='Execute'><command>wmctrl -a audacious</command></action> </keybind>
 
-    <keybind key='W-S-8'>
-      <action name='Execute'><command>transset 0.85</command></action></keybind>
+    <keybind key='W-S-8'> <action name='Execute'><command>transset 0.85</command></action></keybind>
 
     <!-- Home automation -->
-    <keybind key='W-e'>
-      <keybind key='o'><action name='Execute'><command>curl http://192.168.0.34:8180/0</command></action></keybind>
-      <keybind key='f'><action name='Execute'><command>curl http://192.168.0.34:8180/4</command></action></keybind>
-      <keybind key='h'><action name='Execute'><command>curl http://192.168.0.34:8180/5</command></action></keybind></keybind>
+    <keybind key='W-e'> <keybind key='o'><action name='Execute'><command>curl http://192.168.0.34:8180/0</command></action></keybind>
+                        <keybind key='f'><action name='Execute'><command>curl http://192.168.0.34:8180/4</command></action></keybind>
+                        <keybind key='h'><action name='Execute'><command>curl http://192.168.0.34:8180/5</command></action></keybind></keybind>
 
     <!-- Backgrounds -->
-    <keybind key='W-S-b'><action name='Execute'>
-      <command>/home/spencertipping/bin/mdb</command></action></keybind>
+    <keybind key='W-S-b'><action name='Execute'> <command>/home/spencertipping/bin/mdb</command></action></keybind>
 
     <!-- xsel -->
-    <keybind key='W-r'><action name='Execute'>
-      <command>/home/spencertipping/bin/rb</command></action></keybind>
-    <keybind key='W-S-r'>
-      <action name='Execute'>
-        <command>xsel -bc</command></action>
-      <action name='Execute'>
-        <command>xsel -c</command></action></keybind>
+    <keybind key='W-r'><action name='Execute'> <command>/home/spencertipping/bin/rb</command></action></keybind>
+    <keybind key='W-S-r'> <action name='Execute'> <command>xsel -bc</command></action>
+                          <action name='Execute'> <command>xsel -c</command></action></keybind>
 
-    <keybind key='W-c'><action name='Execute'>
-      <command>sh -c 'xsel | xsel -b'</command></action></keybind>
-    <keybind key='W-S-c'><action name='Execute'>
-      <command>sh -c 'xsel -b | xsel'</command></action></keybind>
+    <keybind key='W-c'><action name='Execute'>   <command>sh -c 'xsel | xsel -b'</command></action></keybind>
+    <keybind key='W-S-c'><action name='Execute'> <command>sh -c 'xsel -b | xsel'</command></action></keybind>
 
-    <keybind key='W-A-r'><action name='Execute'>
-      <command>xset r off</command></action></keybind>
-    <keybind key='W-A-S-r'><action name='Execute'>
-      <command>xset r rate 150 30</command></action></keybind>
+    <keybind key='W-A-r'><action name='Execute'>   <command>xset r off</command></action></keybind>
+    <keybind key='W-A-S-r'><action name='Execute'> <command>xset r rate 150 30</command></action></keybind>
 
     <!-- Keybindings for desktop switching -->
-    <keybind key='W-i'><action name='GoToDesktop'><to>24</to></action></keybind>
-    <keybind key='W-o'><action name='GoToDesktop'><to>37</to></action></keybind>
-    <keybind key='W-m'><action name='GoToDesktop'><to>54</to></action></keybind>
-    <keybind key='W-n'><action name='GoToDesktop'><to>42</to></action></keybind>
+    <keybind key='W-i'> <action name='Execute'><command>morning-backlight bright</command></action> <action name='GoToDesktop'><to>24</to></action></keybind>
+    <keybind key='W-o'> <action name='Execute'><command>morning-backlight dark</command></action>   <action name='GoToDesktop'><to>37</to></action></keybind>
+    <keybind key='W-m'> <action name='Execute'><command>morning-backlight bright</command></action> <action name='GoToDesktop'><to>54</to></action></keybind>
+    <keybind key='W-n'> <action name='Execute'><command>morning-backlight dark</command></action>   <action name='GoToDesktop'><to>42</to></action></keybind>
+
     <keybind key='W-comma'><action name='GoToDesktop'><to>67</to></action></keybind>
 
     <keybind key="W-h"><action name="DesktopLeft"/></keybind>
@@ -202,52 +161,9 @@
     <keybind key="A-Tab"><action name="NextWindow"/></keybind>
     <keybind key="A-S-Tab"><action name="PreviousWindow"/></keybind>
 
-    <keybind key="W-Tab"><action name="NextWindow">
-      <allDesktops>yes</allDesktops></action></keybind>
-    <keybind key="W-S-Tab"><action name="PreviousWindow">
-      <allDesktops>yes</allDesktops></action></keybind>
+    <keybind key="W-Tab"><action name="NextWindow">       <allDesktops>yes</allDesktops></action></keybind>
+    <keybind key="W-S-Tab"><action name="PreviousWindow"> <allDesktops>yes</allDesktops></action></keybind>
 
-    <keybind key="W-space">
-      <action name="ShowMenu"><menu>root-menu</menu></action></keybind>
-
-    <!-- Automation -->
-    <keybind key='W-C-l'>
-      <keybind key='a'><action name='Execute'><command>/home/spencertipping/bin/lab azc</command></action></keybind>
-      <keybind key='x'><action name='Execute'><command>/home/spencertipping/bin/lab xrc</command></action></keybind>
-      <keybind key='o'><action name='Execute'><command>/home/spencertipping/bin/lab ric</command></action></keybind>
-    </keybind>
+    <keybind key="W-space"> <action name="ShowMenu"><menu>root-menu</menu></action></keybind>
   </keyboard>
-
-  <mouse>
-    <dragThreshold>2</dragThreshold>
-    <doubleClickTime>200</doubleClickTime>
-    <screenEdgeWarpTime>150</screenEdgeWarpTime>
-
-    <context name="Frame">
-      <mousebind button="A-Left" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/></mousebind>
-
-      <mousebind button="A-Left" action="Drag">
-        <action name="Move"/></mousebind>
-
-      <mousebind button="A-S-Left" action="Drag">
-        <action name="Resize"/></mousebind>
-    </context>
-  </mouse>
-
-  <menu><file>menu.xml</file>
-        <hideDelay>200</hideDelay>
-        <middle>no</middle>
-        <submenuShowDelay>100</submenuShowDelay>
-        <applicationIcons>no</applicationIcons></menu>
-
-  <applications>
-    <application name='*'><decor>no</decor>
-                          <shade>no</shade></application>
-
-    <application name='audacious'><desktop>all</desktop>
-                                  <layer>normal</layer></application>
-    <application name='Conky'><layer>below</layer></application>
-  </applications>
 </openbox_config>

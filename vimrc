@@ -46,6 +46,7 @@ au BufNew,BufReadPost * syn sync fromstart
 au BufNew,BufReadPost *.binary set syntax=binary
 au BufNew,BufReadPost *.waul   set syntax=caterwaul tw=0
 au BufNew,BufReadPost *.tex    set tw=0
+au BufNew,BufReadPost *.hs     set tw=192
 
 au Syntax * syn keyword cppType let
 
