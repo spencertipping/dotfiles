@@ -84,6 +84,8 @@ hi perlRepeat      ctermfg=10
 
 hi Pmenu ctermbg=none ctermfg=4
 
+hi Folded term=standout ctermfg=4 ctermbg=none
+
 hi markdownHeadingThing ctermfg=9 cterm=bold
 hi link markdownLinkDelimiter NonText
 hi link markdownLinkTextDelimiter NonText
