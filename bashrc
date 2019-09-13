@@ -48,6 +48,14 @@ ss_here() {
   echo "./$destname"
 }
 
+screen-record() {
+  ffmpeg -thread_queue_size 512 -s 3840x2160 -f x11grab -r 15 -i :0.0 \
+         -thread_queue_size 512 -f pulse -i default \
+         -c:v libx264 -c:a libvorbis \
+         -b:v 12000k -b:a 256k -preset veryfast \
+         -f matroska "${1:--}"
+}
+
 # The world is unprepared for colorful RXVT. Reduce it to just regular URXVT.
 if [[ "$TERM" = rxvt-unicode-256color ]]; then
   export TERM='rxvt-unicode'
@@ -60,6 +68,7 @@ fi
 case $HOSTNAME in
 iota)
   export GDK_SCALE=2
+  export QT_SCALE_FACTOR=2
   ;;
 esac
 
