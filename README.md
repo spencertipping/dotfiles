@@ -93,7 +93,6 @@ like the way they work. Almost every shortcut uses the `Win` key.
 - `Alt+Tab`: select window on this desktop (`Alt+Shift+Tab` reverses)
 - `Win+Tab`: select window on all desktops (`Win+Shift+Tab` reverses)
 - `Alt+Space`: show window menu
-
 - `W-s`: sticky
 - `W-f`: toggle horizontal maximize
 - `W-v`: toggle vertical maximize
