@@ -40,14 +40,6 @@ export GNUTERM=wxt
 
 export LC_ALL=${LC_ALL:-C.UTF-8}
 
-# Screenshot helpers
-ss_here() {
-  filename=`xsel -b`
-  destname=`uuid`."${filename##*.}"
-  cp "$filename" "./$destname"
-  echo "./$destname"
-}
-
 screen-record() {
   ffmpeg -thread_queue_size 512 -s 3840x2160 -f x11grab -r 15 -i :0.0 \
          -thread_queue_size 512 -f pulse -i default \
