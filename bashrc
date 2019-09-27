@@ -64,6 +64,9 @@ iota)
   ;;
 esac
 
+# Enable nix if we have it
+[[ -e ~/.nix-profile/etc/profile.d/nix.sh ]] && . ~/.nix-profile/etc/profile.d/nix.sh
+
 [[ $PWD == $HOME && -d $HOME/r ]] && cd $HOME/r
 
 true
