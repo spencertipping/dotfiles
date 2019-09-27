@@ -48,6 +48,7 @@ values."
      html
      javascript
      markdown
+     nixos
      ;; perl
      purescript
      python
@@ -313,9 +314,7 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
-  (add-to-list 'default-frame-alist '(width  . 90))
-
-  (persistent-scratch-setup-default))
+  (add-to-list 'default-frame-alist '(width  . 90)))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
