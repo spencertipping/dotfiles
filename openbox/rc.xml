@@ -97,6 +97,10 @@
     <keybind key='W-Left'><action name='Execute'>    <command>vol-absolute-pa 16000</command></action></keybind>
     <keybind key='W-Right'><action name='Execute'>   <command>vol-absolute-pa 24000</command></action></keybind>
 
+    <!-- Reconnection for silly headset that keeps getting out of sync -->
+    <keybind key='W-A-h'><action name='Execute'><command>sh -c "echo 'disconnect E8:07:BF:ED:54:05' | bluetoothctl"</command></action></keybind>
+    <keybind key='W-A-S-h'><action name='Execute'><command>sh -c "echo 'connect E8:07:BF:ED:54:05' | bluetoothctl"</command></action></keybind>
+
     <!-- Backlight (for machines where hardware keys aren't supported) -->
     <keybind key='W-C-S-Left'><action name='Execute'> <command>backlight 0</command></action></keybind>
     <keybind key='W-C-Left'><action name='Execute'>   <command>backlight 100</command></action></keybind>
