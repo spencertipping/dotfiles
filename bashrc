@@ -57,6 +57,13 @@ if test -e ~/.dir_colors && which dircolors >& /dev/null; then
   eval $(dircolors ~/.dir_colors)
 fi
 
+# Baby monitor
+babymon() {
+  ssh $1 'arecord -f cd -t raw -' \
+    | play -e signed-integer -b 16 -L -c 2 -r 44100 -t raw - \
+           compand .01,.01 -inf,-40,-inf,-40,-40 0 -90 .1
+}
+
 case $HOSTNAME in
 iota)
   export GDK_SCALE=2
