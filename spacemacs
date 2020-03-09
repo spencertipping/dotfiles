@@ -74,6 +74,7 @@ values."
    ;; A list of packages that will not be installed and loaded.
    ;; NOTE(spencer): recentf conflicts between running emacs instances.
    dotspacemacs-excluded-packages '(recentf
+                                    savehist
                                     firebelly-theme
                                     niflheim-theme
                                     pastels-on-dark-theme
@@ -333,6 +334,14 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq sh-basic-offset 2)
   (setq smie-indent-basic 2)
   (setq lua-indent-level 2)
+
+  (add-to-list 'load-path "/usr/share/emacs/site-lisp/maxima/")
+  (autoload 'maxima-mode "maxima" "Maxima mode" t)
+  (autoload 'imaxima "imaxima" "Frontend for maxima with Image support" t)
+  (autoload 'maxima "maxima" "Maxima interaction" t)
+  (autoload 'imath-mode "imath" "Imath mode for math formula input" t)
+  (setq imaxima-use-maxima-mode-flag t)
+  (add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode))
   )
 
 (defun dotspacemacs/user-config ()
@@ -344,6 +353,17 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   (setq-default tab-width 8)
+
+  ;; The only one of these I ever use is suggested LANGUAGE pragmas.
+  (setq-default haskell-process-suggest-add-package nil)
+  (setq-default haskell-process-suggest-haskell-docs-imports nil)
+  (setq-default haskell-process-suggest-hoogle-imports nil)
+  (setq-default haskell-process-suggest-no-warn-orphans nil)
+  (setq-default haskell-process-suggest-overloaded-strings nil)
+  (setq-default haskell-process-suggest-remove-import-lines nil)
+  (setq-default haskell-process-suggest-restart nil)
+
+  (remove-hook 'markdown-mode-hook #'smartparens-mode)
 
   ;; I think the normal value is "fd" or something similarly common. I don't
   ;; ever use this, so let's map it to something I never type.
