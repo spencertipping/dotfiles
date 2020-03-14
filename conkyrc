@@ -73,7 +73,7 @@ ${voffset -52}${goto 0}${offset 672}
 ${voffset -26}${goto 0}${offset 672}${downspeed wlp2s0}
 ${voffset -26}${goto 0}${offset 768}${upspeed   wlp2s0}
 ${voffset -26}${goto 0}${offset 864}${diskio_read  /dev/nvme0n1} ${voffset -46}${goto 0}${offset 864}${fs_free /}  ${voffset 46}${goto 0}${offset 864}
-${voffset -26}${goto 0}${offset 960}${diskio_write /dev/nvme0n1} ${voffset -46}${goto 0}${offset 960}${hwmon 2 temp 1}°C ${voffset 46}${goto 0}${offset 960}
+${voffset -26}${goto 0}${offset 960}${diskio_write /dev/nvme0n1} ${voffset -46}${goto 0}${offset 960}${hwmon 4 temp 1}°C ${voffset 46}${goto 0}${offset 960}
 ${voffset -26}
 ${voffset -26}${voffset 4}${goto 0}${offset 960}${goto 0}${offset 1032}${color 303030}${loadgraph 16,355 -l} ${voffset -4}${goto 0}${offset 960}
 ${voffset -26}${goto 0}${offset 960}${color c0c0c0}${alignr 0}${loadavg 1}
