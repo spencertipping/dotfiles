@@ -283,7 +283,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers 'relative
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -358,9 +358,15 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq imaxima-use-maxima-mode-flag t)
   (add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode))
 
-  (setq theming-modifications '(
-    (default (line-number :background nil) (linum :background nil))
-    (jbeans (line-number :background nil) (linum :background nil))))
+  (setq theming-modifications
+        '((default
+            (line-number :background nil)
+            (linum :background nil)
+            (linum-relative-current-face :background nil))
+          (jbeans
+            (line-number :background nil)
+            (linum :background nil)
+            (linum-relative-current-face :background nil))))
   )
 
 (defun dotspacemacs/user-config ()

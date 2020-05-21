@@ -13,6 +13,8 @@ export GPG_TTY=`tty`
 # Source any machine-specific aliases if we have them
 [[ -e ~/.bash_aliases ]] && source ~/.bash_aliases
 
+alias em='emacs -nw'
+alias en='emacsclient -nw'
 alias pd='rlwrap perl -de1'
 
 # If we don't have a DISPLAY already, set it to :0
@@ -53,10 +55,6 @@ screen-record() {
 #if [[ "$TERM" = rxvt-unicode-256color ]]; then
 #  export TERM='rxvt-unicode'
 #fi
-
-if test -e ~/.dir_colors && which dircolors >& /dev/null; then
-  eval $(dircolors ~/.dir_colors)
-fi
 
 # Baby monitor
 babymon() {
