@@ -61,6 +61,7 @@ values."
      shell-scripts
      sql
      ;; themes-megapack
+     theming
      typescript
      yaml
      )
@@ -240,7 +241,7 @@ values."
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar t
+   dotspacemacs-loading-progress-bar nil
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
    dotspacemacs-fullscreen-at-startup nil
@@ -264,7 +265,7 @@ values."
    ;; If non nil show the color guide hint for transient state keys. (default t)
    dotspacemacs-show-transient-state-color-guide t
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
@@ -356,6 +357,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (autoload 'imath-mode "imath" "Imath mode for math formula input" t)
   (setq imaxima-use-maxima-mode-flag t)
   (add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode))
+
+  (setq theming-modifications '(
+    (default (line-number :background nil) (linum :background nil))
+    (jbeans (line-number :background nil) (linum :background nil))))
   )
 
 (defun dotspacemacs/user-config ()
@@ -376,6 +381,10 @@ you should place your code here."
   (setq-default haskell-process-suggest-overloaded-strings nil)
   (setq-default haskell-process-suggest-remove-import-lines nil)
   (setq-default haskell-process-suggest-restart nil)
+
+  (setq-default truncate-lines t)
+  (setq-default mode-line-format nil)
+  (spacemacs/toggle-highlight-current-line-globally-off)
 
   (remove-hook 'markdown-mode-hook #'smartparens-mode)
 
