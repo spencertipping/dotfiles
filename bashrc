@@ -50,9 +50,9 @@ screen-record() {
 }
 
 # The world is unprepared for colorful RXVT. Reduce it to just regular URXVT.
-if [[ "$TERM" = rxvt-unicode-256color ]]; then
-  export TERM='rxvt-unicode'
-fi
+#if [[ "$TERM" = rxvt-unicode-256color ]]; then
+#  export TERM='rxvt-unicode'
+#fi
 
 if test -e ~/.dir_colors && which dircolors >& /dev/null; then
   eval $(dircolors ~/.dir_colors)
