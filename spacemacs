@@ -55,6 +55,7 @@ values."
      ocaml
      purescript
      python
+     react
      ruby
      rust
      shaders
@@ -349,6 +350,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq sh-basic-offset 2)
   (setq smie-indent-basic 2)
   (setq lua-indent-level 2)
+
+  (setq-default linum-relative-format "%s ")
 
   (add-to-list 'load-path "/usr/share/emacs/site-lisp/maxima/")
   (autoload 'maxima-mode "maxima" "Maxima mode" t)
