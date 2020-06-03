@@ -17,6 +17,8 @@ alias em='emacs -nw'
 alias en='emacsclient -nw'
 alias pd='rlwrap perl -de1'
 
+alias vbg='xwinwrap -s -fs -b -nf -ov -- mplayer -wid WID'
+
 # If we don't have a DISPLAY already, set it to :0
 # (in practice this happens if you don't have bashrc-xpra and you're sshing
 # somewhere without -X)
