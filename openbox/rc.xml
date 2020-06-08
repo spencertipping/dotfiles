@@ -132,6 +132,8 @@
 
     <!-- Backgrounds -->
     <keybind key='W-S-b'><action name='Execute'> <command>/home/spencertipping/bin/mdb</command></action></keybind>
+    <keybind key='W-S-o'><action name='Execute'> <command>xset dpms force off</command></action></keybind>
+    <keybind key='W-C-o'><action name='Execute'> <command>xset dpms force on</command></action></keybind>
 
     <!-- xsel -->
     <keybind key='W-r'><action name='Execute'> <command>/home/spencertipping/bin/rb</command></action></keybind>
