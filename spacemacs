@@ -61,7 +61,7 @@ values."
      shaders
      shell-scripts
      sql
-     ;; themes-megapack
+     ; themes-megapack
      theming
      typescript
      yaml
@@ -70,7 +70,13 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(jbeans-theme)
+   dotspacemacs-additional-packages '(jbeans-theme
+                                      jazz-theme
+                                      minimal-theme
+                                      monochrome-theme
+                                      mustang-theme
+                                      tangotango-theme
+                                      zenburn-theme)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -150,7 +156,13 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(jbeans
+                         minimal
+                         jazz
+                         monochrome
                          wombat
+                         mustang
+                         tangotango
+                         zenburn
                          spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -315,8 +327,9 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup trailing
+   dotspacemacs-whitespace-cleanup 'trailing
    ))
+
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
@@ -361,16 +374,30 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq imaxima-use-maxima-mode-flag t)
   (add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode))
 
-  (setq theming-modifications
-        '((default
-            (line-number :background nil)
-            (linum :background nil)
-            (linum-relative-current-face :background nil))
-          (jbeans
-            (line-number :background nil)
-            (linum :background nil)
-            (linum-relative-current-face :background nil))))
-  )
+  ;; Apply the same cleanup to a bunch of themes.
+  (let* ((faces        (append (face-list) '(
+                                             default
+                                             line-number
+                                             linum
+                                             linum-relative-current-face
+                                             )))
+         (default-mods (mapcar (lambda (f) (cons f '(:background "nil"))) faces))
+         (themes       '(
+                         default
+                         jazz
+                         jbeans
+                         minimal
+                         monochrome
+                         mustang
+                         spacemacs-dark
+                         tangotango
+                         wombat
+                         zenburn
+                         ))
+         (theme-mods   (mapcar (lambda (x) (cons x default-mods)) themes)))
+
+    (setq-default theming-modifications theme-mods)))
+
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -418,5 +445,5 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 89)) (:foreground "#cccccc" :background nil))))
+ '(default ((t (:inherit nil :stipple nil :background "nil" :foreground "light gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default"))))
  '(fixed-pitch ((t (:family "Ubuntu Mono")))))

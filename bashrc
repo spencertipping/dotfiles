@@ -19,7 +19,7 @@ alias pd='rlwrap perl -de1'
 
 # mplayer doesn't use VDPAU by default, so consumes far more CPU
 # alias vbg='xwinwrap -s -fs -b -nf -ov -- mplayer -wid WID'
-alias vbg='xwinwrap -s -fs -b -nf -ov -- cvlc --drawable-xid WID'
+alias vbg='xwinwrap -s -fs -b -nf -ov -- cvlc --drawable-xid WID -I rc'
 
 # If we don't have a DISPLAY already, set it to :0
 # (in practice this happens if you don't have bashrc-xpra and you're sshing
