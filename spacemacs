@@ -375,26 +375,29 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode))
 
   ;; Apply the same cleanup to a bunch of themes.
-  (let* ((faces        (append (face-list) '(
-                                             default
-                                             line-number
-                                             linum
-                                             linum-relative-current-face
-                                             )))
-         (default-mods (mapcar (lambda (f) (cons f '(:background "nil"))) faces))
-         (themes       '(
-                         default
-                         jazz
-                         jbeans
-                         minimal
-                         monochrome
-                         mustang
-                         spacemacs-dark
-                         tangotango
-                         wombat
-                         zenburn
-                         ))
-         (theme-mods   (mapcar (lambda (x) (cons x default-mods)) themes)))
+  (let* ((keep-faces '(region))
+         (default-mods (mapcar (lambda (f) (cons f '(:background "nil")))
+                               faces))
+         (faces (append (remove-if (lambda (x) (member x keep-faces))
+                                   (face-list))
+                        '(
+                          default
+                          line-number
+                          linum
+                          linum-relative-current-face
+                          )))
+         (themes '(default
+                   jazz
+                   jbeans
+                   minimal
+                   monochrome
+                   mustang
+                   spacemacs-dark
+                   tangotango
+                   wombat
+                   zenburn))
+
+         (theme-mods (mapcar (lambda (x) (cons x default-mods)) themes)))
 
     (setq-default theming-modifications theme-mods)))
 

@@ -55,7 +55,14 @@ URxvt.geometry: 86x20
 
 URxvt.scrollBar: false
 URxvt.thickness: 2
+
+#ifdef SRVR_iota
 URxvt.font: xft:Ubuntu Mono:size=20:hinting=none
+#endif
+
+#ifdef SRVR_iniidae
+URxvt.font: xft:Ubuntu Mono:size=10:hinting=none
+#endif
 
 URxvt*saveLines: 65536
 URxvt*borderless: true
