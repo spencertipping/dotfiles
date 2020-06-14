@@ -376,16 +376,17 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; Apply the same cleanup to a bunch of themes.
   (let* ((keep-faces '(region))
-         (default-mods (mapcar (lambda (f) (cons f '(:background "nil")))
-                               faces))
          (faces (append (remove-if (lambda (x) (member x keep-faces))
                                    (face-list))
-                        '(
-                          default
+                        '(default
                           line-number
                           linum
                           linum-relative-current-face
                           )))
+
+         (default-mods (mapcar (lambda (f) (cons f '(:background "nil")))
+                               faces))
+
          (themes '(default
                    jazz
                    jbeans
