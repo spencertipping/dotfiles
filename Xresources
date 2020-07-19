@@ -19,6 +19,15 @@ URxvt.visualBell: false
 URxvt*scrollTtyOutput: false
 URxvt*scrollTtyKeypress: true
 
+URxvt*saveLines: 65536
+URxvt*borderless: true
+
+URxvt.background: rgba:0000/0000/0000/8000
+URxvt.foreground: rgba:ffff/ffff/ffff/ffff
+
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: true
+
 URxvt.keysym.C-minus: font-size:decrease
 URxvt.keysym.C-plus:  font-size:increase
 URxvt.keysym.C-equal: font-size:show
@@ -54,27 +63,33 @@ URxvt.keysym.Control-Right: \033[1;5C
 URxvt.geometry: 86x20
 
 URxvt.scrollBar: false
-URxvt.thickness: 2
+URxvt.thickness: 0
 
 #ifdef SRVR_iota
 URxvt.font: xft:Ubuntu Mono:size=20:hinting=none
+URxvt*lineSpace: 0
+URxvt*letterSpace: -2
+
+!URxvt.font: xft:Aerial Mono:size=20:hinting=none
+!URxvt.font: xft:Cascadia Code:size=20:hinting=none
+!URxvt.font: xft:Hack:size=16:hinting=none:style=Regular
+!URxvt.font: xft:M+ 1mn:size=20:hinting=full:style=Retina
+!URxvt.font: xft:Major Mono Display:size=20:hinting=none:style=Regular
+!URxvt.font: xft:Migu 2M:size=20:hinting=none
+!URxvt.font: xft:Monoid HalfTight:size=20:hinting=none:style=Regular
+!URxvt.font: xft:Share Tech Mono:size=20:hinting=none:style=Regular
+!URxvt.font: xft:Source Code Pro:size=20:hinting=none:style=Regular
+!URxvt.font: xft:Unispace:size=20:hinting=none
+!URxvt.font: xft:monofur:size=20:hinting=none:style=Regular
+!URxvt.font: xft:mononoki:size=20:hinting=none
 #endif
 
 #ifdef SRVR_iniidae
-URxvt.font: xft:Ubuntu Mono:size=10:hinting=none
-#endif
-
-URxvt*saveLines: 65536
-URxvt*borderless: true
-
-URxvt.background: rgba:0000/0000/0000/8000
-URxvt.foreground: rgba:ffff/ffff/ffff/ffff
-
-URxvt*lineSpace: -5
+URxvt*lineSpace: 0
 URxvt*letterSpace: -2
 
-URxvt*cursorBlink: true
-URxvt*cursorUnderline: true
+URxvt.font: xft:Ubuntu Mono:size=10:hinting=none
+#endif
 
 ! Indicator color scheme
 #if 0
