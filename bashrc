@@ -31,7 +31,7 @@ shopt -s checkwinsize extglob
 umask 022
 
 export NODE_PATH="$HOME/.node:$NODE_PATH"
-export PATH="$PATH:$HOME/.npm-global/bin:/home/spencertipping/.platformio/penv/bin"
+export PATH="$PATH:$HOME/.npm-global/bin:$HOME.platformio/penv/bin"
 
 # Environment variables
 export VISUAL="/usr/bin/vim"
