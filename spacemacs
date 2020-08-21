@@ -355,6 +355,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (my-terminal-config)
   (add-hook 'after-make-frame-functions 'my-terminal-config)
 
+  ;; Avoid cluttering work directory with autosave files (this crashes
+  ;; yarn/react)
+  (setq backup-directory-alist
+        `(("." . ,(concat user-emacs-directory "backups"))))
+
   (setq show-trailing-whitespace t)
 
   (setq js-indent-level 2)
@@ -363,6 +368,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq sh-basic-offset 2)
   (setq smie-indent-basic 2)
   (setq lua-indent-level 2)
+  (setq rust-indent-offset 2)
 
   (setq-default linum-relative-format "%s ")
 

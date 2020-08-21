@@ -1,6 +1,11 @@
 #!/bin/bash
 [ -z "$PS1" ] && return
 
+# exec 5> /tmp/bashlog
+# PS4='+ $EPOCHREALTIME\011 '
+# BASH_XTRACEFD=5
+# set -x
+
 hat_identity() { :; }
 hat_observe()  { :; }
 
@@ -31,7 +36,7 @@ shopt -s checkwinsize extglob
 umask 022
 
 export NODE_PATH="$HOME/.node:$NODE_PATH"
-export PATH="$PATH:$HOME/.npm-global/bin:$HOME.platformio/penv/bin"
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.platformio/penv/bin"
 
 # Environment variables
 export VISUAL="/usr/bin/vim"
@@ -78,5 +83,7 @@ esac
 [[ -e ~/.nix-profile/etc/profile.d/nix.sh ]] && . ~/.nix-profile/etc/profile.d/nix.sh
 
 [[ $PWD == $HOME && -d $HOME/r ]] && cd $HOME/r
+
+# set +x
 
 true
