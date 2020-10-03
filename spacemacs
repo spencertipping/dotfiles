@@ -3,9 +3,8 @@
 ;; It must be stored in your home directory.
 
 (defun dotspacemacs/layers ()
-  "Configuration Layers declaration.
-You should not put any user code in this function besides modifying the variable
-values."
+  "Layer configuration:
+This function should only modify configuration layer settings."
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
@@ -546,6 +545,7 @@ See the header of this file for more information."
   (spacemacs/load-spacemacs-env))
 
 
+
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration
@@ -553,6 +553,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+
   (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
   (add-to-list 'default-frame-alist '(width  . 90))
 
@@ -627,6 +628,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
     (setq-default theming-modifications theme-mods)))
 
 
+(defun dotspacemacs/user-load ())
+
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -654,10 +658,7 @@ you should place your code here."
 
   ;; I think the normal value is "fd" or something similarly common. I don't
   ;; ever use this, so let's map it to something I never type.
-  (setq-default evil-escape-key-sequence "QQ")
-
-
-  )
+  (setq-default evil-escape-key-sequence "QQ"))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

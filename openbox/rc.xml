@@ -82,6 +82,11 @@
     <keybind key='W-C-S-k'><action name='ResizeRelative'><bottom>-4</bottom></action></keybind>
     <keybind key='W-C-S-l'><action name='ResizeRelative'><right>4</right></action></keybind>
 
+    <keybind key='W-1'><action name='MoveResizeTo'><x>16</x><y>540</y><width>972</width><height>1620</height></action></keybind>
+    <keybind key='W-2'><action name='MoveResizeTo'><x>996</x><y>54</y><width>972</width><height>2106</height></action></keybind>
+    <keybind key='W-3'><action name='MoveResizeTo'><x>1976</x><y>0</y><width>972</width><height>1944</height></action></keybind>
+    <keybind key='W-4'><action name='MoveResizeTo'><x>2956</x><y>0</y><width>729</width><height>1911</height></action></keybind>
+
     <!-- Misc integration -->
     <keybind key='Print'><action name='Execute'><command>shutter</command></action></keybind>
     <keybind key='W-q'>  <action name='Execute'><command>xtrlock</command></action></keybind>
@@ -104,7 +109,7 @@
     <!-- Backlight (for machines where hardware keys aren't supported) -->
     <keybind key='W-C-S-Left'><action name='Execute'> <command>backlight 0</command></action></keybind>
     <keybind key='W-C-Left'><action name='Execute'>   <command>backlight 100</command></action></keybind>
-    <keybind key='W-C-Right'><action name='Execute'>  <command>backlight 852</command></action></keybind>
+    <keybind key='W-C-Right'><action name='Execute'>  <command>backlight 7452</command></action></keybind>
 
     <keybind key='W-C-Up'><action name='Execute'>     <command>backlight +100</command></action></keybind>
     <keybind key='W-C-Down'><action name='Execute'>   <command>backlight -100</command></action></keybind>
@@ -148,7 +153,7 @@
 
     <!-- Keybindings for desktop switching -->
     <keybind key='W-i'> <action name='Execute'><command>morning-backlight bright</command></action> <action name='GoToDesktop'><to>24</to></action></keybind>
-    <keybind key='W-m'> <action name='Execute'><command>morning-backlight bright</command></action> <action name='GoToDesktop'><to>54</to></action></keybind>
+    <keybind key='W-m'> <action name='GoToDesktop'><to>54</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
     <keybind key='W-o'> <action name='GoToDesktop'><to>37</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
     <keybind key='W-n'> <action name='GoToDesktop'><to>42</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
 
