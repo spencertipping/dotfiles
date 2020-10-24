@@ -103,8 +103,7 @@ This function should only modify configuration layer settings."
                                       tangotango-theme
                                       zenburn-theme
 
-                                      flycheck
-                                      )
+                                      flycheck)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -117,8 +116,7 @@ This function should only modify configuration layer settings."
                                     niflheim-theme
                                     pastels-on-dark-theme
                                     tronesque-theme
-                                    zonokai-theme
-                                    )
+                                    zonokai-theme)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -184,7 +182,9 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil then Spacelpa repository is the primary source to install
    ;; a locked version of packages. If nil then Spacemacs will install the
-   ;; latest version of packages from MELPA. (default nil)
+   ;; latest version of packages from MELPA. Spacelpa is currently in
+   ;; experimental state please use only for testing purposes.
+   ;; (default nil)
    dotspacemacs-use-spacelpa nil
 
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
@@ -276,9 +276,10 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("JetBrains Mono"
-                               :size 26
+                               :size 16.0
                                :weight normal
-                               :width normal
+                               :width condensed
+                               :spacing 70
                                :powerline-scale 1.2)
 
    ;; The leader key (default "SPC")
@@ -349,7 +350,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
-   dotspacemacs-which-key-delay 0.4
+   dotspacemacs-which-key-delay 10000
 
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
@@ -367,7 +368,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar t
+   dotspacemacs-loading-progress-bar nil
 
    ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
@@ -395,7 +396,7 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-inactive-transparency 90
+   dotspacemacs-inactive-transparency 70
 
    ;; If non-nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
@@ -545,7 +546,6 @@ See the header of this file for more information."
   (spacemacs/load-spacemacs-env))
 
 
-
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration
@@ -554,8 +554,7 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
-  (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
-  (add-to-list 'default-frame-alist '(width  . 90))
+  (add-to-list 'default-frame-alist '(width .  80))
 
   ;; From https://stackoverflow.com/questions/6462167/emacsclient-does-not-respond-to-mouse-clicks
   (defun my-terminal-config (&optional frame)
@@ -570,22 +569,33 @@ before packages are loaded. If you are unsure, you should try in setting them in
         (xterm-mouse-mode 1))))
   ;; Evaluate both now (for non-daemon emacs) and upon frame creation
   ;; (for new terminals via emacsclient).
-  (my-terminal-config)
-  (add-hook 'after-make-frame-functions 'my-terminal-config)
+  (when (not window-system)
+    (my-terminal-config)
+    (add-hook 'after-make-frame-functions 'my-terminal-config))
+
+  ;; From https://github.com/syl20bnr/spacemacs/issues/7262#issuecomment-252462174
+  (defun make-transparent-terminals ()
+    (unless (display-graphic-p (selected-frame))
+      (set-face-background 'default "nil" (selected-frame))))
+  (add-hook 'window-setup-hook 'make-transparent-terminals)
+
+  (add-hook 'window-setup-hook          'spacemacs/enable-transparency)
+  (add-hook 'after-make-frame-functions 'spacemacs/enable-transparency)
 
   ;; Lockfiles have normal extensions, which breaks react.js's auto-reloader.
   ;; I've disabled them here to avoid this problem.
-  (setq create-lockfiles nil)
+  (setq-default create-lockfiles nil)
 
-  (setq show-trailing-whitespace t)
+  (setq-default show-trailing-whitespace t)
 
-  (setq js-indent-level 2)
-  (setq standard-indent 2)
-  (setq sh-indentation 2)
-  (setq sh-basic-offset 2)
-  (setq smie-indent-basic 2)
-  (setq lua-indent-level 2)
-  (setq rust-indent-offset 2)
+  (setq-default js-indent-level 2)
+  (setq-default standard-indent 2)
+  (setq-default sh-indentation 2)
+  (setq-default sh-basic-offset 2)
+  (setq-default smie-indent-basic 2)
+  (setq-default lua-indent-level 2)
+  (setq-default rust-indent-offset 2)
+  (setq-default python-indent-offset 2)
 
   (setq-default linum-relative-format "%s ")
 
@@ -594,38 +604,40 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (autoload 'imaxima "imaxima" "Frontend for maxima with Image support" t)
   (autoload 'maxima "maxima" "Maxima interaction" t)
   (autoload 'imath-mode "imath" "Imath mode for math formula input" t)
-  (setq imaxima-use-maxima-mode-flag t)
+  (setq-default imaxima-use-maxima-mode-flag t)
   (add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode))
 
   (require 'seq)
 
-  ;; Apply the same cleanup to a bunch of themes.
-  (let* ((keep-faces '(region))
-         (faces (append (seq-filter (lambda (x) (not (member x keep-faces)))
-                                    (face-list))
-                        '(default
-                          line-number
-                          linum
-                          linum-relative-current-face
-                          )))
+  ;; When running in a terminal, force all backgrounds to transparent by setting
+  ;; them to an unknown color "nil". If anyone knows of a better way to do this,
+  ;; please let me know.
+  (unless (display-graphic-p (selected-frame))
+    (let* ((keep-faces '(region))
+          (faces (append (seq-filter (lambda (x) (not (member x keep-faces)))
+                                      (face-list))
+                          '(default
+                            line-number
+                            linum
+                            linum-relative-current-face)))
 
-         (default-mods (mapcar (lambda (f) (cons f '(:background "nil")))
-                               faces))
+          (default-mods (mapcar (lambda (f) (cons f '(:background "nil")))
+                                faces))
 
-         (themes '(default
-                   jazz
-                   jbeans
-                   minimal
-                   monochrome
-                   mustang
-                   spacemacs-dark
-                   tangotango
-                   wombat
-                   zenburn))
+          (themes '(default
+                    jazz
+                    jbeans
+                    minimal
+                    monochrome
+                    mustang
+                    spacemacs-dark
+                    tangotango
+                    wombat
+                    zenburn))
 
-         (theme-mods (mapcar (lambda (x) (cons x default-mods)) themes)))
+          (theme-mods (mapcar (lambda (x) (cons x default-mods)) themes)))
 
-    (setq-default theming-modifications theme-mods)))
+      (setq-default theming-modifications theme-mods))))
 
 
 (defun dotspacemacs/user-load ())
@@ -660,6 +672,7 @@ you should place your code here."
   ;; ever use this, so let's map it to something I never type.
   (setq-default evil-escape-key-sequence "QQ"))
 
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -671,133 +684,3 @@ you should place your code here."
    (quote
     (company-lsp lsp-mode ht eglot project flymake jsonrpc eldoc xref vimrc-mode slime-company slime omnisharp graphviz-dot-mode geiser faust-mode deft dactyl-mode csharp-mode company-auctex common-lisp-snippets clojure-snippets clj-refactor inflections paredit cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a auctex vagrant-tramp vagrant toml pyim pyim-basedict xr pangu-spacing find-by-pinyin-dired ace-pinyin pinyinlib ein goto-chg popup powerline hydra lv anaphora transient bind-key avy anzu iedit smartparens highlight evil undo-tree flx projectile helm helm-core async f dash lua-mode zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme evil-smartparens insert-shebang fish-mode company-shell x86-lookup utop tuareg caml toml-mode tide typescript-mode terraform-mode hcl-mode systemd sql-indent racer pos-tip ocp-indent nginx-mode nasm-mode merlin go-guru go-eldoc glsl-mode polymode deferred websocket company-go go-mode cargo rust-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby nix-mode helm-nixos-options company-nixos-options nixos-options dockerfile-mode docker tablist magit-popup docker-tramp xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode dhall-mode gnu-elpa-keyring-update psci purescript-mode psc-ide yaml-mode persistent-scratch yapfify pyvenv pytest pyenv-mode py-isort pip-requirements mmm-mode markdown-toc markdown-mode live-py-mode intero hy-mode dash-functional hlint-refactor hindent helm-pydoc helm-hoogle helm-company helm-c-yasnippet haskell-snippets git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-commit with-editor git-gutter gh-md fuzzy disaster diff-hl cython-mode company-statistics company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda company cmm-mode cmake-mode clang-format auto-yasnippet yasnippet anaconda-mode pythonic ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(safe-local-variable-values (quote ((buffer-file-coding-system . utf-8-unix)))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "nil" :foreground "light gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default"))))
- '(bold ((t (:background "nil"))))
- '(bold-italic ((t (:background "nil"))))
- '(border ((t (:background "nil"))))
- '(buffer-menu-buffer ((t (:background "nil"))))
- '(button ((t (:background "nil"))))
- '(completions-annotations ((t (:background "nil"))))
- '(completions-common-part ((t (:background "nil"))))
- '(completions-first-difference ((t (:background "nil"))))
- '(cursor ((t (:background "nil"))))
- '(eldoc-highlight-function-argument ((t (:background "nil"))))
- '(error ((t (:background "nil"))))
- '(escape-glyph ((t (:background "nil"))))
- '(file-name-shadow ((t (:background "nil"))))
- '(fixed-pitch ((t (:family "Ubuntu Mono"))))
- '(fixed-pitch-serif ((t (:background "nil"))))
- '(font-lock-builtin-face ((t (:background "nil"))))
- '(font-lock-comment-delimiter-face ((t (:background "nil"))))
- '(font-lock-comment-face ((t (:background "nil"))))
- '(font-lock-constant-face ((t (:background "nil"))))
- '(font-lock-doc-face ((t (:background "nil"))))
- '(font-lock-function-name-face ((t (:background "nil"))))
- '(font-lock-keyword-face ((t (:background "nil"))))
- '(font-lock-negation-char-face ((t (:background "nil"))))
- '(font-lock-preprocessor-face ((t (:background "nil"))))
- '(font-lock-regexp-grouping-backslash ((t (:background "nil"))))
- '(font-lock-regexp-grouping-construct ((t (:background "nil"))))
- '(font-lock-string-face ((t (:background "nil"))))
- '(font-lock-type-face ((t (:background "nil"))))
- '(font-lock-variable-name-face ((t (:background "nil"))))
- '(font-lock-warning-face ((t (:background "nil"))))
- '(fringe ((t (:background "nil"))))
- '(glyphless-char ((t (:background "nil"))))
- '(header-line ((t (:background "nil"))))
- '(header-line-highlight ((t (:background "nil"))))
- '(help-argument-name ((t (:background "nil"))))
- '(highlight ((t (:background "nil"))))
- '(homoglyph ((t (:background "nil"))))
- '(ido-first-match ((t (:background "nil"))))
- '(ido-incomplete-regexp ((t (:background "nil"))))
- '(ido-indicator ((t (:background "nil"))))
- '(ido-only-match ((t (:background "nil"))))
- '(ido-subdir ((t (:background "nil"))))
- '(ido-vertical-first-match-face ((t (:background "nil"))))
- '(ido-vertical-match-face ((t (:background "nil"))))
- '(ido-vertical-only-match-face ((t (:background "nil"))))
- '(ido-virtual ((t (:background "nil"))))
- '(internal-border ((t (:background "nil"))))
- '(isearch ((t (:background "nil"))))
- '(isearch-fail ((t (:background "nil"))))
- '(italic ((t (:background "nil"))))
- '(lazy-highlight ((t (:background "nil"))))
- '(line-number ((t (:background "nil"))))
- '(line-number-current-line ((t (:background "nil"))))
- '(link ((t (:background "nil"))))
- '(link-visited ((t (:background "nil"))))
- '(linum ((t (:background "nil"))))
- '(linum-relative-current-face ((t (:background "nil"))))
- '(match ((t (:background "nil"))))
- '(menu ((t (:background "nil"))))
- '(minibuffer-prompt ((t (:background "nil"))))
- '(mode-line ((t (:background "nil"))))
- '(mode-line-buffer-id ((t (:background "nil"))))
- '(mode-line-emphasis ((t (:background "nil"))))
- '(mode-line-highlight ((t (:background "nil"))))
- '(mode-line-inactive ((t (:background "nil"))))
- '(mouse ((t (:background "nil"))))
- '(mouse-drag-and-drop-region ((t (:background "nil"))))
- '(next-error ((t (:background "nil"))))
- '(nobreak-hyphen ((t (:background "nil"))))
- '(nobreak-space ((t (:background "nil"))))
- '(org-kbd ((t (:background "nil"))))
- '(package-description ((t (:background "nil"))))
- '(package-help-section-name ((t (:background "nil"))))
- '(package-name ((t (:background "nil"))))
- '(package-status-avail-obso ((t (:background "nil"))))
- '(package-status-available ((t (:background "nil"))))
- '(package-status-built-in ((t (:background "nil"))))
- '(package-status-dependency ((t (:background "nil"))))
- '(package-status-disabled ((t (:background "nil"))))
- '(package-status-external ((t (:background "nil"))))
- '(package-status-held ((t (:background "nil"))))
- '(package-status-incompat ((t (:background "nil"))))
- '(package-status-installed ((t (:background "nil"))))
- '(package-status-new ((t (:background "nil"))))
- '(package-status-unsigned ((t (:background "nil"))))
- '(page-break-lines ((t (:background "nil"))))
- '(query-replace ((t (:background "nil"))))
- '(read-multiple-choice-face ((t (:background "nil"))))
- '(scroll-bar ((t (:background "nil"))))
- '(secondary-selection ((t (:background "nil"))))
- '(shadow ((t (:background "nil"))))
- '(show-paren-match ((t (:background "nil"))))
- '(show-paren-match-expression ((t (:background "nil"))))
- '(show-paren-mismatch ((t (:background "nil"))))
- '(spacemacs-micro-state-binding-face ((t (:background "nil"))))
- '(spacemacs-micro-state-header-face ((t (:background "nil"))))
- '(spacemacs-mode-line-new-version-lighter-error-face ((t (:background "nil"))))
- '(spacemacs-mode-line-new-version-lighter-success-face ((t (:background "nil"))))
- '(spacemacs-mode-line-new-version-lighter-warning-face ((t (:background "nil"))))
- '(spacemacs-transient-state-title-face ((t (:background "nil"))))
- '(success ((t (:background "nil"))))
- '(tool-bar ((t (:background "nil"))))
- '(tooltip ((t (:background "nil"))))
- '(trailing-whitespace ((t (:background "nil"))))
- '(tty-menu-disabled-face ((t (:background "nil"))))
- '(tty-menu-enabled-face ((t (:background "nil"))))
- '(tty-menu-selected-face ((t (:background "nil"))))
- '(underline ((t (:background "nil"))))
- '(variable-pitch ((t (:background "nil"))))
- '(vc-conflict-state ((t (:background "nil"))))
- '(vc-edited-state ((t (:background "nil"))))
- '(vc-locally-added-state ((t (:background "nil"))))
- '(vc-locked-state ((t (:background "nil"))))
- '(vc-missing-state ((t (:background "nil"))))
- '(vc-needs-update-state ((t (:background "nil"))))
- '(vc-removed-state ((t (:background "nil"))))
- '(vc-state-base ((t (:background "nil"))))
- '(vc-up-to-date-state ((t (:background "nil"))))
- '(vertical-border ((t (:background "nil"))))
- '(warning ((t (:background "nil"))))
- '(widget-field ((t (:background "white" :foreground "brightblack"))))
- '(window-divider ((t (:background "nil"))))
- '(window-divider-first-pixel ((t (:background "nil"))))
- '(window-divider-last-pixel ((t (:background "nil")))))
