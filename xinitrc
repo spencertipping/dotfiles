@@ -14,10 +14,13 @@ init_session() {
     xmodmap -e 'keycode 118 = End'
 
     # Fix screen colors, unscientifically
-    xgamma -rgamma 1.2 -ggamma 1.2 -bgamma 1.5
+    # xgamma -rgamma 1.2 -ggamma 1.2 -bgamma 1.5
 
     xrandr --output eDP-1 --off
     xrandr --output HDMI-1 --primary --rotate left
+
+    # No DPMS: display should always be running
+    xset -dpms
     ;;
 
   *)
