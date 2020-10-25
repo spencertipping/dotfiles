@@ -88,7 +88,7 @@ URxvt*letterSpace: -1
 URxvt*lineSpace: 0
 URxvt*letterSpace: -2
 
-URxvt.font: xft:Ubuntu Mono:size=10:hinting=none
+URxvt.font: xft:JetBrains Mono:size=8:hinting=none
 #endif
 
 ! Indicator color scheme
