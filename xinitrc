@@ -20,6 +20,8 @@ init_session() {
     xrandr --output HDMI-1 --primary --rotate left
 
     # No DPMS: display should always be running
+    xset dpms 0 0 0
+    xset s off
     xset -dpms
     ;;
 

@@ -556,6 +556,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (add-to-list 'default-frame-alist '(width .  80))
 
+  (setq mouse-autoselect-window t)
+
   ;; From https://stackoverflow.com/questions/6462167/emacsclient-does-not-respond-to-mouse-clicks
   (defun my-terminal-config (&optional frame)
     "Establish settings for the current terminal."

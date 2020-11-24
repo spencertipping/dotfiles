@@ -21,7 +21,7 @@
   <mouse>
     <dragThreshold>2</dragThreshold>
     <doubleClickTime>200</doubleClickTime>
-    <screenEdgeWarpTime>150</screenEdgeWarpTime>
+    <screenEdgeWarpTime>0</screenEdgeWarpTime>
 
     <context name="Frame">
       <mousebind button="A-Left" action="Press">  <action name="Focus"/> <action name="Raise"/></mousebind>
