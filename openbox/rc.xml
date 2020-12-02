@@ -152,12 +152,13 @@
     <keybind key='W-A-S-r'><action name='Execute'> <command>xset r rate 150 30</command></action></keybind>
 
     <!-- Keybindings for desktop switching -->
-    <keybind key='W-i'> <action name='Execute'><command>morning-backlight bright</command></action> <action name='GoToDesktop'><to>24</to></action></keybind>
-    <keybind key='W-m'> <action name='GoToDesktop'><to>54</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
-    <keybind key='W-o'> <action name='GoToDesktop'><to>37</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
-    <keybind key='W-n'> <action name='GoToDesktop'><to>42</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
-
+    <keybind key='W-i'><action name='Execute'><command>morning-backlight bright</command></action> <action name='GoToDesktop'><to>24</to></action></keybind>
+    <keybind key='W-m'><action name='GoToDesktop'><to>54</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
+    <keybind key='W-o'><action name='GoToDesktop'><to>37</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
+    <keybind key='W-n'><action name='GoToDesktop'><to>42</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
+    <keybind key='W-S-n'><action name='GoToDesktop'><to>73</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
     <keybind key='W-comma'><action name='GoToDesktop'><to>67</to></action></keybind>
+    <keybind key='W-S-comma'><action name='GoToDesktop'><to>78</to></action></keybind>
 
     <keybind key="W-h"><action name="DesktopLeft"/></keybind>
     <keybind key="W-l"><action name="DesktopRight"/></keybind>
