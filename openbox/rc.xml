@@ -82,9 +82,9 @@
     <keybind key='W-C-S-k'><action name='ResizeRelative'><bottom>-4</bottom></action></keybind>
     <keybind key='W-C-S-l'><action name='ResizeRelative'><right>4</right></action></keybind>
 
-    <keybind key='W-1'><action name='MoveResizeTo'><x>16</x><y>540</y><width>972</width><height>1620</height></action></keybind>
-    <keybind key='W-2'><action name='MoveResizeTo'><x>996</x><y>54</y><width>972</width><height>2106</height></action></keybind>
-    <keybind key='W-3'><action name='MoveResizeTo'><x>1976</x><y>0</y><width>972</width><height>1944</height></action></keybind>
+    <keybind key='W-1'><action name='MoveResizeTo'><x>16</x><y>540</y><width>960</width><height>1620</height></action></keybind>
+    <keybind key='W-2'><action name='MoveResizeTo'><x>996</x><y>54</y><width>960</width><height>2106</height></action></keybind>
+    <keybind key='W-3'><action name='MoveResizeTo'><x>1976</x><y>0</y><width>960</width><height>1944</height></action></keybind>
     <keybind key='W-4'><action name='MoveResizeTo'><x>2956</x><y>0</y><width>729</width><height>1911</height></action></keybind>
 
     <!-- Misc integration -->
