@@ -22,6 +22,8 @@ alias em='emacs -nw'
 alias en='emacsclient -nw'
 alias pd='rlwrap perl -de1'
 
+alias a='flatpak run org.gnome.gitlab.somas.Apostrophe'
+
 # mplayer doesn't use VDPAU by default, so consumes far more CPU
 # alias vbg='xwinwrap -s -fs -b -nf -ov -- mplayer -wid WID'
 alias vbg='xwinwrap -s -fs -b -nf -ov -- cvlc --drawable-xid WID -I rc'
@@ -44,9 +46,10 @@ export EDITOR=$VISUAL
 export PS1='\[\033[1;32m\]\h\[\033[1;30m\]\W\[\033[0;0m\] '
 
 # ni configuration
-export NI_ROW_SORT_BUFFER=1024M
-export NI_ROW_SORT_COMPRESS=gzip
-export NI_ROW_SORT_PARALLEL=`cat /proc/cpuinfo | grep vendor_id | wc -l`
+# These are now defaults in ni, so no need to configure them
+#export NI_ROW_SORT_BUFFER=1024M
+#export NI_ROW_SORT_COMPRESS=gzip
+#export NI_ROW_SORT_PARALLEL=`cat /proc/cpuinfo | grep vendor_id | wc -l`
 
 export GNUTERM=wxt
 
