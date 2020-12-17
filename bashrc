@@ -46,6 +46,8 @@ export EDITOR=$VISUAL
 export PS1='\[\033[1;32m\]\h\[\033[1;30m\]\W\[\033[0;0m\] '
 
 # ni configuration
+export NI_DANGER_MODE=1   # makes ni more fun
+
 # These are now defaults in ni, so no need to configure them
 #export NI_ROW_SORT_BUFFER=1024M
 #export NI_ROW_SORT_COMPRESS=gzip
