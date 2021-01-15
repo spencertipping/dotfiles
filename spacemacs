@@ -105,8 +105,6 @@ This function should only modify configuration layer settings."
 
                                       markdown-preview-mode
 
-                                      visual-fill
-
                                       flycheck)
 
    ;; A list of packages that cannot be updated.
@@ -589,8 +587,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-hook 'after-make-frame-functions 'spacemacs/enable-transparency)
 
   (defun setup-visual-fill ()
-    (visual-fill-mode)
-    (visual-fill-column-mode)
     (visual-line-mode)
     (setq-default fill-column 80))
 
