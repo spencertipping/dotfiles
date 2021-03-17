@@ -7,7 +7,6 @@ set hlsearch incsearch
 set enc=utf8 tenc=utf8
 set visualbell noerrorbells
 set title
-set noruler
 set tags=tags;/
 set wildmenu wildmode=list:longest
 set scrolloff=3

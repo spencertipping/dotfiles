@@ -586,11 +586,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-hook 'window-setup-hook          'spacemacs/enable-transparency)
   (add-hook 'after-make-frame-functions 'spacemacs/enable-transparency)
 
-  (defun setup-visual-fill ()
-    (visual-line-mode)
-    (setq-default fill-column 80))
-
-  (add-hook 'markdown-mode-hook 'setup-visual-fill)
+  (add-hook 'markdown-mode-hook 'visual-line-mode)
 
   ;; Lockfiles have normal extensions, which breaks react.js's auto-reloader.
   ;; I've disabled them here to avoid this problem.
@@ -607,6 +603,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq-default rust-indent-offset 2)
   (setq-default python-indent-offset 2)
   (setq-default perl-indent-level 2)
+  (setq-default css-indent-offset 2)
 
   (setq-default linum-relative-format "%s ")
 
