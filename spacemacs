@@ -674,6 +674,11 @@ you should place your code here."
   ;; (setq-default mode-line-format nil)
   (spacemacs/toggle-highlight-current-line-globally-off)
 
+  (spacemacs/set-leader-keys-for-major-mode
+    'haskell-mode "sr" #'haskell-process-restart)
+
+  (spacemacs/set-leader-keys "tL" #'visual-line-mode)
+
   (require 'markdown-preview-mode)
   (add-to-list 'markdown-preview-javascript
                "<script src=\"https://polyfill.io/v3/polyfill.min.js?features=es6\"></script>
