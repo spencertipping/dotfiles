@@ -677,6 +677,9 @@ you should place your code here."
   (spacemacs/set-leader-keys-for-major-mode
     'haskell-mode "sr" #'haskell-process-restart)
 
+  (spacemacs/set-leader-keys-for-major-mode
+    'haskell-mode "sf" #'flycheck-mode)
+
   (spacemacs/set-leader-keys "tL" #'visual-line-mode)
 
   (require 'markdown-preview-mode)
