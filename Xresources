@@ -84,6 +84,25 @@ URxvt*letterSpace: -1
 !URxvt.font: xft:mononoki:size=20:hinting=none
 #endif
 
+#ifdef SRVR_ijen
+URxvt.font: xft:JetBrains Mono:size=16:hinting=none
+URxvt*lineSpace: 0
+URxvt*letterSpace: -1
+
+!URxvt.font: xft:Aerial Mono:size=20:hinting=none
+!URxvt.font: xft:Cascadia Code:size=20:hinting=none
+!URxvt.font: xft:Hack:size=16:hinting=none:style=Regular
+!URxvt.font: xft:M+ 1mn:size=20:hinting=full:style=Retina
+!URxvt.font: xft:Major Mono Display:size=20:hinting=none:style=Regular
+!URxvt.font: xft:Migu 2M:size=20:hinting=none
+!URxvt.font: xft:Monoid HalfTight:size=20:hinting=none:style=Regular
+!URxvt.font: xft:Share Tech Mono:size=20:hinting=none:style=Regular
+!URxvt.font: xft:Source Code Pro:size=20:hinting=none:style=Regular
+!URxvt.font: xft:Unispace:size=20:hinting=none
+!URxvt.font: xft:monofur:size=20:hinting=none:style=Regular
+!URxvt.font: xft:mononoki:size=20:hinting=none
+#endif
+
 #ifdef SRVR_iniidae
 URxvt*lineSpace: 0
 URxvt*letterSpace: -2
