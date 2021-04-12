@@ -557,8 +557,14 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
   (add-to-list 'default-frame-alist '(width . 81))
+  (add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
 
   (setq mouse-autoselect-window t)
+  (scroll-bar-mode -1)
+
+  ;; Time to bring in the big guns
+  (defun toggle-scroll-bar-mode () nil)
+  (defun scroll-bar-mode (x) nil)
 
   ;; From https://stackoverflow.com/questions/6462167/emacsclient-does-not-respond-to-mouse-clicks
   (defun my-terminal-config (&optional frame)

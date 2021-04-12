@@ -5,10 +5,17 @@ wm_pid=$!
 init_session() {
   xset r rate 150 60
   xrdb ~/.Xresources
-  feh --bg-fill ~/r/env/bg.jpg
+  feh --bg-fill ~/r/env/bgi
   xcompmgr &
 
   case `hostname` in
+  iota|ijen)
+    ~/r/env/touchpad
+    wmctrl -s 23
+    wifi 35
+    sudo wg-quick up wg0
+    ;;
+
   iniidae)
     # Work around Lenovo's pathological End/Insert key overloading on the X250
     xmodmap -e 'keycode 118 = End'
