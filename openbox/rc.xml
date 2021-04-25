@@ -95,7 +95,8 @@
     <keybind key='W-S-6'><action name='MoveResizeTo'><y>-144</y></action></keybind>
 
     <!-- Misc integration -->
-    <keybind key='Print'><action name='Execute'><command>shutter</command></action></keybind>
+    <!--<keybind key='Print'><action
+    name='Execute'><command>shutter</command></action></keybind>-->
     <keybind key='W-q'>  <action name='Execute'><command>xtrlock</command></action></keybind>
 
     <!-- Audio -->
@@ -110,8 +111,8 @@
     <keybind key='W-Right'><action name='Execute'>   <command>vol-absolute-pa 24000</command></action></keybind>
 
     <!-- Reconnection for silly headset that keeps getting out of sync -->
-    <keybind key='W-A-S-h'><action name='Execute'><command>sh -c "echo 'disconnect 00:02:5B:16:CA:7F' | bluetoothctl"</command></action></keybind>
-    <keybind key='W-A-h'><action name='Execute'><command>sh -c "echo 'connect 00:02:5B:16:CA:7F' | bluetoothctl"</command></action></keybind>
+    <keybind key='W-A-S-h'><action name='Execute'><command>sh -c "echo 'disconnect 54:B7:E5:7D:94:60' | bluetoothctl"</command></action></keybind>
+    <keybind key='W-A-h'><action name='Execute'><command>sh -c "echo 'connect 54:B7:E5:7D:94:60' | bluetoothctl"</command></action></keybind>
 
     <!-- Backlight (for machines where hardware keys aren't supported) -->
     <keybind key='W-C-S-Left'><action name='Execute'> <command>backlight 0</command></action></keybind>
@@ -138,9 +139,11 @@
     <keybind key='W-S-8'> <action name='Execute'><command>transset 0.85</command></action></keybind>
 
     <!-- Home automation -->
+    <!--
     <keybind key='W-e'> <keybind key='o'><action name='Execute'><command>curl http://192.168.0.34:8180/0</command></action></keybind>
                         <keybind key='f'><action name='Execute'><command>curl http://192.168.0.34:8180/4</command></action></keybind>
                         <keybind key='h'><action name='Execute'><command>curl http://192.168.0.34:8180/5</command></action></keybind></keybind>
+    -->
 
     <!-- Backgrounds -->
     <keybind key='W-S-b'><action name='Execute'> <command>/home/spencertipping/bin/mdb</command></action></keybind>

@@ -11,6 +11,7 @@ init_session() {
   case `hostname` in
   iota|ijen)
     ~/r/env/touchpad
+    conky &
     wmctrl -s 23
     wifi 35
     sudo wg-quick up wg0
