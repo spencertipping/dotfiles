@@ -688,6 +688,9 @@ you should place your code here."
 
   (spacemacs/set-leader-keys "tL" #'visual-line-mode)
 
+  (evil-define-key 'normal 'global (kbd "C-+") #'text-scale-increase)
+  (evil-define-key 'normal 'global (kbd "C--") #'text-scale-decrease)
+
   (require 'markdown-preview-mode)
   (add-to-list 'markdown-preview-javascript
                "<script src=\"https://polyfill.io/v3/polyfill.min.js?features=es6\"></script>
