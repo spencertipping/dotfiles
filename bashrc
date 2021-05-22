@@ -1,5 +1,6 @@
 #!/bin/bash
-[ -z "$PS1" ] && return
+#[ -z "$PS1" ] && return
+[ -t 0 ] || return
 
 # exec 5> /tmp/bashlog
 # PS4='+ $EPOCHREALTIME\011 '
@@ -62,6 +63,15 @@ screen-record() {
          -thread_queue_size 512 -f pulse -i default \
          -c:v libx264 -c:a libvorbis \
          -b:v 12000k -b:a 256k -preset veryfast \
+         -f matroska "${1:--}"
+}
+
+screen-record-2k() {
+  ffmpeg -thread_queue_size 512 -s 3840x2160 -f x11grab -r 15 -i :0.0 \
+         -thread_queue_size 512 -f pulse -i default \
+         -c:v libx264 -c:a libvorbis \
+         -b:v 6000k -b:a 256k -preset veryfast \
+         -s 1920x1080 \
          -f matroska "${1:--}"
 }
 
