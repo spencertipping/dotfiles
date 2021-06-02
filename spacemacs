@@ -747,6 +747,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(fixed-pitch ((t (:family "Ubuntu Mono"))))
  '(fringe ((t (:background "none" :foreground "none"))))
+ '(vertical-border ((t (:background "#111111" :foreground "#222222"))))
  '(window-divider ((t (:foreground "gray20"))))
  '(window-divider-first-pixel ((t (:foreground "gray20"))))
  '(window-divider-last-pixel ((t (:foreground "gray20")))))
