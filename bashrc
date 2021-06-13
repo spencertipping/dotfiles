@@ -1,6 +1,6 @@
 #!/bin/bash
-#[ -z "$PS1" ] && return
-[ -t 0 ] || return
+[ -z "$PS1" ] && return
+#[ -t 0 ] || return
 
 # exec 5> /tmp/bashlog
 # PS4='+ $EPOCHREALTIME\011 '
