@@ -107,7 +107,8 @@ This function should only modify configuration layer settings."
 
                                       markdown-preview-mode
 
-                                      flycheck)
+                                      flycheck
+                                      buffer-move)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -354,7 +355,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
-   dotspacemacs-which-key-delay 10000
+   dotspacemacs-which-key-delay 10000  ; bumped because this mode is horrendously slow
 
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
@@ -454,7 +455,7 @@ It should only modify the values of Spacemacs settings."
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
-   dotspacemacs-highlight-delimiters 'all
+   dotspacemacs-highlight-delimiters 'current
 
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
@@ -564,32 +565,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq mouse-autoselect-window t)
   (scroll-bar-mode -1)
 
+  (setq browse-url-browser-function 'eww-browse-url)
+
   ;; Time to bring in the big guns
   (defun toggle-scroll-bar-mode () nil)
   (defun scroll-bar-mode (x) nil)
-
-  ;; From https://stackoverflow.com/questions/6462167/emacsclient-does-not-respond-to-mouse-clicks
-  (defun my-terminal-config (&optional frame)
-    "Establish settings for the current terminal."
-    (if (not frame)
-      ;; The initial call.
-      (xterm-mouse-mode 1)
-
-      ;; Otherwise called via after-make-frame-functions.
-      (if xterm-mouse-mode
-        ;; Re-initialise the mode in case of a new terminal.
-        (xterm-mouse-mode 1))))
-  ;; Evaluate both now (for non-daemon emacs) and upon frame creation
-  ;; (for new terminals via emacsclient).
-  (when (not window-system)
-    (my-terminal-config)
-    (add-hook 'after-make-frame-functions 'my-terminal-config))
-
-  ;; From https://github.com/syl20bnr/spacemacs/issues/7262#issuecomment-252462174
-  (defun make-transparent-terminals ()
-    (unless (display-graphic-p (selected-frame))
-      (set-face-background 'default "nil" (selected-frame))))
-  (add-hook 'window-setup-hook 'make-transparent-terminals)
 
   (add-hook 'window-setup-hook          'spacemacs/enable-transparency)
   (add-hook 'after-make-frame-functions 'spacemacs/enable-transparency)
@@ -600,6 +580,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; I've disabled them here to avoid this problem.
   (setq-default create-lockfiles nil)
 
+  ;; Behave like vim, where shifting preserves each line's position relative to
+  ;; the others (even if it isn't an even multiple of the shift width).
   (setq-default evil-shift-round nil)
 
   (setq-default show-trailing-whitespace t)
@@ -613,6 +595,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq-default rust-indent-offset 2)
   (setq-default python-indent-offset 2)
   (setq-default perl-indent-level 2)
+  (setq-default cperl-extra-newline-before-brace t)
+  (setq-default cperl-continued-brace-offset -4)
+  (setq-default cperl-continued-statement-offset 4)
+  (setq-default cperl-indent-level 2)
+  (setq-default cperl-brace-offset 0)
   (setq-default css-indent-offset 2)
 
   (setq-default linum-relative-format "%s ")
@@ -623,11 +610,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (autoload 'maxima "maxima" "Maxima interaction" t)
   (autoload 'imath-mode "imath" "Imath mode for math formula input" t)
   (setq-default imaxima-use-maxima-mode-flag t)
-  (add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode))
-
-  (require 'seq)
-
-  )
+  (add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode)))
 
 
 (defun dotspacemacs/user-load ())
@@ -653,48 +636,27 @@ you should place your code here."
   (setq-default haskell-process-suggest-restart nil)
 
   (setq-default truncate-lines t)
-  ;; (setq-default mode-line-format nil)
   (spacemacs/toggle-highlight-current-line-globally-off)
 
-  (spacemacs/set-leader-keys-for-major-mode
-    'haskell-mode "sr" #'haskell-process-restart)
+  (spacemacs/declare-prefix "o" "own-menu")
+  (spacemacs/set-leader-keys "oh" 'buf-move-left)
+  (spacemacs/set-leader-keys "oj" 'buf-move-down)
+  (spacemacs/set-leader-keys "ok" 'buf-move-up)
+  (spacemacs/set-leader-keys "ol" 'buf-move-right)
 
-  (spacemacs/set-leader-keys-for-major-mode
-    'haskell-mode "sf" #'flycheck-mode)
+  (spacemacs/set-leader-keys "o3" 'spacemacs/window-split-triple-columns)
+
+  (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "sr" #'haskell-process-restart)
+  (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "sf" #'flycheck-mode)
 
   (spacemacs/set-leader-keys "tL" #'visual-line-mode)
 
   (evil-define-key 'normal 'global (kbd "C-+") #'text-scale-increase)
   (evil-define-key 'normal 'global (kbd "C--") #'text-scale-decrease)
 
-  (require 'markdown-preview-mode)
-  (add-to-list 'markdown-preview-javascript
-               "<script src=\"https://polyfill.io/v3/polyfill.min.js?features=es6\"></script>
-                <script id=\"MathJax-script\" async
-                        src=\"https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js\">
-                </script>
-                <script>
-                  $(function () {
-                    $('body').on('mdContentChange', function () {
-                      MathJax.typeset();
-                    });
-                  });
-                </script>")
-
   ;; I think the normal value is "fd" or something similarly common. I don't
   ;; ever use this, so let's map it to something I never type.
   (setq-default evil-escape-key-sequence "QQ"))
-
-
-;; NB: just testing this, but don't use it; it's terrible.
-(defun spencer-markdown-preview ()
-  (interactive)
-
-  (when (null markdown-preview-javascript)
-    (add-to-list 'markdown-preview-javascript
-                 "<script src=\"https://polyfill.io/v3/polyfill.min.js?features=es6\"></script>
-                  <script id=\"MathJax-script\" async src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\"></script>"))
-  (markdown-preview-mode))
 
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -714,7 +676,7 @@ This function is called at the very end of Spacemacs initialization."
  '(linum-format " %3i ")
  '(package-selected-packages
    (quote
-    (visual-fill markdown-preview-mode company-lsp lsp-mode ht eglot project flymake jsonrpc eldoc xref vimrc-mode slime-company slime omnisharp graphviz-dot-mode geiser faust-mode deft dactyl-mode csharp-mode company-auctex common-lisp-snippets clojure-snippets clj-refactor inflections paredit cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a auctex vagrant-tramp vagrant toml pyim pyim-basedict xr pangu-spacing find-by-pinyin-dired ace-pinyin pinyinlib ein goto-chg popup powerline hydra lv anaphora transient bind-key avy anzu iedit smartparens highlight evil undo-tree flx projectile helm helm-core async f dash lua-mode zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme evil-smartparens insert-shebang fish-mode company-shell x86-lookup utop tuareg caml toml-mode tide typescript-mode terraform-mode hcl-mode systemd sql-indent racer pos-tip ocp-indent nginx-mode nasm-mode merlin go-guru go-eldoc glsl-mode polymode deferred websocket company-go go-mode cargo rust-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby nix-mode helm-nixos-options company-nixos-options nixos-options dockerfile-mode docker tablist magit-popup docker-tramp xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode dhall-mode gnu-elpa-keyring-update psci purescript-mode psc-ide yaml-mode persistent-scratch yapfify pyvenv pytest pyenv-mode py-isort pip-requirements mmm-mode markdown-toc markdown-mode live-py-mode intero hy-mode dash-functional hlint-refactor hindent helm-pydoc helm-hoogle helm-company helm-c-yasnippet haskell-snippets git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-commit with-editor git-gutter gh-md fuzzy disaster diff-hl cython-mode company-statistics company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda company cmm-mode cmake-mode clang-format auto-yasnippet yasnippet anaconda-mode pythonic ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (w3m visual-fill markdown-preview-mode company-lsp lsp-mode ht eglot project flymake jsonrpc eldoc xref vimrc-mode slime-company slime omnisharp graphviz-dot-mode geiser faust-mode deft dactyl-mode csharp-mode company-auctex common-lisp-snippets clojure-snippets clj-refactor inflections paredit cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a auctex vagrant-tramp vagrant toml pyim pyim-basedict xr pangu-spacing find-by-pinyin-dired ace-pinyin pinyinlib ein goto-chg popup powerline hydra lv anaphora transient bind-key avy anzu iedit smartparens highlight evil undo-tree flx projectile helm helm-core async f dash lua-mode zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme evil-smartparens insert-shebang fish-mode company-shell x86-lookup utop tuareg caml toml-mode tide typescript-mode terraform-mode hcl-mode systemd sql-indent racer pos-tip ocp-indent nginx-mode nasm-mode merlin go-guru go-eldoc glsl-mode polymode deferred websocket company-go go-mode cargo rust-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby nix-mode helm-nixos-options company-nixos-options nixos-options dockerfile-mode docker tablist magit-popup docker-tramp xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode dhall-mode gnu-elpa-keyring-update psci purescript-mode psc-ide yaml-mode persistent-scratch yapfify pyvenv pytest pyenv-mode py-isort pip-requirements mmm-mode markdown-toc markdown-mode live-py-mode intero hy-mode dash-functional hlint-refactor hindent helm-pydoc helm-hoogle helm-company helm-c-yasnippet haskell-snippets git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-commit with-editor git-gutter gh-md fuzzy disaster diff-hl cython-mode company-statistics company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda company cmm-mode cmake-mode clang-format auto-yasnippet yasnippet anaconda-mode pythonic ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(psc-ide-add-import-on-completion t t)
  '(psc-ide-rebuild-on-save nil t)
  '(safe-local-variable-values (quote ((buffer-file-coding-system . utf-8-unix))))
