@@ -75,6 +75,18 @@ screen-record-2k() {
          -f matroska "${1:--}"
 }
 
+barrier-ijen() {
+  barriers -a ijen.35 -c ~/.barrier.conf
+}
+
+barrier-iota() {
+  barrierc ijen.35
+}
+
+barrier-iniidae() {
+  barrierc ijen.35
+}
+
 # The world is unprepared for colorful RXVT. Reduce it to just regular URXVT.
 #if [[ "$TERM" = rxvt-unicode-256color ]]; then
 #  export TERM='rxvt-unicode'
