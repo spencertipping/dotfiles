@@ -95,7 +95,7 @@ URxvt*letterSpace: -1
 !URxvt.font: xft:M+ 1mn:size=20:hinting=full:style=Retina
 !URxvt.font: xft:Major Mono Display:size=20:hinting=none:style=Regular
 !URxvt.font: xft:Migu 2M:size=20:hinting=none
-!URxvt.font: xft:Monoid HalfTight:size=20:hinting=none:style=Regular
+!URxvt.font: xft:Monoid HalfTight:size=14:hinting=none:style=Regular
 !URxvt.font: xft:Share Tech Mono:size=20:hinting=none:style=Regular
 !URxvt.font: xft:Source Code Pro:size=20:hinting=none:style=Regular
 !URxvt.font: xft:Unispace:size=20:hinting=none

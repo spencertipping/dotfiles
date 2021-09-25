@@ -163,7 +163,7 @@
 
     <!-- Keybindings for desktop switching -->
     <keybind key='W-i'><action name='Execute'><command>morning-backlight bright</command></action> <action name='GoToDesktop'><to>24</to></action></keybind>
-    <keybind key='W-m'><action name='GoToDesktop'><to>54</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
+    <keybind key='W-m'><action name='Execute'><command>morning-backlight bright</command></action> <action name='GoToDesktop'><to>54</to></action></keybind>
     <keybind key='W-o'><action name='GoToDesktop'><to>37</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
     <keybind key='W-n'><action name='GoToDesktop'><to>42</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>
     <keybind key='W-S-n'><action name='GoToDesktop'><to>73</to></action> <action name='Execute'><command>morning-backlight dark</command></action></keybind>

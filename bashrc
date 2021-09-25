@@ -87,6 +87,10 @@ barrier-iniidae() {
   barrierc ijen.35
 }
 
+xpra-4k() {
+  xpra attach --no-keyboard-sync --ssh=ssh --dpi=192 --desktop-scaling=2 ssh://$1
+}
+
 # The world is unprepared for colorful RXVT. Reduce it to just regular URXVT.
 #if [[ "$TERM" = rxvt-unicode-256color ]]; then
 #  export TERM='rxvt-unicode'

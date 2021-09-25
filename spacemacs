@@ -670,13 +670,28 @@ you should place your code here."
   (setq-default truncate-lines t)
   (spacemacs/toggle-highlight-current-line-globally-off)
 
+  (defun fira ()
+    (interactive)
+    (set-frame-font "Fira Code"))
+
+  (defun gentium ()
+    (interactive)
+    (set-frame-font "Gentium"))
+
+  (defun ubuntu ()
+    (interactive)
+    (set-frame-font "Ubuntu Mono"))
+
   (spacemacs/declare-prefix "o" "own-menu")
+  (spacemacs/set-leader-keys "o3" 'spacemacs/window-split-triple-columns)
   (spacemacs/set-leader-keys "oh" 'buf-move-left)
   (spacemacs/set-leader-keys "oj" 'buf-move-down)
   (spacemacs/set-leader-keys "ok" 'buf-move-up)
   (spacemacs/set-leader-keys "ol" 'buf-move-right)
 
-  (spacemacs/set-leader-keys "o3" 'spacemacs/window-split-triple-columns)
+  (spacemacs/set-leader-keys "of" 'fira)
+  (spacemacs/set-leader-keys "og" 'gentium)
+  (spacemacs/set-leader-keys "ou" 'ubuntu)
 
   (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "sr" #'haskell-process-restart)
   (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "sf" #'flycheck-mode)
