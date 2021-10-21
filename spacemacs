@@ -68,6 +68,7 @@ This function should only modify configuration layer settings."
      lua
      major-modes
      markdown
+     multiple-cursors
      octave
      perl5
      prolog
@@ -82,6 +83,7 @@ This function should only modify configuration layer settings."
      sql
      systemd
      theming
+     treemacs
      typescript
      vagrant
      vimscript
@@ -119,6 +121,7 @@ This function should only modify configuration layer settings."
                                     savehist
                                     firebelly-theme
                                     niflheim-theme
+                                    modus-themes
                                     pastels-on-dark-theme
                                     tronesque-theme
                                     zonokai-theme)
@@ -676,7 +679,9 @@ you should place your code here."
 
   (defun gentium ()
     (interactive)
-    (set-frame-font "Gentium"))
+    (set-frame-font "Gentium")
+    (set-face-font 'fixed-pitch "Fira Code")
+    (set-face-font 'markdown-code-face "Fira Code"))
 
   (defun ubuntu ()
     (interactive)
@@ -708,56 +713,3 @@ you should place your code here."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(fci-rule-color "#292617" t)
- '(linum-format " %3i ")
- '(package-selected-packages
-   (quote
-    (w3m visual-fill markdown-preview-mode company-lsp lsp-mode ht eglot project flymake jsonrpc eldoc xref vimrc-mode slime-company slime omnisharp graphviz-dot-mode geiser faust-mode deft dactyl-mode csharp-mode company-auctex common-lisp-snippets clojure-snippets clj-refactor inflections paredit cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a auctex vagrant-tramp vagrant toml pyim pyim-basedict xr pangu-spacing find-by-pinyin-dired ace-pinyin pinyinlib ein goto-chg popup powerline hydra lv anaphora transient bind-key avy anzu iedit smartparens highlight evil undo-tree flx projectile helm helm-core async f dash lua-mode zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme evil-smartparens insert-shebang fish-mode company-shell x86-lookup utop tuareg caml toml-mode tide typescript-mode terraform-mode hcl-mode systemd sql-indent racer pos-tip ocp-indent nginx-mode nasm-mode merlin go-guru go-eldoc glsl-mode polymode deferred websocket company-go go-mode cargo rust-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby nix-mode helm-nixos-options company-nixos-options nixos-options dockerfile-mode docker tablist magit-popup docker-tramp xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode dhall-mode gnu-elpa-keyring-update psci purescript-mode psc-ide yaml-mode persistent-scratch yapfify pyvenv pytest pyenv-mode py-isort pip-requirements mmm-mode markdown-toc markdown-mode live-py-mode intero hy-mode dash-functional hlint-refactor hindent helm-pydoc helm-hoogle helm-company helm-c-yasnippet haskell-snippets git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-commit with-editor git-gutter gh-md fuzzy disaster diff-hl cython-mode company-statistics company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda company cmm-mode cmake-mode clang-format auto-yasnippet yasnippet anaconda-mode pythonic ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
- '(psc-ide-add-import-on-completion t t)
- '(psc-ide-rebuild-on-save nil t)
- '(safe-local-variable-values (quote ((buffer-file-coding-system . utf-8-unix))))
- '(vc-annotate-background "#201D0E")
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#737063")
-     (40 . "#B0ADA2")
-     (60 . "#B0ADA2")
-     (80 . "#D5D2C8")
-     (100 . "#D5D2C8")
-     (120 . "#ECE9E0")
-     (140 . "#ECE9E0")
-     (160 . "#FAF7EE")
-     (180 . "#FAF7EE")
-     (200 . "#FAF7EE")
-     (220 . "#FFFFF8")
-     (240 . "#FFFFF8")
-     (260 . "#FFFFF8")
-     (280 . "#FFFFFD")
-     (300 . "#FFFFFD")
-     (320 . "#FFFFFD")
-     (340 . "#FFFFFF")
-     (360 . "#FFFFFF"))))
- '(vc-annotate-very-old-color "#ECE9E0"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(fixed-pitch ((t (:family "Ubuntu Mono"))))
- '(fringe ((t (:background "none" :foreground "none"))))
- '(vertical-border ((t (:background "#111111" :foreground "#222222"))))
- '(window-divider ((t (:foreground "gray20"))))
- '(window-divider-first-pixel ((t (:foreground "gray20"))))
- '(window-divider-last-pixel ((t (:foreground "gray20")))))
-)
