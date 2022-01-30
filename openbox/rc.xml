@@ -100,6 +100,10 @@
     <keybind key='W-q'>  <action name='Execute'><command>xtrlock</command></action></keybind>
 
     <!-- Audio -->
+    <keybind key='XF86AudioLowerVolume'><action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
+    <keybind key='XF86AudioRaiseVolume'><action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
+    <keybind key='XF86AudioMute'><action name='Execute'><command>vol-absolute-pa 0</command></action></keybind>
+
     <keybind key='W-Down'>   <action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
     <keybind key='W-Up'>     <action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
     <keybind key='W-S-Down'> <action name='Execute'><command>vol-delta-pa -1024</command></action></keybind>
@@ -116,13 +120,15 @@
 
     <!-- Backlight (for machines where hardware keys aren't supported) -->
     <keybind key='W-C-S-Left'><action name='Execute'> <command>backlight 0</command></action></keybind>
-    <keybind key='W-C-Left'><action name='Execute'>   <command>backlight 100</command></action></keybind>
+    <keybind key='W-C-Left'><action name='Execute'>   <command>backlight 32</command></action></keybind>
     <keybind key='W-C-Right'><action name='Execute'>  <command>backlight max</command></action></keybind>
 
-    <keybind key='W-C-Up'><action name='Execute'>     <command>backlight +1000</command></action></keybind>
-    <keybind key='W-C-Down'><action name='Execute'>   <command>backlight -1000</command></action></keybind>
-    <keybind key='W-C-S-Up'><action name='Execute'>   <command>backlight +50</command></action></keybind>
-    <keybind key='W-C-S-Down'><action name='Execute'> <command>backlight -50</command></action></keybind>
+    <keybind key='XF86MonBrightnessUp'><action name='Execute'>  <command>backlight +50</command></action></keybind>
+    <keybind key='XF86MonBrightnessDown'><action name='Execute'><command>backlight -50</command></action></keybind>
+    <keybind key='W-C-Up'><action name='Execute'>     <command>backlight +50</command></action></keybind>
+    <keybind key='W-C-Down'><action name='Execute'>   <command>backlight -50</command></action></keybind>
+    <keybind key='W-C-S-Up'><action name='Execute'>   <command>backlight +2</command></action></keybind>
+    <keybind key='W-C-S-Down'><action name='Execute'> <command>backlight -2</command></action></keybind>
 
     <!-- App integrations -->
     <keybind key="W-t"><action name="Execute">   <command>urxvt</command></action></keybind>

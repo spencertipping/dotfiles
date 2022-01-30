@@ -626,6 +626,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq-default rust-indent-offset 2)
   (setq-default python-indent-offset 2)
   (setq-default perl-indent-level 2)
+
+  (setq-default c-default-style "linux")
+  (setq-default c-basic-offset 2)
+
   (setq-default cperl-extra-newline-before-brace t)
   (setq-default cperl-continued-brace-offset -4)
   (setq-default cperl-continued-statement-offset 4)
