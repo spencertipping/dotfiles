@@ -677,6 +677,13 @@ you should place your code here."
   (setq-default truncate-lines t)
   (spacemacs/toggle-highlight-current-line-globally-off)
 
+  ;; Add un-mapped APL symbols under the "`" prefix
+  (setq evil-digraphs-table-user
+        '(((?` ?s) . ?\x2308)
+          ((?` ?d) . ?\x230a)
+          ((?` ?b) . ?\x22a5)
+          ((?` ?n) . ?\x22a4)))
+
   (defun fira ()
     (interactive)
     (set-frame-font "Fira Code"))
@@ -689,7 +696,8 @@ you should place your code here."
 
   (defun ubuntu ()
     (interactive)
-    (set-frame-font "Ubuntu Mono"))
+    (set-frame-font "Ubuntu Mono")
+    (set-face-font 'markdown-code-face "Ubuntu Mono"))
 
   (spacemacs/declare-prefix "o" "own-menu")
   (spacemacs/set-leader-keys "o3" 'spacemacs/window-split-triple-columns)

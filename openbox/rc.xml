@@ -103,6 +103,8 @@
     <keybind key='XF86AudioLowerVolume'><action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
     <keybind key='XF86AudioRaiseVolume'><action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
     <keybind key='XF86AudioMute'><action name='Execute'><command>vol-absolute-pa 0</command></action></keybind>
+    <keybind key='XF86AudioPlay'><action name='Execute'><command>pkill -INT -x bi</command></action><action name='Execute'><command>audacious -u</command></action></keybind>
+    <keybind key='XF86AudioPause'><action name='Execute'><command>pkill -INT -x bi</command></action><action name='Execute'><command>audacious -u</command></action></keybind>
 
     <keybind key='W-Down'>   <action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
     <keybind key='W-Up'>     <action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
