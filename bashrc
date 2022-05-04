@@ -10,7 +10,7 @@
 hat_identity() { :; }
 hat_observe()  { :; }
 
-[[ -d ~/.bash ]] || git clone git://github.com/spencertipping/dotbash ~/.bash
+[[ -d ~/.bash ]] || git clone https://github.com/spencertipping/dotbash ~/.bash
 
 source ~/.bash/init
 
