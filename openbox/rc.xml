@@ -112,7 +112,7 @@
     <keybind key='W-S-Up'>   <action name='Execute'><command>vol-delta-pa 1024</command></action></keybind>
 
     <keybind key='W-S-Left'><action name='Execute'>  <command>vol-absolute-pa 0</command></action></keybind>
-    <keybind key='W-S-Right'><action name='Execute'> <command>vol-absolute-pa 29000</command></action></keybind>
+    <keybind key='W-S-Right'><action name='Execute'> <command>vol-absolute-pa 32000</command></action></keybind>
     <keybind key='W-Left'><action name='Execute'>    <command>vol-absolute-pa 16000</command></action></keybind>
     <keybind key='W-Right'><action name='Execute'>   <command>vol-absolute-pa 24000</command></action></keybind>
 
@@ -136,8 +136,6 @@
     <keybind key="W-t"><action name="Execute">   <command>urxvt</command></action></keybind>
     <keybind key="W-S-t"><action name="Execute"> <command>cool-retro-term</command></action></keybind>
 
-    <keybind key="W-S-w"><action name="Execute"> <command>chromium-browser</command></action></keybind>
-    <keybind key="W-w"><action name="Execute"> <command>firefox</command></action></keybind>
     <keybind key="A-F2"><action name="Execute">  <command>urxvt -geometry 80x3 -name bashrun -e sh -c "/bin/bash -i -t"</command></action></keybind>
     <keybind key='W-a'><action name='Execute'>   <command>audacious</command></action></keybind>
     <keybind key='W-S-v'><action name='Execute'> <command>pavucontrol</command></action></keybind>

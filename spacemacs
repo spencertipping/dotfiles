@@ -590,6 +590,10 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
+  ;; Disable auto-format-on-paste
+  (dolist (func '(yank yank-pop evil-paste-before evil-paste-after))
+    (advice-remove func #'spacemacs//yank-indent-region))
+
   (add-to-list 'default-frame-alist '(width . 81))
   (add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
 
@@ -597,6 +601,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (scroll-bar-mode -1)
 
   (setq browse-url-browser-function 'eww-browse-url)
+
+  (setq undo-tree-auto-save-history nil)
 
   ;; Time to bring in the big guns
   (defun toggle-scroll-bar-mode () nil)
@@ -617,8 +623,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (setq-default show-trailing-whitespace t)
 
-  (setq-default js-indent-level 2)
   (setq-default standard-indent 2)
+
+  (setq-default js-indent-level 2)
   (setq-default sh-indentation 2)
   (setq-default sh-basic-offset 2)
   (setq-default smie-indent-basic 2)
@@ -664,6 +671,10 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   (setq-default tab-width 8)
+
+  (setq-default cperl-indent-level 2)
+  (setq-default lsp-enable-on-type-formatting nil)
+  (setq-default lsp-enable-indentation nil)
 
   ;; The only one of these I ever use is suggested LANGUAGE pragmas.
   (setq-default haskell-process-suggest-add-package nil)
