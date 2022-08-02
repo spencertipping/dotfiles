@@ -646,6 +646,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (setq-default linum-relative-format "%s ")
 
+  (c-set-offset 'innamespace 0)
+
   (add-to-list 'load-path "/usr/share/emacs/site-lisp/maxima/")
   (autoload 'maxima-mode "maxima" "Maxima mode" t)
   (autoload 'imaxima "imaxima" "Frontend for maxima with Image support" t)

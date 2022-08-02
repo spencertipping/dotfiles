@@ -4,7 +4,7 @@ text_buffer_size 2048
 
 temperature_unit celsius
 update_interval 2
-update_interval_on_battery 15
+update_interval_on_battery 5
 total_run_times 0
 
 own_window yes

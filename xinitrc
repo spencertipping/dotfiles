@@ -11,6 +11,7 @@ init_session() {
   case `hostname` in
   iota|ijen)
     ~/r/env/touchpad
+    ~/r/env/battery-limits
     conky &
     wmctrl -s 23
     wifi 35
@@ -44,3 +45,7 @@ init_session() {
 sleep 2 && init_session
 
 wait $wm_pid
+
+# NOTE:
+# suggested changes from https://bbs.archlinux.org/viewtopic.php?id=265880:
+# exec openbox-session at the end, (sleep 2 && init_session) & async
