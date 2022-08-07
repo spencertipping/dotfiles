@@ -89,7 +89,7 @@
     <keybind key='W-S-2'><action name='MoveResizeTo'><x>996</x><y>54</y><width>1060</width><height>2106</height></action></keybind>
     <keybind key='W-3'><action name='MoveResizeTo'><x>1976</x><y>0</y><width>960</width><height>1944</height></action></keybind>
     <keybind key='W-S-3'><action name='MoveResizeTo'><x>2064</x><y>0</y><width>960</width><height>1944</height></action></keybind>
-    <keybind key='W-4'><action name='MoveResizeTo'><x>2956</x><y>0</y><width>729</width><height>1911</height></action></keybind>
+    <keybind key='W-4'><action name='MoveResizeTo'><x>2956</x><y>0</y><width>868</width><height>1944</height></action></keybind>
     <keybind key='W-S-4'><action name='MoveResizeTo'><x>3048</x><y>0</y><width>729</width><height>1911</height></action></keybind>
     <keybind key='W-5'><action name='MoveResizeTo'><x>2056</x><y>0</y><width>1784</width><height>2160</height></action></keybind>
     <keybind key='W-S-6'><action name='MoveResizeTo'><y>-144</y></action></keybind>
@@ -103,8 +103,8 @@
     <keybind key='XF86AudioLowerVolume'><action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
     <keybind key='XF86AudioRaiseVolume'><action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
     <keybind key='XF86AudioMute'><action name='Execute'><command>vol-absolute-pa 0</command></action></keybind>
-    <keybind key='XF86AudioPlay'><action name='Execute'><command>pkill -INT -x bi</command></action><action name='Execute'><command>audacious -u</command></action></keybind>
-    <keybind key='XF86AudioPause'><action name='Execute'><command>pkill -INT -x bi</command></action><action name='Execute'><command>audacious -u</command></action></keybind>
+    <keybind key='XF86AudioPlay'><action name='Execute'><command>sh -c 'pkill -INT -x bi; audacious -u; md ~/r/env/bgi'</command></action></keybind>
+    <keybind key='XF86AudioPause'><action name='Execute'><command>sh -c 'pkill -INT -x bi; audacious -u; md ~/r/env/bgi'</command></action></keybind>
 
     <keybind key='W-Down'>   <action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
     <keybind key='W-Up'>     <action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
@@ -117,8 +117,8 @@
     <keybind key='W-Right'><action name='Execute'>   <command>vol-absolute-pa 24000</command></action></keybind>
 
     <!-- Reconnection for silly headset that keeps getting out of sync -->
-    <keybind key='W-A-S-h'><action name='Execute'><command>sh -c "echo 'disconnect 54:B7:E5:7D:94:60' | bluetoothctl"</command></action></keybind>
-    <keybind key='W-A-h'><action name='Execute'><command>sh -c "echo 'connect 54:B7:E5:7D:94:60' | bluetoothctl"</command></action></keybind>
+    <keybind key='W-A-S-h'><action name='Execute'><command>sh -c "echo 'disconnect 00:00:AB:CE:8E:C6' | bluetoothctl"</command></action></keybind>
+    <keybind key='W-A-h'><action name='Execute'><command>sh -c "echo 'connect 00:00:AB:CE:8E:C6' | bluetoothctl"</command></action></keybind>
 
     <!-- Backlight (for machines where hardware keys aren't supported) -->
     <keybind key='W-C-S-Left'><action name='Execute'> <command>backlight 0</command></action></keybind>
