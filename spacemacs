@@ -43,51 +43,28 @@ This function should only modify configuration layer settings."
      (auto-completion :disabled-for markdown)
      c-c++
      chinese
-     clojure
-     common-lisp
-     csharp
      deft
-     dhall
      docker
      emacs-lisp
-     faust
      forth
-     go
      gpu
-     graphviz
      haskell
      helm
      html
      ietf
-     ipython-notebook
      javascript
      json
      kubernetes
-     latex
      lsp
-     lua
      major-modes
      markdown
      multiple-cursors
-     octave
      perl5
      prolog
-     protobuf
-     purescript
      python
-     react
-     ruby
-     rust
-     scheme
      shell-scripts
-     sql
      systemd
      theming
-     treemacs
-     typescript
-     vagrant
-     vimscript
-     vue
      web-beautify
      xclipboard
      yaml
@@ -106,6 +83,7 @@ This function should only modify configuration layer settings."
                                       mustang-theme
                                       tangotango-theme
                                       zenburn-theme
+                                      google-translate
 
                                       markdown-preview-mode
 
@@ -147,6 +125,10 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil then enable support for the portable dumper. You'll need
    ;; to compile Emacs 27 from source following the instructions in file
    ;; EXPERIMENTAL.org at to root of the git repository.
+   ;;
+   ;; WARNING: pdumper does not work with Native Compilation, so it's disabled
+   ;; regardless of the following setting when native compilation is in effect.
+   ;;
    ;; (default nil)
    dotspacemacs-enable-emacs-pdumper nil
 
@@ -231,6 +213,13 @@ It should only modify the values of Spacemacs settings."
    ;; If the value is nil then no banner is displayed. (default 'official)
    dotspacemacs-startup-banner 'official
 
+   ;; Scale factor controls the scaling (size) of the startup banner. Default
+   ;; value is `auto' for scaling the logo automatically to fit all buffer
+   ;; contents, to a maximum of the full image height and a minimum of 3 line
+   ;; heights. If set to a number (int or float) it is used as a constant
+   ;; scaling factor for the default logo size.
+   dotspacemacs-startup-banner-scale 'auto
+
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
@@ -247,6 +236,11 @@ It should only modify the values of Spacemacs settings."
 
    ;; The minimum delay in seconds between number key presses. (default 0.4)
    dotspacemacs-startup-buffer-multi-digit-delay 0.4
+
+   ;; If non-nil, show file icons for entries and headings on Spacemacs home buffer.
+   ;; This has no effect in terminal or if "all-the-icons" package or the font
+   ;; is not installed. (default nil)
+   dotspacemacs-startup-buffer-show-icons nil
 
    ;; Default major mode for a new empty buffer. Possible values are mode
    ;; names such as `text-mode'; and `nil' to use Fundamental mode.
@@ -272,8 +266,9 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(doom-material-dark
-                         eziam-light
                          eziam-dark
+                         minimal-light
+                         eziam-light
                          material-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -523,7 +518,9 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil - same as frame-title-format)
    dotspacemacs-icon-title-format nil
 
-   ;; Show trailing whitespace (default t)
+   ;; Color highlight trailing whitespace in all prog-mode and text-mode derived
+   ;; modes such as c++-mode, python-mode, emacs-lisp, html-mode, rst-mode etc.
+   ;; (default t)
    dotspacemacs-show-trailing-whitespace t
 
    ;; Delete whitespace while saving buffer. Possible values are `all'
@@ -668,6 +665,8 @@ you should place your code here."
 
   (setq-default tab-width 8)
 
+  (setq-default read-quoted-char-radix 16)
+
   (setq-default cperl-indent-level 2)
   (setq-default lsp-enable-on-type-formatting nil)
   (setq-default lsp-enable-indentation nil)
@@ -689,7 +688,14 @@ you should place your code here."
         '(((?` ?s) . ?\x2308)
           ((?` ?d) . ?\x230a)
           ((?` ?b) . ?\x22a5)
-          ((?` ?n) . ?\x22a4)))
+          ((?` ?n) . ?\x22a4)
+
+          ((?C ?C) . ?\x2102)  ; mathbb
+          ((?N ?N) . ?\x2115)
+          ((?P ?P) . ?\x2119)
+          ((?Z ?Z) . ?\x2124)
+          ((?R ?R) . ?\x211d)
+          ((?Q ?Q) . ?\x211a)))
 
   (defun fira ()
     (interactive)
@@ -706,6 +712,11 @@ you should place your code here."
     (set-frame-font "Ubuntu Mono")
     (set-face-font 'markdown-code-face "Ubuntu Mono"))
 
+  (defun fix-keybindings ()
+    ;; For some reason we lose this keybinding when activating some themes
+    (interactive)
+    (bind-key "C-k" 'evil-insert-digraph))
+
   (spacemacs/declare-prefix "o" "own-menu")
   (spacemacs/set-leader-keys "o3" 'spacemacs/window-split-triple-columns)
   (spacemacs/set-leader-keys "oh" 'buf-move-left)
@@ -716,6 +727,8 @@ you should place your code here."
   (spacemacs/set-leader-keys "of" 'fira)
   (spacemacs/set-leader-keys "og" 'gentium)
   (spacemacs/set-leader-keys "ou" 'ubuntu)
+
+  (spacemacs/set-leader-keys "oo" 'fix-keybindings)
 
   (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "sr" #'haskell-process-restart)
   (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "sf" #'flycheck-mode)

@@ -133,6 +133,7 @@
     <keybind key='W-C-S-Down'><action name='Execute'> <command>backlight -2</command></action></keybind>
 
     <!-- App integrations -->
+    <keybind key="W-r"><action name="Execute">   <command>urxvt -g 144x30 -e ranger</command></action></keybind>
     <keybind key="W-t"><action name="Execute">   <command>urxvt</command></action></keybind>
     <keybind key="W-S-t"><action name="Execute"> <command>cool-retro-term</command></action></keybind>
 
@@ -144,22 +145,13 @@
 
     <keybind key='W-S-8'> <action name='Execute'><command>transset 0.85</command></action></keybind>
 
-    <!-- Home automation -->
-    <!--
-    <keybind key='W-e'> <keybind key='o'><action name='Execute'><command>curl http://192.168.0.34:8180/0</command></action></keybind>
-                        <keybind key='f'><action name='Execute'><command>curl http://192.168.0.34:8180/4</command></action></keybind>
-                        <keybind key='h'><action name='Execute'><command>curl http://192.168.0.34:8180/5</command></action></keybind></keybind>
-    -->
-
     <!-- Backgrounds -->
     <keybind key='W-S-b'><action name='Execute'> <command>/home/spencertipping/bin/mdb</command></action></keybind>
     <keybind key='W-S-o'><action name='Execute'> <command>xset dpms force off</command></action></keybind>
     <keybind key='W-C-o'><action name='Execute'> <command>xset dpms force on</command></action></keybind>
 
     <!-- xsel -->
-    <keybind key='W-r'><action name='Execute'> <command>/home/spencertipping/bin/rb</command></action></keybind>
-    <keybind key='W-S-r'> <action name='Execute'> <command>xsel -bc</command></action>
-                          <action name='Execute'> <command>xsel -c</command></action></keybind>
+    <keybind key='W-S-r'> <action name='Execute'> <command>/home/spencertipping/bin/toggle-redshift</command></action> </keybind>
 
     <keybind key='W-c'><action name='Execute'>   <command>sh -c 'xsel | xsel -b'</command></action></keybind>
     <keybind key='W-S-c'><action name='Execute'> <command>sh -c 'xsel -b | xsel'</command></action></keybind>
@@ -193,6 +185,6 @@
     <keybind key="W-Tab"><action name="NextWindow">       <allDesktops>yes</allDesktops></action></keybind>
     <keybind key="W-S-Tab"><action name="PreviousWindow"> <allDesktops>yes</allDesktops></action></keybind>
 
-    <keybind key="W-space"> <action name="ShowMenu"><menu>root-menu</menu></action></keybind>
+    <keybind key="W-M-space"> <action name="ShowMenu"><menu>root-menu</menu></action></keybind>
   </keyboard>
 </openbox_config>
