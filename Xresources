@@ -6,6 +6,8 @@ Xft.hinting: true
 Xft.hintstyle: hintnone
 Xft.rgba: rgb
 
+Emacs*useXIM: true
+
 URxvt.inputMethod: ibus
 
 URxvt.iso14755:    false

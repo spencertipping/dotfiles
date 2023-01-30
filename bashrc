@@ -45,6 +45,7 @@ export PATH="$PATH:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.platformio/penv
 export VISUAL="/usr/bin/vim"
 export EDITOR=$VISUAL
 export PS1='\[\033[1;32m\]\h\[\033[1;30m\]\W\[\033[0;0m\] '
+export XMODIFIERS=@im=ibus
 
 # ni configuration
 export NI_DANGER_MODE=1   # makes ni more fun

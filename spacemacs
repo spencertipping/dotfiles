@@ -47,6 +47,7 @@ This function should only modify configuration layer settings."
      docker
      emacs-lisp
      forth
+     go
      gpu
      haskell
      helm
@@ -84,6 +85,8 @@ This function should only modify configuration layer settings."
                                       tangotango-theme
                                       zenburn-theme
                                       google-translate
+
+                                      ibus
 
                                       markdown-preview-mode
 
@@ -705,12 +708,14 @@ you should place your code here."
     (interactive)
     (set-frame-font "Gentium")
     (set-face-font 'fixed-pitch "Fira Code")
-    (set-face-font 'markdown-code-face "Fira Code"))
+    (set-face-font 'markdown-code-face "Fira Code")
+    (set-face-font 'markdown-inline-code-face "Fira Code"))
 
   (defun ubuntu ()
     (interactive)
     (set-frame-font "Ubuntu Mono")
-    (set-face-font 'markdown-code-face "Ubuntu Mono"))
+    (set-face-font 'markdown-code-face "Ubuntu Mono")
+    (set-face-font 'markdown-inline-code-face "Ubuntu Mono"))
 
   (defun fix-keybindings ()
     ;; For some reason we lose this keybinding when activating some themes
