@@ -100,12 +100,7 @@ This function should only modify configuration layer settings."
    ;; NOTE(spencer): recentf conflicts between running emacs instances.
    dotspacemacs-excluded-packages '(recentf
                                     savehist
-                                    firebelly-theme
-                                    niflheim-theme
-                                    modus-themes
-                                    pastels-on-dark-theme
-                                    tronesque-theme
-                                    zonokai-theme)
+                                    yas)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -292,9 +287,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-default-font '("Ubuntu Mono"
                                :size 18.0
                                :weight normal
-                               :width condensed
-                               :spacing 70
-                               :powerline-scale 1.2)
+                               :width normal)
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -382,7 +375,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar nil
+   dotspacemacs-loading-progress-bar t
 
    ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
@@ -731,6 +724,7 @@ you should place your code here."
           ((?` ?,) . ?⍝)
 
           ((?` ?<) . ?⍪)
+          ((?- ?,) . ?⍪)
 
           ((?- ?/)  . ?⌿)
           ((?- ?\\) . ?⍀)
@@ -740,7 +734,74 @@ you should place your code here."
           ((?P ?P) . ?ℙ)
           ((?Z ?Z) . ?ℤ)
           ((?R ?R) . ?ℝ)
-          ((?Q ?Q) . ?ℚ)))
+          ((?Q ?Q) . ?ℚ)
+
+          ;; Two-letter pinyin under neutral tone (definitions from chatGPT)
+          ((?b ?a) . ?八) ; eight
+          ((?p ?a) . ?怕) ; to be afraid (of)
+          ((?m ?a) . ?妈) ; mother
+          ((?f ?a) . ?发) ; to send; to issue; to develop
+          ((?d ?a) . ?大) ; big; large
+          ((?t ?a) . ?他) ; he; him
+          ((?n ?a) . ?哪) ; which; where
+          ((?l ?a) . ?拉) ; to pull; to play (a musical instrument)
+          ((?g ?a) . ?噶) ; a sound used in Tibetan and other languages
+          ((?k ?a) . ?卡) ; card; block; snag; bottleneck
+          ((?h ?a) . ?哈) ; ha (an onomatopoeic word indicating laughter)
+          ((?z ?a) . ?杂) ; mixed; miscellaneous
+          ((?c ?a) . ?擦) ; to rub; to wipe; to erase
+          ((?s ?a) . ?撒) ; to sprinkle; to scatter; to spread
+          ((?m ?e) . ?么) ; a particle used in questions to indicate a lack of understanding or to seek clarification
+          ((?d ?e) . ?的) ; a possessive particle indicating "of" or "belonging to"
+          ((?t ?e) . ?特) ; special; unique
+          ((?n ?e) . ?呢) ; a modal particle used to indicate a question
+          ((?l ?e) . ?了) ; a particle used to indicate a completed or changed action
+          ((?g ?e) . ?个) ; a measure word used to indicate a general noun or a person
+          ((?k ?e) . ?可) ; can; may; possible
+          ((?h ?e) . ?和) ; and; together with
+          ((?r ?e) . ?热) ; hot
+          ((?z ?e) . ?则) ; then; in that case
+          ((?c ?e) . ?侧) ; side; lateral
+          ((?s ?e) . ?色) ; color
+          ((?y ?i) . ?一) ; one; a
+          ((?b ?i) . ?比) ; to compare; than
+          ((?p ?i) . ?皮) ; skin; leather
+          ((?m ?i) . ?米) ; rice; meter
+          ((?d ?i) . ?低) ; low
+          ((?t ?i) . ?提) ; to carry; to lift; to raise
+          ((?n ?i) . ?你) ; you
+          ((?l ?i) . ?里) ; inside; within
+          ((?j ?i) . ?机) ; machine; opportunity
+          ((?q ?i) . ?起) ; to rise; to start; to initiate
+          ((?x ?i) . ?西) ; west
+          ((?r ?i) . ?日) ; day; sun
+          ((?z ?i) . ?子) ; child; seed
+          ((?c ?i) . ?次) ; number of times; order
+          ((?s ?i) . ?四) ; four
+          ((?b ?o) . ?播) ; to broadcast; to sow
+          ((?p ?o) . ?破) ; to break; broken
+          ((?m ?o) . ?莫) ; do not; must not
+          ((?f ?o) . ?佛) ; Buddha
+          ((?l ?o) . ?咯) ; a sound indicating surprise or coughing
+          ((?b ?u) . ?不) ; not; no
+          ((?p ?u) . ?普) ; general; widespread
+          ((?m ?u) . ?木) ; wood; tree
+          ((?f ?u) . ?付) ; to pay; to hand over
+          ((?d ?u) . ?读) ; to read; to study
+          ((?t ?u) . ?图) ; diagram; chart; map
+          ((?n ?u) . ?女) ; woman
+          ((?l ?u) . ?路) ; road; path
+          ((?g ?u) . ?骨) ; bone
+          ((?k ?u) . ?哭) ; to cry
+          ((?h ?u) . ?虎) ; tiger
+          ((?r ?u) . ?入) ; to enter
+          ((?z ?u) . ?组) ; group; to form a group
+          ((?c ?u) . ?促) ; to urge; to promote
+          ((?s ?u) . ?速) ; speed; rapid
+          ((?j ?u) . ?局) ; office; bureau; situation
+          ((?q ?u) . ?去) ; to go; to leave
+          ((?x ?u) . ?需) ; to need; to require
+          ))
 
   (defun fira ()
     (interactive)
