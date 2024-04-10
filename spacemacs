@@ -60,11 +60,14 @@ This function should only modify configuration layer settings."
      major-modes
      markdown
      multiple-cursors
+     openai
      perl5
      prolog
      python
+     react
      shell-scripts
      systemd
+     terraform
      theming
      web-beautify
      xclipboard
@@ -103,7 +106,9 @@ This function should only modify configuration layer settings."
    ;; NOTE(spencer): recentf conflicts between running emacs instances.
    dotspacemacs-excluded-packages '(recentf
                                     savehist
-                                    yas)
+                                    yas
+                                    yasnippet
+                                    yasnippet-snippets)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -288,7 +293,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Ubuntu Mono"
-                               :size 18.0
+                               :size 20.0
                                :weight normal
                                :width normal)
 
@@ -594,6 +599,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (setq undo-tree-auto-save-history nil)
 
+  (setq undo-limit 800000)
+  (setq undo-strong-limit 1200000)
+  (setq undo-outer-limit 2400000)
+
   ;; Time to bring in the big guns
   (defun toggle-scroll-bar-mode () nil)
   (defun scroll-bar-mode (x) nil)
@@ -636,6 +645,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (setq-default linum-relative-format "%s ")
 
+  (setq-default indicate-empty-lines nil)
+
   (c-set-offset 'innamespace 0)
 
   (add-to-list 'load-path "/usr/share/emacs/site-lisp/maxima/")
@@ -644,7 +655,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (autoload 'maxima "maxima" "Maxima interaction" t)
   (autoload 'imath-mode "imath" "Imath mode for math formula input" t)
   (setq-default imaxima-use-maxima-mode-flag t)
-  (add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode)))
+  (add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode))
+
+  (global-undo-tree-mode -1)
+  (setq evil-undo-system 'undo-redo)
+  (evil-set-undo-system 'undo-redo))
 
 
 (defun dotspacemacs/user-load ()
@@ -670,7 +685,16 @@ you should place your code here."
     (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
     (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
     (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
-    (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
+    (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word)
+    (define-key copilot-completion-map (kbd "<C-return>") 'copilot-accept-completion))
+
+  (defun reload-copilot ()
+    (interactive)
+    (copilot-mode -1)
+    (copilot-mode 1))
+
+  (setq-default openai-key  (getenv "OPENAI_API_KEY"))
+  (setq-default openai-user "user")
 
   (add-hook 'prog-mode-hook 'copilot-mode)
 
@@ -835,6 +859,12 @@ you should place your code here."
     (set-face-font 'markdown-code-face "Ubuntu Mono")
     (set-face-font 'markdown-inline-code-face "Ubuntu Mono"))
 
+  (defun terminus ()
+    (interactive)
+    (set-frame-font "Terminus (TTF)")
+    (set-face-font 'markdown-code-face "Terminus (TTF)")
+    (set-face-font 'markdown-inline-code-face "Terminus (TTF)"))
+
   (defun fix-keybindings ()
     ;; For some reason we lose this keybinding when activating some themes
     (interactive)
@@ -850,6 +880,7 @@ you should place your code here."
   (spacemacs/set-leader-keys "of" 'fira)
   (spacemacs/set-leader-keys "og" 'gentium)
   (spacemacs/set-leader-keys "ou" 'ubuntu)
+  (spacemacs/set-leader-keys "ot" 'terminus)
 
   (spacemacs/set-leader-keys "oo" 'fix-keybindings)
 

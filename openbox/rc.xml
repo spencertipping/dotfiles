@@ -95,8 +95,7 @@
     <keybind key='W-S-6'><action name='MoveResizeTo'><y>-144</y></action></keybind>
 
     <!-- Misc integration -->
-    <!--<keybind key='Print'><action
-    name='Execute'><command>shutter</command></action></keybind>-->
+    <!--<keybind key='Print'><action name='Execute'><command>shutter</command></action></keybind>-->
     <keybind key='W-q'>  <action name='Execute'><command>xtrlock</command></action></keybind>
 
     <!-- Audio -->
@@ -105,6 +104,8 @@
     <keybind key='XF86AudioMute'><action name='Execute'><command>vol-absolute-pa 0</command></action></keybind>
     <keybind key='XF86AudioPlay'><action name='Execute'><command>sh -c 'pkill -INT -x bi; audacious -u; md ~/r/env/bgi'</command></action></keybind>
     <keybind key='XF86AudioPause'><action name='Execute'><command>sh -c 'pkill -INT -x bi; audacious -u; md ~/r/env/bgi'</command></action></keybind>
+    <keybind key='XF86AudioNext'><action name='Execute'><command>audacious -f</command></action></keybind>
+    <keybind key='XF86AudioPrev'><action name='Execute'><command>audacious -r</command></action></keybind>
 
     <keybind key='W-Down'>   <action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
     <keybind key='W-Up'>     <action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
@@ -185,6 +186,7 @@
     <keybind key="W-Tab"><action name="NextWindow">       <allDesktops>yes</allDesktops></action></keybind>
     <keybind key="W-S-Tab"><action name="PreviousWindow"> <allDesktops>yes</allDesktops></action></keybind>
 
+    <keybind key="W-space"> <action name="ShowMenu"><menu>root-menu</menu></action></keybind>
     <keybind key="W-M-space"> <action name="ShowMenu"><menu>root-menu</menu></action></keybind>
   </keyboard>
 </openbox_config>

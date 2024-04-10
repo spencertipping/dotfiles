@@ -12,6 +12,10 @@ hat_observe()  { :; }
 
 [[ -d ~/.bash ]] || git clone https://github.com/spencertipping/dotbash ~/.bash
 
+[[ -d ~/.keys ]] && for f in ~/.keys/*; do
+  source "$f"
+done
+
 source ~/.bash/init
 
 export GPG_TTY=`tty`
@@ -87,19 +91,14 @@ barrier-iniidae() {
 }
 
 xpra-4k() {
-  xpra attach --no-keyboard-sync --ssh=ssh --dpi=192 --desktop-scaling=2 ssh://$1
+  xpra attach --no-keyboard-sync --opengl=off --ssh=ssh ssh://$1
 }
 
-# The world is unprepared for colorful RXVT. Reduce it to just regular URXVT.
-#if [[ "$TERM" = rxvt-unicode-256color ]]; then
-#  export TERM='rxvt-unicode'
-#fi
 
-# Baby monitor
-babymon() {
-  ssh $1 'arecord -f cd -t raw -' \
-    | play -e signed-integer -b 16 -L -c 2 -r 44100 -t raw - \
-           compand .01,.01 -inf,-40,-inf,-40,-40 0 -90 .1
+mp3ify() {
+  here="$(basename "$1")"
+  ffmpeg -i "$1" -af loudnorm -c:a libmp3lame -b:a 320k \
+         -map_metadata -1 -write_xing 0 "${here%.*}.mp3"
 }
 
 case $HOSTNAME in
@@ -111,6 +110,9 @@ esac
 
 # Enable nix if we have it
 [[ -e ~/.nix-profile/etc/profile.d/nix.sh ]] && . ~/.nix-profile/etc/profile.d/nix.sh
+
+export EMSDK_QUIET=1
+[[ -e /opt/emsdk/emsdk_env.sh ]] && . /opt/emsdk/emsdk_env.sh
 
 [[ $PWD == $HOME && -d $HOME/r ]] && cd $HOME/r
 

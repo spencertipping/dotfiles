@@ -7,7 +7,7 @@ init_session() {
   xrdb ~/.Xresources
   feh --bg-fill ~/r/env/bgi
   xcompmgr &
-  ibus-daemon -rdx &
+  # ibus-daemon -rdx &  # hijacks super+space
 
   case `hostname` in
   iota|ijen)

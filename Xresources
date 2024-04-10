@@ -8,7 +8,7 @@ Xft.rgba: rgb
 
 Emacs*useXIM: true
 
-URxvt.inputMethod: ibus
+!URxvt.inputMethod: ibus
 
 URxvt.iso14755:    false
 URxvt.iso14755_52: false
