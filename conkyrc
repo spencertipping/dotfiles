@@ -76,7 +76,7 @@ ${voffset -26}${goto 0}${offset 864}${diskio_read  /dev/nvme0n1} ${voffset -46}$
 ${voffset -26}${goto 0}${offset 960}${diskio_write /dev/nvme0n1} ${voffset -46}${goto 0}${offset 960}${hwmon 1 temp 1}°C ${voffset 46}${goto 0}${offset 960}
 ${voffset -26}
 ${voffset -26}${voffset -78}${goto 0}${offset 864}
-${voffset -26}${goto 0}${offset 1080}${color f0f0f0}${wireless_essid wlp0s20f3} ${color c0c0c0}${wireless_link_qual_perc wlp0s20f3}%
+${voffset -26}${goto 0}${offset 1080}${color f0f0f0}${alignr 284}${wireless_essid wlp0s20f3} ${color c0c0c0}${wireless_link_qual_perc wlp0s20f3}%
 ${voffset -26}${goto 0}${offset 1208}${color 909090}${alignr 0}${wireless_ap wlp0s20f3}
 ${voffset -26}
 ${voffset -26}${voffset 82}${goto 0}${offset 960}${goto 0}${offset 1032}${color 303030}${loadgraph 16,355 -l} ${voffset -4}${goto 0}${offset 960}

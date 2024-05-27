@@ -92,7 +92,7 @@ URxvt*letterSpace: -1
 #endif
 
 #ifdef SRVR_ijen
-URxvt.font: xft:Ubuntu Mono:size=18:hinting=none
+URxvt.font: xft:Ubuntu Mono:size=16:hinting=none
 URxvt*lineSpace: 0
 URxvt*letterSpace: -1
 

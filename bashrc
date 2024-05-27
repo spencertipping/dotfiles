@@ -44,6 +44,7 @@ umask 022
 
 export NODE_PATH="$HOME/.node:$NODE_PATH"
 export PATH="$PATH:$HOME/.cargo/bin:$HOME/.npm-global/bin:$HOME/.platformio/penv/bin"
+export PATH="$PATH:$HOME/.config/emacs/bin"
 
 # Environment variables
 export VISUAL="/usr/bin/vim"

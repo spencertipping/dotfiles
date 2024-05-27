@@ -7,7 +7,15 @@ init_session() {
   xrdb ~/.Xresources
   feh --bg-fill ~/r/env/bgi
   xcompmgr &
-  # ibus-daemon -rdx &  # hijacks super+space
+
+  # This series of steps fixes the long startup times for certain gnome apps,
+  # most notably evince and pavucontrol
+  systemctl --user import-environment DISPLAY XAUTHORITY
+  systemctl --user daemon-reload
+  systemctl --user restart xdg-desktop-portal
+  systemctl --user restart xdg-desktop-portal-gtk
+
+  # ibus-daemon -rdx &  # hijacks super+space, therefore disabled for now
 
   case `hostname` in
   iota|ijen)
@@ -15,7 +23,6 @@ init_session() {
     ~/r/env/battery-limits
     conky &
     wmctrl -s 23
-    wifi 35
     sudo wg-quick up wg0
     ;;
 

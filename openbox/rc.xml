@@ -99,23 +99,23 @@
     <keybind key='W-q'>  <action name='Execute'><command>xtrlock</command></action></keybind>
 
     <!-- Audio -->
-    <keybind key='XF86AudioLowerVolume'><action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
-    <keybind key='XF86AudioRaiseVolume'><action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
-    <keybind key='XF86AudioMute'><action name='Execute'><command>vol-absolute-pa 0</command></action></keybind>
+    <keybind key='XF86AudioLowerVolume'><action name='Execute'><command>vol-pipewire -5</command></action></keybind>
+    <keybind key='XF86AudioRaiseVolume'><action name='Execute'><command>vol-pipewire +5</command></action></keybind>
+    <keybind key='XF86AudioMute'><action name='Execute'><command>vol-pipewire 0</command></action></keybind>
     <keybind key='XF86AudioPlay'><action name='Execute'><command>sh -c 'pkill -INT -x bi; audacious -u; md ~/r/env/bgi'</command></action></keybind>
     <keybind key='XF86AudioPause'><action name='Execute'><command>sh -c 'pkill -INT -x bi; audacious -u; md ~/r/env/bgi'</command></action></keybind>
     <keybind key='XF86AudioNext'><action name='Execute'><command>audacious -f</command></action></keybind>
     <keybind key='XF86AudioPrev'><action name='Execute'><command>audacious -r</command></action></keybind>
 
-    <keybind key='W-Down'>   <action name='Execute'><command>vol-delta-pa -2048</command></action></keybind>
-    <keybind key='W-Up'>     <action name='Execute'><command>vol-delta-pa 2048</command></action></keybind>
-    <keybind key='W-S-Down'> <action name='Execute'><command>vol-delta-pa -1024</command></action></keybind>
-    <keybind key='W-S-Up'>   <action name='Execute'><command>vol-delta-pa 1024</command></action></keybind>
+    <keybind key='W-Down'>   <action name='Execute'><command>vol-pipewire -5</command></action></keybind>
+    <keybind key='W-Up'>     <action name='Execute'><command>vol-pipewire +5</command></action></keybind>
+    <keybind key='W-S-Down'> <action name='Execute'><command>vol-pipewire -2</command></action></keybind>
+    <keybind key='W-S-Up'>   <action name='Execute'><command>vol-pipewire +2</command></action></keybind>
 
-    <keybind key='W-S-Left'><action name='Execute'>  <command>vol-absolute-pa 0</command></action></keybind>
-    <keybind key='W-S-Right'><action name='Execute'> <command>vol-absolute-pa 32000</command></action></keybind>
-    <keybind key='W-Left'><action name='Execute'>    <command>vol-absolute-pa 16000</command></action></keybind>
-    <keybind key='W-Right'><action name='Execute'>   <command>vol-absolute-pa 24000</command></action></keybind>
+    <keybind key='W-S-Left'><action name='Execute'>  <command>vol-pipewire 0</command></action></keybind>
+    <keybind key='W-S-Right'><action name='Execute'> <command>vol-pipewire 50</command></action></keybind>
+    <keybind key='W-Left'><action name='Execute'>    <command>vol-pipewire 25</command></action></keybind>
+    <keybind key='W-Right'><action name='Execute'>   <command>vol-pipewire 38</command></action></keybind>
 
     <!-- Reconnection for silly headset that keeps getting out of sync -->
     <keybind key='W-A-S-h'><action name='Execute'><command>sh -c "echo 'disconnect 00:00:AB:CE:8E:C6' | bluetoothctl"</command></action></keybind>

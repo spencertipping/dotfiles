@@ -21,3 +21,6 @@ done
 
 rm -rf ~/.config/openbox
 ln -s ~/.openbox ~/.config/openbox
+
+rm -rf ~/.config/doom
+ln -s ~/.doom ~/.config/doom
