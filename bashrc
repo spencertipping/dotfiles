@@ -33,6 +33,8 @@ alias a='flatpak run org.gnome.gitlab.somas.Apostrophe'
 # alias vbg='xwinwrap -s -fs -b -nf -ov -- mplayer -wid WID'
 alias vbg='xwinwrap -s -fs -b -nf -ov -- cvlc --drawable-xid WID -I rc'
 
+alias reset-palette='printf "\033]4;0;#abb0b6\007\033]4;1;#fa8d3e\007\033]4;2;#86c380\007\033]4;3;#e6b450\007\033]4;4;#5ccfe6\007\033]4;5;#f07178\007\033]4;6;#95e6cb\007\033]4;7;#626a73\007\033]4;8;#fafafa\007\033]4;9;#ffa759\007\033]4;10;#bae67e\007\033]4;11;#ffee99\007\033]4;12;#73d0ff\007\033]4;13;#ffa759\007\033]4;14;#95e6cb\007\033]4;15;#707a8c\007"'
+
 # If we don't have a DISPLAY already, set it to :0
 # (in practice this happens if you don't have bashrc-xpra and you're sshing
 # somewhere without -X)

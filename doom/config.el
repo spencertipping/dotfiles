@@ -24,7 +24,7 @@
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
-(setq-default doom-font (font-spec :family "Ubuntu Mono" :size 24))
+(setq-default doom-font (font-spec :family "Ubuntu Mono" :size 12))
 (setq-default doom-serif-font (font-spec :family "Gentium Basic" :size 24))
 
 (add-to-list 'default-frame-alist '(alpha . (92 . 70)))
@@ -91,31 +91,32 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
-(setq-default c-basic-offset 2)
-(setq-default c-offsets-alist '((innamespace . 0)))
+(after! c
+  (setq-default c-basic-offset 2)
+  (setq-default c-offsets-alist '((innamespace . 0)))
+  (setq-default c-default-style "linux")
+  (setq-default c-tab-always-indent t)
+  (setq-default c-indent-level 2))
+
 (setq-default css-indent-offset 2)
 (setq-default lisp-body-indent 2)
+(setq-default html-indent-offset 2)
+(setq-default python-indent-offset 2)
+(setq-default js-indent-level 2)
+
+(setq-default evil-shift-width 2)
+(setq-default evil-shift-round nil)
 
 (after! cc (cc-set-offset 'innamespace 0))
 
-
-;; List of hooks for non-code modes
-(after! (company markdown org yasnippet)
-  (setq-default company-yasnippet nil)
-  (dolist (hook '(text-mode-hook
-                  org-mode-hook
-                  markdown-mode-hook))
-    (add-hook hook (lambda () (company-mode -1)))))
+(after! company
+  (global-company-mode -1)
+  (add-hook 'prog-mode-hook #'company-mode)
+  (add-hook 'markdown-mode-hook (lambda () (company-mode -1))))
 
 
 (global-whitespace-mode -1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-
-(after! markdown
-  (map! :map markdown-mode-map
-        :localleader
-        :desc "Align table" "|" #'markdown-table-align))
 
 
 ;; accept completion from copilot and fallback to company
