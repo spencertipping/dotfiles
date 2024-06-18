@@ -1,5 +1,5 @@
 #!/bin/bash
-[ -z "$PS1" ] && return
+[[ $- == *i* ]] || return
 #[ -t 0 ] || return
 
 # exec 5> /tmp/bashlog
