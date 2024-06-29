@@ -24,8 +24,9 @@
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
-(setq-default doom-font (font-spec :family "Ubuntu Mono" :size 12))
-(setq-default doom-serif-font (font-spec :family "Gentium Basic" :size 24))
+(setq-default doom-font                (font-spec :family "Ubuntu Mono"   :size 28))
+(setq-default doom-serif-font          (font-spec :family "Gentium Basic" :size 28))
+(setq-default doom-variable-pitch-font (font-spec :family "Gentium Basic" :size 28))
 
 (add-to-list 'default-frame-alist '(alpha . (92 . 70)))
 
@@ -88,24 +89,21 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(setq-default standard-indent 2)
+(setq-default evil-shift-width 2)
+(setq-default evil-indent-convert-tabs nil)
+(setq-default evil-shift-round nil)
+
 (setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
+(setq-default tab-width 8)
 
-(after! c
-  (setq-default c-basic-offset 2)
-  (setq-default c-offsets-alist '((innamespace . 0)))
-  (setq-default c-default-style "linux")
-  (setq-default c-tab-always-indent t)
-  (setq-default c-indent-level 2))
-
+(setq-default c-basic-offset 2)
+(setq-default c-offsets-alist '((innamespace . 0)))
 (setq-default css-indent-offset 2)
 (setq-default lisp-body-indent 2)
 (setq-default html-indent-offset 2)
 (setq-default python-indent-offset 2)
 (setq-default js-indent-level 2)
-
-(setq-default evil-shift-width 2)
-(setq-default evil-shift-round nil)
 
 (after! cc (cc-set-offset 'innamespace 0))
 
@@ -119,15 +117,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 
-;; accept completion from copilot and fallback to company
-(use-package! copilot
-  :hook (prog-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("<tab>"   . 'copilot-accept-completion)
-              ("TAB"     . 'copilot-accept-completion)
-              ("C-TAB"   . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)))
-
 (after! (evil copilot)
   ;; Define the custom function that either accepts the completion or does the default behavior
   (defun my/copilot-tab-or-default ()
@@ -139,6 +128,37 @@
       (evil-insert 1))) ; Default action to insert a tab. Adjust as needed.
 
   (evil-define-key 'insert 'global (kbd "<tab>") 'my/copilot-tab-or-default))
+
+
+;; accept completion from copilot and fallback to company
+(use-package copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>"   . 'copilot-accept-completion)
+              ("TAB"     . 'copilot-accept-completion)
+              ("C-TAB"   . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
+
+
+(fset 'rainbow-delimiters-mode #'ignore)
+
+
+(after! markdown-mode
+  (defun my/set-markdown-font-faces ()
+    (interactive)
+    (when (derived-mode-p 'markdown-mode)
+      ;; Set the base font for all text to Gentium
+      (buffer-face-set '(:family "Gentium" :height 280))
+      (display-line-numbers-mode -1)
+
+      ;; Set the face for code blocks and inline code to Fira Code
+      (mapc (lambda (face)
+              (set-face-attribute face nil :family "Fira Code"))
+            '(markdown-code-face
+              markdown-inline-code-face
+              markdown-pre-face
+              markdown-table-face))))
+  (add-hook 'markdown-mode-hook 'my/set-markdown-font-faces))
 
 
 ;; Add un-mapped APL symbols under the "`" prefix
