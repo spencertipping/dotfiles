@@ -155,6 +155,13 @@
                                   nil :height (* 1.0 (log (- 8 n)))))
             '(1 2 3 4 5 6))
 
+      (set-face-attribute 'markdown-markup-face nil
+                          :family "Roboto Condensed"
+                          :height 0.7)
+      (set-face-attribute 'markdown-list-face nil
+                          :family p
+                          :height 1.2)
+
       (mapc (lambda (face) (set-face-font face p))
             '(markdown-code-face
               markdown-inline-code-face
@@ -167,13 +174,18 @@
 
   (defun my/markdown-sans ()
     (interactive)
-    (my/set-markdown-font-faces "Noto Sans" 240 "JetBrains Mono"))
+    (my/set-markdown-font-faces "IBM Plex Sans" 240 "JetBrains Mono"))
+
+  (defun my/markdown-mono ()
+    (interactive)
+    (my/set-markdown-font-faces "Ubuntu Mono" 200 "Ubuntu Mono"))
 
   (add-hook 'markdown-mode-hook 'my/markdown-serif)
   (map! :map markdown-mode-map
         :localleader
         :desc "Switch to sans-serif" "s" #'my/markdown-sans
-        :desc "Switch to serif" "S" #'my/markdown-serif))
+        :desc "Switch to serif"      "S" #'my/markdown-serif
+        :desc "Switch to monospace"  "m" #'my/markdown-mono))
 
 
 ;; Add un-mapped APL symbols under the "`" prefix
