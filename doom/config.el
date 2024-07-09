@@ -24,9 +24,9 @@
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
-(setq-default doom-font                (font-spec :family "Ubuntu Mono"   :size 28))
-(setq-default doom-serif-font          (font-spec :family "Gentium Basic" :size 28))
-(setq-default doom-variable-pitch-font (font-spec :family "Gentium Basic" :size 28))
+(setq-default doom-font                (font-spec :family "Ubuntu Mono"  :size 28))
+(setq-default doom-serif-font          (font-spec :family "Gentium Plus" :size 28))
+(setq-default doom-variable-pitch-font (font-spec :family "Noto Sans"    :size 28))
 
 (add-to-list 'default-frame-alist '(alpha . (92 . 70)))
 
@@ -144,21 +144,36 @@
 
 
 (after! markdown-mode
-  (defun my/set-markdown-font-faces ()
-    (interactive)
+  (defun my/set-markdown-font-faces (f s p)
     (when (derived-mode-p 'markdown-mode)
-      ;; Set the base font for all text to Gentium
-      (buffer-face-set '(:family "Gentium" :height 280))
+      (buffer-face-set `(:family ,f :height ,s))
       (display-line-numbers-mode -1)
 
-      ;; Set the face for code blocks and inline code to Fira Code
-      (mapc (lambda (face)
-              (set-face-attribute face nil :family "Fira Code"))
+      ;; Set header font sizes: h1 should be largest, then h2 down to h6.
+      (mapc (lambda (n)
+              (set-face-attribute (intern (format "markdown-header-face-%d" n))
+                                  nil :height (* 1.0 (log (- 8 n)))))
+            '(1 2 3 4 5 6))
+
+      (mapc (lambda (face) (set-face-font face p))
             '(markdown-code-face
               markdown-inline-code-face
               markdown-pre-face
               markdown-table-face))))
-  (add-hook 'markdown-mode-hook 'my/set-markdown-font-faces))
+
+  (defun my/markdown-serif ()
+    (interactive)
+    (my/set-markdown-font-faces "Gentium Plus" 280 "Fira Code"))
+
+  (defun my/markdown-sans ()
+    (interactive)
+    (my/set-markdown-font-faces "Noto Sans" 240 "JetBrains Mono"))
+
+  (add-hook 'markdown-mode-hook 'my/markdown-serif)
+  (map! :map markdown-mode-map
+        :localleader
+        :desc "Switch to sans-serif" "s" #'my/markdown-sans
+        :desc "Switch to serif" "S" #'my/markdown-serif))
 
 
 ;; Add un-mapped APL symbols under the "`" prefix
